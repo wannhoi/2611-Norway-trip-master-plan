@@ -1,0 +1,1 @@
+# 2611-Norway-trip-master-plan
