@@ -50,7 +50,6 @@ section[hidden]{display:none!important}
 .alert{padding:14px;border-radius:8px;margin:12px 0}
 .alert.fuel{background:var(--fuel-soft);border-left:3px solid var(--fuel)}
 .alert.grocery{background:var(--grocery-soft);border-left:3px solid var(--grocery)}
-.label-inline{display:inline-block;width:100px;font-weight:500}
 [lang="en"]{display:none}
 .lang-en [lang="en"]{display:initial}
 .lang-en [lang="zh"]{display:none}
@@ -70,7 +69,7 @@ section[hidden]{display:none!important}
       <p class="eyebrow" lang="en">Singapore Departure · Norway Road Trip · Aurora Photography</p>
       <h1>北极光远征 · 挪威自驾全攻略 2026</h1>
       <p style="color:var(--accent);font-weight:500;margin-top:4px">云海 & 贵英同行 💑</p>
-      <p class="version-tag">📌 Updated: 06.10.26 · 1030</p>
+      <p class="version-tag">📌 Updated: 06.10.26 · 1110</p>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -97,7 +96,6 @@ section[hidden]{display:none!important}
   <button class="nav-tab" data-section="notes" lang="en">📋 Supplies</button>
 </nav>
 
-<!-- ========== 总览 ========== -->
 <section id="overview">
   <div class="card">
     <h2 lang="zh">欢迎使用 👋</h2>
@@ -107,9 +105,160 @@ section[hidden]{display:none!important}
   </div>
 </section>
 
-<!-- ========== 全程路线 ========== -->
 <section id="route" hidden>
   <div class="card">
     <h2 lang="zh">📍 住宿代号对照</h2>
     <h2 lang="en">📍 Accommodation Reference</h2>
     <div class="ref-box">
+      <div class="ref-item"><b>E1</b> = 塞尼亚岛 · 锡尔桑 / Senja</div>
+      <div class="ref-item"><b>E2</b> = 罗弗敦群岛 · 斯沃尔韦尔 / Lofoten · Svolvær</div>
+      <div class="ref-item"><b>E3</b> = 特罗姆瑟 / Tromsø</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 lang="zh">🛣️ 路线分段与距离</h2>
+    <h2 lang="en">🛣️ Route Segments & Distances</h2>
+    <div class="route-row">
+      <span class="from-to">TOS 机场 → E1 塞尼亚岛</span>
+      <span class="mono km">~140 km</span>
+    </div>
+    <div class="route-row">
+      <span class="from-to">E1 塞尼亚岛 → E2 罗弗敦</span>
+      <span class="mono km">~360 km</span>
+    </div>
+    <div class="route-row">
+      <span class="from-to">E2 罗弗敦 → E3 特罗姆瑟</span>
+      <span class="mono km">~230 km</span>
+    </div>
+    <div class="route-row">
+      <span class="from-to">E3 特罗姆瑟 → TOS 机场</span>
+      <span class="mono km">~170 km</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 lang="zh">📊 距离汇总</h2>
+    <h2 lang="en">📊 Distance Summary</h2>
+    <div class="sum-row">
+      <span lang="zh">TOS 机场 → 罗弗敦 (E2)</span>
+      <span lang="en">TOS Airport → Lofoten (E2)</span>
+      <span class="mono">~500 km</span>
+    </div>
+    <div class="sum-row">
+      <span lang="zh">罗弗敦 (E2) → TOS 机场</span>
+      <span lang="en">Lofoten (E2) → TOS Airport</span>
+      <span class="mono">~400 km</span>
+    </div>
+    <div class="sum-row total">
+      <span lang="zh">🚗 全程总里程</span>
+      <span lang="en">🚗 Total Trip Distance</span>
+      <span class="mono">~900 km</span>
+    </div>
+  </div>
+</section>
+
+<section id="daily" hidden>
+  <div class="card">
+    <h2 lang="zh">📅 每日行程概要</h2>
+    <h2 lang="en">📅 Daily Overview</h2>
+    <div class="ref-box" style="margin:0 0 16px 0">
+      <small lang="zh">代号对照：E1=塞尼亚岛 · E2=罗弗敦 · E3=特罗姆瑟</small>
+      <small lang="en">Codes: E1=Senja · E2=Lofoten · E3=Tromsø</small>
+    </div>
+    <div class="day-block">
+      <div class="day-title">D1 · 11/7 — TOS 机场 → E1</div>
+      <div class="day-note" lang="zh">取车满油出发 · 芬斯内斯补油后再上岛 · 周六采购周日物资</div>
+      <div class="day-note" lang="en">Full tank at pickup · Top up in Finnsnes before island · Buy Sunday supplies on Saturday</div>
+    </div>
+    <div class="day-block">
+      <div class="day-title">D2–D3 · 11/8–9 — E1 周边</div>
+      <div class="day-note" lang="zh">岛内短途驾驶 · 周日仅主要路口油站营业</div>
+      <div class="day-note" lang="en">Local drives · Sunday: only major stations open</div>
+    </div>
+    <div class="day-block">
+      <div class="day-title">D4–D7 · 11/10–13 — E1 → E2</div>
+      <div class="day-note" lang="zh">进入罗弗敦前务必加满油 · 斯沃尔韦尔为主补给点</div>
+      <div class="day-note" lang="en">Top up fully before entering Lofoten · Svolvær = main supply hub</div>
+    </div>
+    <div class="day-block">
+      <div class="day-title">D8–D10 · 11/14–16 — E2 周边</div>
+      <div class="day-note" lang="zh">E10主路有油站 · 偏远渔村无大站 · 周六备好周日物资</div>
+      <div class="day-note" lang="en">Stations along E10 only · Remote villages no large stations · Stock supplies on Saturday</div>
+    </div>
+    <div class="day-block">
+      <div class="day-title">D11–D12 · 11/17–22 — E2 → E3 → TOS 机场</div>
+      <div class="day-note" lang="zh">返程前加满 · 还车时油箱必须满 · 周日提前备餐</div>
+      <div class="day-note" lang="en">Top up before return · Must return full tank · Prepare meals in advance on Sunday</div>
+    </div>
+  </div>
+</section>
+
+<section id="fuel" hidden>
+  <div class="card">
+    <h2 lang="zh">⛽ 加油要点</h2>
+    <h2 lang="en">⛽ Fuel Guide</h2>
+    <div class="alert fuel">
+      <span lang="zh">剩余 1/3 油即补 · 偏远路段见站就加 · 周日提前准备</span>
+      <span lang="en">Fill at 1/3 remaining · Top up early on remote sections · Plan ahead on Sundays</span>
+    </div>
+    <ul style="margin:12px 0 12px 24px;line-height:1.8">
+      <li lang="zh">E1 塞尼亚岛西侧油站较少</li>
+      <li lang="en">Fewer stations on west Senja (E1)</li>
+      <li lang="zh">进入 E2 罗弗敦前务必加满</li>
+      <li lang="en">Fill fully before entering Lofoten (E2)</li>
+      <li lang="zh">E2 仅 E10 主路有大站</li>
+      <li lang="en">Major stations only along E10 in Lofoten (E2)</li>
+      <li lang="zh">返回 TOS 机场前最后加满</li>
+      <li lang="en">Final fill before returning to TOS Airport</li>
+    </ul>
+  </div>
+</section>
+
+<section id="notes" hidden>
+  <div class="card">
+    <h2 lang="zh">🛒 周日采购提醒</h2>
+    <h2 lang="en">🛒 Sunday Shopping Note</h2>
+    <div class="alert grocery">
+      <span lang="zh">11/8、11/15、11/22 为周日，大型超市休息 → 周六提前备好周日物资</span>
+      <span lang="en">Nov 8, 15, 22 — Large supermarkets CLOSED → Buy Sunday supplies on Saturday!</span>
+    </div>
+    <ul style="margin:12px 0 12px 24px;line-height:1.8">
+      <li>Rema 1000 / Kiwi / Coop — 周日休息</li>
+      <li>Circle K — 部分站点 24 小时营业，可应急</li>
+    </ul>
+  </div>
+</section>
+
+<footer style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color:var(--dim);font-size:.8rem;text-align:center">
+  <p>📌 Updated: 06.10.26 · 1110｜云海 & 贵英同行 💑</p>
+</footer>
+
+</div>
+
+<script>
+function daysTo(target){
+  const t=new Date(target+'T00:00:00'),n=new Date();
+  return Math.ceil((t-n)/86400000);
+}
+document.getElementById('cdNum').textContent=daysTo('2026-11-07');
+
+const langBtns=document.querySelectorAll('.lang-btn');
+langBtns.forEach(b=>{
+  b.onclick=()=>{
+    langBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active');
+    document.documentElement.className=b.dataset.lang==='en'?'lang-en':'';
+  };
+});
+
+const tabs=document.querySelectorAll('.nav-tab');
+tabs.forEach(t=>{
+  t.onclick=()=>{
+    const sec=t.dataset.section;
+    document.querySelectorAll('.nav-tab').forEach(x=>x.classList.toggle('active',x.dataset.section===sec));
+    document.querySelectorAll('section').forEach(s=>s.hidden=s.id!==sec);
+  };
+});
+</script>
+</body>
+</html>
