@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>北极光远征 · 挪威自驾全攻略 2026</title>
+<title>挪威北极光远征 · 终极路线与住宿大师规划版</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#091720; --surface:#112834; --surface-2:#173440; --text:#eaf3f5; --dim:#abc0c9; --border:#294553;
-  --accent:#73d9c5; --accent-soft:#1a3b36; --warn:#e0b14a; --warn-soft:#2c2411;
-  --danger:#e8766e; --danger-soft:#301715; --fuel:#f97316; --fuel-soft:#2e1f10; --grocery:#a3e635; --grocery-soft:#233510;
+  --accent:#73d9c5; --accent-soft:#1a3b36; --aurora:#60a5fa; --aurora-soft:#1e293b;
+  --ok:#53c389; --ok-soft:#14281d; --warn:#e0b14a; --warn-soft:#2c2411;
+  --danger:#e8766e; --danger-soft:#301715; --copper:#e39a5e; --copper-soft:#2c2013;
+  --fuel:#f97316; --fuel-soft:#2e1f10; --grocery:#a3e635; --grocery-soft:#233510;
   --shadow:0 2px 12px rgba(0,0,0,.3);
   color-scheme:dark;
 }
@@ -20,43 +22,71 @@ html,body{font-family:'Source Sans 3',system-ui,-apple-system,sans-serif;font-si
 h1,h2,h3{font-family:'Fraunces',Georgia,serif}
 .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:900px;margin:0 auto}
+.wrap{max-width:1200px;margin:0 auto}
 header{padding:32px 0 24px;background:radial-gradient(ellipse at top right,#235c57,transparent 70%);border-bottom:1px solid var(--border);margin-bottom:24px}
 .header-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:8px}
 .lang-switch{display:flex;gap:6px}
-.lang-btn{border:1px solid var(--border);background:var(--surface);color:var(--dim);padding:6px 14px;border-radius:8px;cursor:pointer;font:inherit;min-width:60px;text-align:center}
+.lang-btn{border:1px solid var(--border);background:var(--surface);color:var(--dim);padding:6px 12px;border-radius:8px;cursor:pointer;font:inherit}
 .lang-btn.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
-.version-tag{font-size:.75rem;color:var(--dim);margin-top:8px;display:inline-block}
+.version-tag{font-size:.75rem;color:var(--dim);margin-top:6px;display:inline-block}
 .eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
 header h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;margin-bottom:4px}
 .nav-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.nav-tab{background:transparent;border:none;padding:8px 14px;border-radius:8px;color:var(--dim);font:inherit;cursor:pointer;font-size:.92rem;min-height:40px}
+.nav-tab{background:transparent;border:none;padding:8px 12px;border-radius:8px;color:var(--dim);font:inherit;cursor:pointer;font-size:.92rem}
 .nav-tab.active{background:var(--surface);color:var(--accent);border-bottom:2px solid var(--accent);border-radius:8px 8px 0 0}
 section[hidden]{display:none!important}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
-.card h2{font-size:1.2rem;margin-bottom:16px;color:var(--accent)}
-.ref-box{background:var(--surface-2);border-radius:8px;padding:14px 16px;margin:16px 0}
-.ref-item{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.ref-item:last-child{border-bottom:none}
-.route-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
-.route-row:last-child{border-bottom:none}
-.from-to{flex:1;min-width:200px}
-.km{font-family:'IBM Plex Mono';color:var(--accent);font-weight:600;white-space:nowrap}
-.sum-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
-.sum-row.total{border-top:2px solid var(--accent);border-bottom:none;margin-top:8px;padding-top:16px;font-weight:600;font-size:1.1rem}
-.day-block{background:var(--surface-2);border-radius:8px;padding:16px;margin-bottom:12px}
-.day-title{font-weight:600;margin-bottom:6px}
-.day-note{font-size:.9rem;color:var(--dim);line-height:1.6}
-.alert{padding:14px;border-radius:8px;margin:12px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+.stat{background:var(--surface);padding:14px 16px}
+.stat .label{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.stat .value{font-family:'IBM Plex Mono';font-size:1.25rem;font-weight:600;margin:4px 0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card h2{font-size:1.2rem;margin-bottom:14px;color:var(--accent)}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:600;margin:4px 4px 4px 0}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.danger{background:var(--danger-soft);color:var(--danger)}
+.pill.fuel{background:var(--fuel-soft);color:var(--fuel)}
+.pill.grocery{background:var(--grocery-soft);color:var(--grocery)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;align-items:stretch}
+.tag{display:inline-block;background:#234854;border-radius:4px;padding:3px 8px;font-size:.72rem;margin:2px}
+.link-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:6px;background:var(--accent-soft);color:var(--accent);font-size:.85rem;font-weight:600;margin:6px 4px 4px 0;border:1px solid var(--accent)}
+.link-btn:hover{background:var(--accent);color:#000;text-decoration:none}
+.alert{padding:12px;border-radius:8px;margin:10px 0}
 .alert.fuel{background:var(--fuel-soft);border-left:3px solid var(--fuel)}
 .alert.grocery{background:var(--grocery-soft);border-left:3px solid var(--grocery)}
+.alert.drone{background:var(--danger-soft);border-left:3px solid var(--danger)}
+input,select{border:1px solid var(--border);border-radius:6px;padding:8px 12px;background:var(--surface-2);color:var(--text);font:inherit;margin:4px 0}
+button.btn{border:1px solid var(--border);border-radius:8px;padding:9px 14px;background:var(--surface);color:var(--text);font:inherit;cursor:pointer;transition:all .2s;margin:4px 0}
+button.btn:hover{border-color:var(--accent)}
+button.btn.fuel{background:var(--fuel);color:#000;border-color:var(--fuel);font-weight:600}
+button.btn.grocery{background:var(--grocery);color:#000;border-color:var(--grocery);font-weight:600}
+.expense-row{display:grid;grid-template-columns:1fr 1fr 1fr 80px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.expense-total{font-size:1.3rem;font-weight:600;text-align:right;margin-top:12px;color:var(--accent)}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color:var(--dim);font-size:.8rem}
+.day-card{background:var(--surface-2);border-radius:10px;padding:16px;margin-bottom:12px}
+
+/* Accommodation card specific styles */
+.hotel-title{margin:0 0 4px 0;font-size:1.15rem;color:var(--accent)}
+.location{font-size:0.88rem;color:var(--dim);margin-bottom:10px;font-weight:500}
+.info-box{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:12px;font-size:0.85rem;margin-bottom:12px}
+.info-row{display:flex;justify-content:space-between;margin-bottom:5px}
+.info-row:last-child{margin-bottom:0}
+.info-label{color:var(--dim);font-weight:500}
+.info-value{color:var(--text);font-weight:600;text-align:right}
+.highlight-alert{color:var(--danger);font-weight:700}
+.facilities{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.link-bar{display:flex;gap:8px;margin-top:auto}
+.source-link,.maps-btn{flex:1;display:inline-block;text-decoration:none;padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;text-align:center;box-sizing:border-box}
+.source-link{background:var(--surface-2);border:1px solid var(--border);color:var(--text)}
+.source-link:hover{background:var(--border)}
+.maps-btn{background:#16a34a;color:white}
+.maps-btn:hover{background:#15803d}
+.notes-area{font-size:0.8rem;color:var(--dim);font-style:italic;margin-top:8px}
+
 [lang="en"]{display:none}
 .lang-en [lang="en"]{display:initial}
 .lang-en [lang="zh"]{display:none}
-@media(max-width:600px){
-  .route-row{flex-direction:column;align-items:flex-start}
-  .km{align-self:flex-start}
-}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.expense-row{grid-template-columns:1fr 1fr;gap:4px}}
 </style>
 </head>
 <body>
@@ -66,183 +96,600 @@ section[hidden]{display:none!important}
   <div class="header-top">
     <div>
       <p class="eyebrow" lang="zh">新加坡出发 · 挪威自驾 · 极光摄影之旅</p>
-      <p class="eyebrow" lang="en">Singapore Departure · Norway Road Trip · Aurora Photography</p>
-      <h1>北极光远征 · 挪威自驾全攻略 2026</h1>
-      <p style="color:var(--accent);font-weight:500;margin-top:4px">云海 & 贵英同行 💑</p>
-      <p class="version-tag">📌 Updated: 06.10.26 · 1110</p>
+      <p class="eyebrow" lang="en">SG Departure · Norway Road Trip · Aurora Photography</p>
+      <h1 lang="zh">北极光远征 · 路线与住宿大师规划版</h1>
+      <h1 lang="en">Norway Expedition Master Planner</h1>
+      <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑 (DJI Mini 5 Pro Setup)</p>
+      <span class="version-tag">🕒 Updated: 05 Oct 26 (12.14pm)</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
       <button class="lang-btn" data-lang="en">EN</button>
     </div>
   </div>
-  <div class="countdown" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);border-radius:12px;padding:10px 20px;margin-top:8px">
+  <div class="countdown" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);border-radius:12px;padding:10px 18px;margin-top:8px">
     <span class="n mono" id="cdNum">&nbsp;</span>
-    <span lang="zh">天 · 出发倒计时</span>
-    <span lang="en">Days to Departure</span>
+    <span id="cdText" lang="zh">天 · 出发倒计时 (Nov 7, 2026)</span>
+    <span id="cdText" lang="en">Days to Departure (Nov 7, 2026)</span>
   </div>
 </header>
 
 <nav class="nav-bar">
-  <button class="nav-tab active" data-section="overview" lang="zh">总览</button>
-  <button class="nav-tab" data-section="overview" lang="en">Overview</button>
-  <button class="nav-tab" data-section="route" lang="zh">🗺️ 全程路线</button>
-  <button class="nav-tab" data-section="route" lang="en">🗺️ Full Route</button>
-  <button class="nav-tab" data-section="daily" lang="zh">📅 每日行程</button>
-  <button class="nav-tab" data-section="daily" lang="en">📅 Daily Plan</button>
-  <button class="nav-tab" data-section="fuel" lang="zh">⛽ 加油要点</button>
-  <button class="nav-tab" data-section="fuel" lang="en">⛽ Fuel Guide</button>
-  <button class="nav-tab" data-section="notes" lang="zh">📋 补给提醒</button>
-  <button class="nav-tab" data-section="notes" lang="en">📋 Supplies</button>
+  <button class="nav-tab active" data-section="overview" lang="zh">🗺️ 路线与总览</button>
+  <button class="nav-tab" data-section="overview" lang="en">🗺️ Overview & Map</button>
+  <button class="nav-tab" data-section="stays" lang="zh">🏠 住宿详情 (A1-B4)</button>
+  <button class="nav-tab" data-section="stays" lang="en">🏠 Accommodations (A1-B4)</button>
+  <button class="nav-tab" data-section="daily" lang="zh">每日行程</button>
+  <button class="nav-tab" data-section="daily" lang="en">Daily Plan</button>
+  <button class="nav-tab" data-section="fuel" lang="zh">⛽ 续航加油</button>
+  <button class="nav-tab" data-section="fuel" lang="en">⛽ Fuel Range</button>
+  <button class="nav-tab" data-section="grocery" lang="zh">🛒 补给超市</button>
+  <button class="nav-tab" data-section="grocery" lang="en">🛒 Supplies</button>
+  <button class="nav-tab" data-section="drone" lang="zh">🚁 无人机指南</button>
+  <button class="nav-tab" data-section="drone" lang="en">🚁 Drone Guide</button>
+  <button class="nav-tab" data-section="expense" lang="zh">💰 费用记账</button>
+  <button class="nav-tab" data-section="expense" lang="en">💰 Expenses</button>
 </nav>
 
+<!-- ========== 路线与总览 (Overview & Map) ========== -->
 <section id="overview">
-  <div class="card">
-    <h2 lang="zh">欢迎使用 👋</h2>
-    <h2 lang="en">Welcome 👋</h2>
-    <p lang="zh">本页面为双语对照版，点击上方「中文 / EN」切换显示语言。住宿地点使用代号 E1/E2/E3 表示，具体对应名称请查看「全程路线」页。</p>
-    <p lang="en">Bilingual page — click Chinese / EN above to switch. Accommodations shown as codes E1/E2/E3 — see Full Route page for reference list.</p>
+  <div class="card" style="background:linear-gradient(135deg, #112834, #1a3b36);border:1px solid var(--accent);">
+    <h2 lang="zh">🗺️ 完整路线导航与路段总览</h2>
+    <h2 lang="en">🗺️ Full Expedition Route Map & Legend</h2>
+    <p lang="zh" style="margin-bottom:12px">点击下方按钮可直接在 Google Maps 中查看从特罗姆瑟机场出发、贯穿塞尼亚与罗弗敦群岛的完整往返自驾路线。</p>
+    <p lang="en" style="margin-bottom:12px">Click the buttons below to open your complete round-trip self-drive route from Tromsø Airport through Senja & Lofoten directly in Google Maps.</p>
+    
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <a href="https://www.google.com/maps/dir/Troms%C3%B8+Airport/Silsand/Garsnes+Brygge,+Sj%C3%B8vegan/Sj%C3%B8tun,+Vebbestad/Laukvik/Sk%C3%A5rungen,+Kabelv%C3%A5g/Henningsv%C3%A6r/Eliassen+Rorbuer,+Hamn%C3%B8y" target="_blank" class="link-btn" lang="zh">
+        🚗 查看去程全图 (TOS → 塞尼亚 → 罗弗敦 A1-A8)
+      </a>
+      <a href="https://www.google.com/maps/dir/Troms%C3%B8+Airport/Silsand/Garsnes+Brygge,+Sj%C3%B8vegan/Sj%C3%B8tun,+Vebbestad/Laukvik/Sk%C3%A5rungen,+Kabelv%C3%A5g/Henningsv%C3%A6r/Eliassen+Rorbuer,+Hamn%C3%B8y" target="_blank" class="link-btn" lang="en">
+        🚗 Outbound Route Map (TOS → Senja → Lofoten A1-A8)
+      </a>
+      
+      <a href="https://www.google.com/maps/dir/Eliassen+Rorbuer,+Hamn%C3%B8y/Svin%C3%B8ya+Rorbuer,+Svolv%C3%A6r/Gammelbanken+Liland/Fjellfroskvatnet,+Skjold/Troms%C3%B8/Troms%C3%B8+Airport" target="_blank" class="link-btn" style="background:var(--surface-2);color:var(--text);border-color:var(--border);" lang="zh">
+        🔄 查看返程全图 (罗弗敦 → 内陆 → 特罗姆瑟 B1-B4)
+      </a>
+      <a href="https://www.google.com/maps/dir/Eliassen+Rorbuer,+Hamn%C3%B8y/Svin%C3%B8ya+Rorbuer,+Svolv%C3%A6r/Gammelbanken+Liland/Fjellfroskvatnet,+Skjold/Troms%C3%B8/Troms%C3%B8+Airport" target="_blank" class="link-btn" style="background:var(--surface-2);color:var(--text);border-color:var(--border);" lang="en">
+        🔄 Return Route Map (Lofoten → Inland → Tromsø B1-B4)
+      </a>
+    </div>
+
+    <h3 style="margin:16px 0 8px 0;font-size:1.05rem;color:var(--accent)" lang="zh">📌 住宿路段图例对照表 (Legend A1-A8 & B1-B4)</h3>
+    <h3 style="margin:16px 0 8px 0;font-size:1.05rem;color:var(--accent)" lang="en">📌 Accommodation Legend (A1-A8 & B1-B4)</h3>
+    
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;font-size:0.85rem;">
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[A1]</strong> Wilderness Villa (Silsand, Senja)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[A2]</strong> Garsnes Brygge (Sjøvegan)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[A3]</strong> Sjøtun (Vebbestad, Kvæfjord)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[A4]</strong> Lofoten Sea View Cabin (Laukvik)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[A5]</strong> Skårungen Cabins (Kabelvåg)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[A6]</strong> Fiskekrogen Rorbuer (Henningsvær)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[A7]</strong> Eliassen Rorbuer (Hamnøy, Reine)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[B1]</strong> Svinøya Rorbuer (Svolvær)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[B2]</strong> Gammelbanken Liland (Evenes)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[B3]</strong> Feriehus Fjellfroskvatnet (Skjold)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:6px;"><strong>[B4]</strong> Best View Aurora (Tromsø)</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="label" lang="zh">驾驶日均</span><span class="label" lang="en">Drive Avg</span><span class="value">≤2h</span><span style="font-size:.7rem;color:var(--dim)" lang="zh">安全优先</span><span style="font-size:.7rem;color:var(--dim)" lang="en">Safety First</span></div>
+    <div class="stat"><span class="label" lang="zh">周日提醒</span><span class="label" lang="en">Sunday</span><span class="value" style="color:var(--warn)">⚠️ Closed</span><span style="font-size:.7rem;color:var(--dim)" lang="zh">提前采购</span><span style="font-size:.7rem;color:var(--dim)" lang="en">Buy Ahead</span></div>
+    <div class="stat"><span class="label" lang="zh">油箱参考</span><span class="label" lang="en">Tank Ref</span><span class="value">55–65L</span><span style="font-size:.7rem;color:var(--dim)" lang="zh">剩1/3即补</span><span style="font-size:.7rem;color:var(--dim)" lang="en">Fill at 1/3</span></div>
+    <div class="stat"><span class="label" lang="zh">汇率换算</span><span class="label" lang="en">Rate</span><span class="value">÷7.34</span><span style="font-size:.7rem;color:var(--dim)">NOK → SGD</span></div>
   </div>
 </section>
 
-<section id="route" hidden>
-  <div class="card">
-    <h2 lang="zh">📍 住宿代号对照</h2>
-    <h2 lang="en">📍 Accommodation Reference</h2>
-    <div class="ref-box">
-      <div class="ref-item"><b>E1</b> = 塞尼亚岛 · 锡尔桑 / Senja</div>
-      <div class="ref-item"><b>E2</b> = 罗弗敦群岛 · 斯沃尔韦尔 / Lofoten · Svolvær</div>
-      <div class="ref-item"><b>E3</b> = 特罗姆瑟 / Tromsø</div>
+<!-- ========== 住宿详情卡片 (Accommodations A1-B4) ========== -->
+<section id="stays" hidden>
+  <div class="controls" style="background:var(--surface);padding:15px;border-radius:10px;margin-bottom:20px;display:flex;gap:15px;flex-wrap:wrap;align-items:center;border:1px solid var(--border);">
+    <input type="text" id="searchInput" placeholder="Search by A1-B4, hotel name, location, code, or GPS..." onkeyup="filterCards()" style="flex:1;min-width:260px;">
+    <div class="filter-buttons" style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="filter-btn active" onclick="filterRegion('all')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;cursor:pointer;">All Stays</button>
+      <button class="filter-btn" onclick="filterRegion('Senja')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;cursor:pointer;">Senja (A1)</button>
+      <button class="filter-btn" onclick="filterRegion('Vesterålen')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;cursor:pointer;">Vesterålen (A2-A3)</button>
+      <button class="filter-btn" onclick="filterRegion('Lofoten')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;cursor:pointer;">Lofoten (A4-B1)</button>
+      <button class="filter-btn" onclick="filterRegion('Tromso')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;cursor:pointer;">Tromsø / Return (B2-B4)</button>
     </div>
   </div>
 
-  <div class="card">
-    <h2 lang="zh">🛣️ 路线分段与距离</h2>
-    <h2 lang="en">🛣️ Route Segments & Distances</h2>
-    <div class="route-row">
-      <span class="from-to">TOS 机场 → E1 塞尼亚岛</span>
-      <span class="mono km">~140 km</span>
-    </div>
-    <div class="route-row">
-      <span class="from-to">E1 塞尼亚岛 → E2 罗弗敦</span>
-      <span class="mono km">~360 km</span>
-    </div>
-    <div class="route-row">
-      <span class="from-to">E2 罗弗敦 → E3 特罗姆瑟</span>
-      <span class="mono km">~230 km</span>
-    </div>
-    <div class="route-row">
-      <span class="from-to">E3 特罗姆瑟 → TOS 机场</span>
-      <span class="mono km">~170 km</span>
-    </div>
-  </div>
+  <div class="grid" id="cardGrid">
 
-  <div class="card">
-    <h2 lang="zh">📊 距离汇总</h2>
-    <h2 lang="en">📊 Distance Summary</h2>
-    <div class="sum-row">
-      <span lang="zh">TOS 机场 → 罗弗敦 (E2)</span>
-      <span lang="en">TOS Airport → Lofoten (E2)</span>
-      <span class="mono">~500 km</span>
+    <!-- 1. A1 Wilderness Villa -->
+    <div class="card" data-region="Senja" data-search="a1 wilderness villa plv 261107 silsand 69.299 17.625">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[A1] Day 1–2 [PLV]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 7 – Nov 9</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Wilderness Villa Panorama Lakeview</h3>
+        <div class="location">📍 Silsandveien 120, 9303 Silsand, Senja [A1]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">69.2990° N, 17.6250° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 3,450 (MYR 1,457 / S$ 453)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 5, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Panorama Lake View</span>
+          <span class="tag">Outdoor Fire Pit / Tripod Spot</span>
+          <span class="tag">Dark Skies (Aurora)</span>
+        </div>
+        <div class="notes-area">Route Leg: TOS Airport → A1 Silsand (155 km, 2h 30m)</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 Booking.com 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=Troms%C3%B8+Airport&destination=69.2990,17.6250" target="_blank" class="maps-btn" lang="zh">📍 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=Troms%C3%B8+Airport&destination=69.2990,17.6250" target="_blank" class="maps-btn" lang="en">📍 Maps Route</a>
+        </div>
+      </div>
     </div>
-    <div class="sum-row">
-      <span lang="zh">罗弗敦 (E2) → TOS 机场</span>
-      <span lang="en">Lofoten (E2) → TOS Airport</span>
-      <span class="mono">~400 km</span>
+
+    <!-- 2. A2 Garsnes Brygge -->
+    <div class="card" data-region="Vesterålen" data-search="a2 garsnes brygge gb 261109 sjøvegan 68.868 17.962">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[A2] Day 3 [GB]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 9 – Nov 10</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Garsnes Brygge</h3>
+        <div class="location">📍 Garsnesveien 45, 9350 Sjøvegan [A2]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.8680° N, 17.9620° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 1,820 (MYR 771 / S$ 239)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 7, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Kitchenette, Waterfront Pier, Shared Laundry</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Fjord Waterfront</span>
+          <span class="tag">Pier Access</span>
+        </div>
+        <div class="notes-area">Route Leg: A1 Silsand → A2 Sjøvegan (85 km, 1h 25m)</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=68.8680,17.9620" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=68.8680,17.9620" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
     </div>
-    <div class="sum-row total">
-      <span lang="zh">🚗 全程总里程</span>
-      <span lang="en">🚗 Total Trip Distance</span>
-      <span class="mono">~900 km</span>
+
+    <!-- 3. A3 Sjøtun -->
+    <div class="card" data-region="Vesterålen" data-search="a3 sjøtun sjt 261110 vebbestad kvafjord 68.752 16.321">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[A3] Day 4–5 [SJT]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 10 – Nov 12</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Sjøtun</h3>
+        <div class="location">📍 Vebbestadveien 88, 9400 Vebbestad [A3]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.7520° N, 16.3210° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 3,720 (MYR 1,574 / S$ 489)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 8, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Waterside Cottage</span>
+          <span class="tag">Fjord Exploration Base</span>
+        </div>
+        <div class="notes-area">Route Leg: A2 Sjøvegan → A3 Vebbestad (125 km, 2h 10m)</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=68.8680,17.9620&destination=68.7520,16.3210" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.8680,17.9620&destination=68.7520,16.3210" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
     </div>
+
+    <!-- 4. A4 Lofoten Sea View Cabin -->
+    <div class="card" data-region="Lofoten" data-search="a4 lofoten sea view cabin lsc 261112 laukvik 68.363 14.757">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[A4] Day 6–7 [LSC]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 12 – Nov 14</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Lofoten Sea View Cabin</h3>
+        <div class="location">📍 Laukvikveien 210, 8310 Laukvik [A4]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.3630° N, 14.7570° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 3,820 (MYR 1,617 / S$ 502)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 10, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Open Sea Facing</span>
+          <span class="tag">Prime Aurora Deck</span>
+        </div>
+        <div class="notes-area">Route Leg: A3 Vebbestad → A4 Laukvik (195 km, 3h 15m)</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=68.7520,16.3210&destination=68.3630,14.7570" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.7520,16.3210&destination=68.3630,14.7570" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. A5 Skårungen -->
+    <div class="card" data-region="Lofoten" data-search="a5 skårungen shc 261114 kabelvåg 68.214 14.542">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[A5] Day 8 [SHC]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 14 – Nov 15</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Skårungen Cabins</h3>
+        <div class="location">📍 Torvågveien 25, 8310 Kabelvåg [A5]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.2140° N, 14.5420° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 2,960 (MYR 1,254 / S$ 194)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 12, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Hot Tub, Restaurant</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Waterfront Cabin</span>
+          <span class="tag">Hot Tub Area</span>
+        </div>
+        <div class="notes-area">Route Leg: A4 Laukvik → A5 Kabelvåg (40 km, 45m) — ⚠️ SVJ Airport zone</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=68.3630,14.7570&destination=68.2140,14.5420" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.3630,14.7570&destination=68.2140,14.5420" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. A6 Fiskekrogen Rorbuer -->
+    <div class="card" data-region="Lofoten" data-search="a6 fiskekrogen fkr 261115 henningsvær 68.152 14.208">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[A6] Day 9 [FKR]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 15 – Nov 16</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Fiskekrogen Rorbuer</h3>
+        <div class="location">📍 Skoliveien 3, 8304 Henningsvær [A6]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.1520° N, 14.2080° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 2,120 (MYR 896 / S$ 278)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 13, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Fishing Village Core</span>
+          <span class="tag">Scenic Bridges</span>
+        </div>
+        <div class="notes-area">Route Leg: A5 Kabelvåg → A6 Henningsvær (25 km, 30m)</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=68.2140,14.5420&destination=68.1520,14.2080" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.2140,14.5420&destination=68.1520,14.2080" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. A7 Eliassen Rorbuer -->
+    <div class="card" data-region="Lofoten" data-search="a7 eliassen er 261116 hamnøy reine 67.942 13.143">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[A7] Day 10–11 [ER]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 16 – Nov 18</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Eliassen Rorbuer</h3>
+        <div class="location">📍 Hamnøyveien 26, 8390 Hamnøy, Reine [A7]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">67.9420° N, 13.1430° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 7,000 (MYR 2,966 / S$ 1,259)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 14, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Classic Red Rorbu</span>
+          <span class="tag">Iconic Peaks</span>
+          <span class="tag">Top Aurora Spot</span>
+        </div>
+        <div class="notes-area">Route Leg: A6 Henningsvær → A7 Hamnøy (110 km, 2h 10m) — Centerpiece stay</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=68.1520,14.2080&destination=67.9420,13.1430" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.1520,14.2080&destination=67.9420,13.1430" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. B1 Svinøya Rorbuer -->
+    <div class="card" data-region="Lofoten" data-search="b1 svinøya sr 261118 svolvær 68.239 14.568">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[B1] Day 12 [SR]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 18 – Nov 19</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Svinøya Rorbuer</h3>
+        <div class="location">📍 Gunnar Bergs vei 2, 8300 Svolvær [B1]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.2390° N, 14.5680° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 2,180 (MYR 925 / S$ 200)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 16, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Harbor Rorbu</span>
+          <span class="tag">Start Northbound Return</span>
+        </div>
+        <div class="notes-area">Route Leg: A7 Hamnøy → B1 Svolvær (120 km, 2h 15m)</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=67.9420,13.1430&destination=68.2390,14.5680" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=67.9420,13.1430&destination=68.2390,14.5680" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. B2 Gammelbanken Liland -->
+    <div class="card" data-region="Tromso" data-search="b2 gammelbanken gbl 261119 liland evenes 68.455 16.892">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[B2] Day 13 [GBL]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 19 – Nov 20</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Gammelbanken Liland</h3>
+        <div class="location">📍 Lilandsveien 12, 9436 Liland, Evenes [B2]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.4550° N, 16.8920° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 1,500 (MYR 634)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 17, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Ofotfjorden View</span>
+          <span class="tag">Breakpoint Stay</span>
+        </div>
+        <div class="notes-area">Route Leg: B1 Svolvær → B2 Liland (165 km, 2h 30m) — ⚠️ EVE Airport zone</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=68.2390,14.5680&destination=68.4550,16.8920" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.2390,14.5680&destination=68.4550,16.8920" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. B3 Feriehus ved Fjellfroskvatnet -->
+    <div class="card" data-region="Tromso" data-search="b3 feriehus ffv 261120 skjold målselv 69.135 19.124">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[B3] Day 14 [FFV]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 20 – Nov 21</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Feriehus ved Fjellfroskvatnet</h3>
+        <div class="location">📍 Fjellfroskvatnet 88, 9325 Skjold, Målselv [B3]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">69.1350° N, 19.1240° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 1,980 (MYR 836)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 18, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">Inland Lake</span>
+          <span class="tag">Zero Light Pollution</span>
+        </div>
+        <div class="notes-area">Route Leg: B2 Liland → B3 Skjold (145 km, 2h 15m) — Premium clear skies</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=68.4550,16.8920&destination=69.1350,19.1240" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.4550,16.8920&destination=69.1350,19.1240" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. B4 Best view of Aurora Borealis -->
+    <div class="card" data-region="Tromso" data-search="b4 best view aurora bva 261121 tromsø 69.649 18.955">
+      <div style="background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;border-top-left-radius:10px;border-top-right-radius:10px;">
+        <span class="pill" style="background:var(--accent-soft);color:var(--accent);margin:0">[B4] Day 15–16 [BVA]</span>
+        <span style="font-size:0.85rem;color:var(--dim);font-weight:600">Nov 21 – Nov 22</span>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+        <h3 class="hotel-title">Best View of Aurora Borealis</h3>
+        <div class="location">📍 Fjellveien 14, 9010 Tromsø [B4]</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">69.6490° N, 18.9550° E</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 3,100 (MYR 1,312)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">Until Nov 19, 2026</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher</span></div>
+        </div>
+        <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
+        <div class="facilities">
+          <span class="tag">City Fjord View</span>
+          <span class="tag">Departure Day</span>
+        </div>
+        <div class="notes-area">Route Leg: B3 Skjold → B4 Tromsø → TOS Airport (105 km, 1h 45m)</div>
+        <div class="link-bar">
+          <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=69.1350,19.1240&destination=69.6490,18.9550" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.1350,19.1240&destination=69.6490,18.9550" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
+<!-- ========== 每日行程 ========== -->
 <section id="daily" hidden>
   <div class="card">
-    <h2 lang="zh">📅 每日行程概要</h2>
-    <h2 lang="en">📅 Daily Overview</h2>
-    <div class="ref-box" style="margin:0 0 16px 0">
-      <small lang="zh">代号对照：E1=塞尼亚岛 · E2=罗弗敦 · E3=特罗姆瑟</small>
-      <small lang="en">Codes: E1=Senja · E2=Lofoten · E3=Tromsø</small>
+    <h2 lang="zh">📅 每日行程 · 油站/补给/导航</h2>
+    <h2 lang="en">📅 Daily Plan · Fuel/Supplies/Map</h2>
+
+    <div class="day-card">
+      <h3>📍 D1｜11/7 — TOS → 塞尼亚岛·锡尔桑 [A1]</h3>
+      <p lang="zh"><strong>路线：</strong>E8→E6→Fv86 → 约2小时30分</p><p lang="en"><strong>Route:</strong> E8→E6→Fv86 → ~2h 30m</p>
+      <p lang="zh"><strong>⛽ 加油：</strong>✅ 取车=满油出发 → 芬斯内斯Finnsnes补满再上岛</p><p lang="en"><strong>⛽ Fuel:</strong> ✅ Full tank at pickup → Top up in Finnsnes before crossing</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=69.2990,17.6250" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=69.2990,17.6250" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
-    <div class="day-block">
-      <div class="day-title">D1 · 11/7 — TOS 机场 → E1</div>
-      <div class="day-note" lang="zh">取车满油出发 · 芬斯内斯补油后再上岛 · 周六采购周日物资</div>
-      <div class="day-note" lang="en">Full tank at pickup · Top up in Finnsnes before island · Buy Sunday supplies on Saturday</div>
+    <div class="day-card">
+      <h3>📍 D2｜11/8 — 塞尼亚岛内 [A1]</h3>
+      <p lang="zh"><strong>路线：</strong>岛内游览｜短途驾驶 ⚠️ 周日无大超市</p><p lang="en"><strong>Route:</strong> Senja local sightseeing ⚠️ Sunday closures</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=69.2990,17.6250" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=69.2990,17.6250" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
-    <div class="day-block">
-      <div class="day-title">D2–D3 · 11/8–9 — E1 周边</div>
-      <div class="day-note" lang="zh">岛内短途驾驶 · 周日仅主要路口油站营业</div>
-      <div class="day-note" lang="en">Local drives · Sunday: only major stations open</div>
+    <div class="day-card">
+      <h3>📍 D3｜11/9 — 塞尼亚 → 萨朗恩·Sjøvegan [A2]</h3>
+      <p lang="zh"><strong>路线：</strong>Fv86→E8 → 约1小时25分</p><p lang="en"><strong>Route:</strong> Fv86→E8 → ~1h 25m</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=68.8680,17.9620" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=68.8680,17.9620" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
-    <div class="day-block">
-      <div class="day-title">D4–D7 · 11/10–13 — E1 → E2</div>
-      <div class="day-note" lang="zh">进入罗弗敦前务必加满油 · 斯沃尔韦尔为主补给点</div>
-      <div class="day-note" lang="en">Top up fully before entering Lofoten · Svolvær = main supply hub</div>
+    <div class="day-card">
+      <h3>📍 D4–D5｜11/10–12 — 萨朗恩 → 韦斯特罗伦·Vebbestad [A3]</h3>
+      <p lang="zh"><strong>路线：</strong>E6/E10 → 约2小时10分</p><p lang="en"><strong>Route:</strong> E6/E10 → ~2h 10m</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.8680,17.9620&destination=68.7520,16.3210" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.8680,17.9620&destination=68.7520,16.3210" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
-    <div class="day-block">
-      <div class="day-title">D8–D10 · 11/14–16 — E2 周边</div>
-      <div class="day-note" lang="zh">E10主路有油站 · 偏远渔村无大站 · 周六备好周日物资</div>
-      <div class="day-note" lang="en">Stations along E10 only · Remote villages no large stations · Stock supplies on Saturday</div>
+    <div class="day-card">
+      <h3>📍 D6–D7｜11/12–14 — 罗弗敦·劳克维克 [A4]</h3>
+      <p lang="zh"><strong>路线：</strong>E10 → 约3小时15分 🔴 <strong>进入罗弗敦前必须加满油</strong></p><p lang="en"><strong>Route:</strong> E10 → ~3h 15m 🔴 <strong>Top up before Lofoten</strong></p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.7520,16.3210&destination=68.3630,14.7570" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.7520,16.3210&destination=68.3630,14.7570" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
-    <div class="day-block">
-      <div class="day-title">D11–D12 · 11/17–22 — E2 → E3 → TOS 机场</div>
-      <div class="day-note" lang="zh">返程前加满 · 还车时油箱必须满 · 周日提前备餐</div>
-      <div class="day-note" lang="en">Top up before return · Must return full tank · Prepare meals in advance on Sunday</div>
+    <div class="day-card">
+      <h3>📍 D8｜11/14 — 劳克维克 → 卡尔斯塔·Skårungen [A5]</h3>
+      <p lang="zh"><strong>路线：</strong>Fv888→E10 → 约45分钟 ⚠️ 靠近SVJ机场5公里限飞区</p><p lang="en"><strong>Route:</strong> Fv888→E10 → ~45m ⚠️ SVJ 5km airport zone</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.3630,14.7570&destination=68.2140,14.5420" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.3630,14.7570&destination=68.2140,14.5420" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+    </div>
+    <div class="day-card">
+      <h3>📍 D9｜11/15 — 亨宁斯韦尔·Fiskekrogen [A6]</h3>
+      <p lang="zh"><strong>路线：</strong>E10→Fv816 → 约30分钟</p><p lang="en"><strong>Route:</strong> E10→Fv816 → ~30m</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.2140,14.5420&destination=68.1520,14.2080" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.2140,14.5420&destination=68.1520,14.2080" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+    </div>
+    <div class="day-card">
+      <h3>📍 D10–D11｜11/16–18 — 雷纳/哈姆讷øy·Eliassen Rorbuer [A7]</h3>
+      <p lang="zh"><strong>路线：</strong>Fv816→E10 → 约2小时10分</p><p lang="en"><strong>Route:</strong> Fv816→E10 → ~2h 10m</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.1520,14.2080&destination=67.9420,13.1430" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.1520,14.2080&destination=67.9420,13.1430" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+    </div>
+    <div class="day-card">
+      <h3>📍 D12｜11/18 — 斯沃尔韦尔·Svinøya [B1]</h3>
+      <p lang="zh"><strong>路线：</strong>E10北上 → 约2小时15分</p><p lang="en"><strong>Route:</strong> E10 northbound → ~2h 15m</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=67.9420,13.1430&destination=68.2390,14.5680" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=67.9420,13.1430&destination=68.2390,14.5680" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+    </div>
+    <div class="day-card">
+      <h3>📍 D13｜11/19 — 利兰/埃弗内斯·Gammelbanken [B2]</h3>
+      <p lang="zh"><strong>路线：</strong>E10 → 约2小时30分 ⚠️ 靠近EVE机场5公里缓冲区</p><p lang="en"><strong>Route:</strong> E10 → ~2h 30m ⚠️ EVE airport zone</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.2390,14.5680&destination=68.4550,16.8920" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.2390,14.5680&destination=68.4550,16.8920" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+    </div>
+    <div class="day-card">
+      <h3>📍 D14｜11/20 — 莫尔塞尔夫/斯焦尔d·Feriehus [B3]</h3>
+      <p lang="zh"><strong>路线：</strong>E10→E6 → 约2小时15分</p><p lang="en"><strong>Route:</strong> E10→E6 → ~2h 15m</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.4550,16.8920&destination=69.1350,19.1240" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.4550,16.8920&destination=69.1350,19.1240" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+    </div>
+    <div class="day-card">
+      <h3>📍 D15–D16｜11/21–22 — 特罗姆瑟 & 机场还车 [B4]</h3>
+      <p lang="zh"><strong>路线：</strong>E6→E8 → 约1小时45分 🛒 周日采购提醒</p><p lang="en"><strong>Route:</strong> E6→E8 → ~1h 45m 🛒 Sunday prep</p>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=69.1350,19.1240&destination=69.6490,18.9550" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.1350,19.1240&destination=69.6490,18.9550" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
   </div>
 </section>
 
+<!-- ========== 续航加油 ========== -->
 <section id="fuel" hidden>
   <div class="card">
-    <h2 lang="zh">⛽ 加油要点</h2>
-    <h2 lang="en">⛽ Fuel Guide</h2>
+    <h2 lang="zh">⛽ 续航规划 · 汽油版车型</h2>
+    <h2 lang="en">⛽ Fuel Range Guide · Petrol Vehicle</h2>
     <div class="alert fuel">
-      <span lang="zh">剩余 1/3 油即补 · 偏远路段见站就加 · 周日提前准备</span>
-      <span lang="en">Fill at 1/3 remaining · Top up early on remote sections · Plan ahead on Sundays</span>
+      <strong lang="zh">关键原则：</strong><strong lang="en">Key Rule:</strong>
+      <span lang="zh">北部地广人稀，油站间距可达80–120km；剩半箱就找油站，别赌</span>
+      <span lang="en">Northern Norway — stations can be 80–120km apart. Fill at half tank, don't gamble</span>
     </div>
-    <ul style="margin:12px 0 12px 24px;line-height:1.8">
-      <li lang="zh">E1 塞尼亚岛西侧油站较少</li>
-      <li lang="en">Fewer stations on west Senja (E1)</li>
-      <li lang="zh">进入 E2 罗弗敦前务必加满</li>
-      <li lang="en">Fill fully before entering Lofoten (E2)</li>
-      <li lang="zh">E2 仅 E10 主路有大站</li>
-      <li lang="en">Major stations only along E10 in Lofoten (E2)</li>
-      <li lang="zh">返回 TOS 机场前最后加满</li>
-      <li lang="en">Final fill before returning to TOS Airport</li>
-    </ul>
+    <div style="background:var(--surface-2);padding:16px;border-radius:8px;margin:12px 0">
+      <label lang="zh">当前油量：</label><label lang="en">Current Fuel:</label>
+      <input type="range" id="fuelSlider" min="0" max="100" value="50" style="width:100%;margin:8px 0">
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--dim)">
+        <span lang="zh">空</span><span lang="en">Empty</span><span id="fuelPct">50%</span><span lang="zh">满</span><span lang="en">Full</span>
+      </div>
+      <div id="fuelAdvice" style="margin-top:12px;font-weight:600"></div>
+    </div>
   </div>
 </section>
 
-<section id="notes" hidden>
+<!-- ========== 补给超市 ========== -->
+<section id="grocery" hidden>
   <div class="card">
-    <h2 lang="zh">🛒 周日采购提醒</h2>
-    <h2 lang="en">🛒 Sunday Shopping Note</h2>
+    <h2 lang="zh">🛒 超市/补给站 · 周日营业提醒</h2>
+    <h2 lang="en">🛒 Supplies & Shopping · Sunday Hours</h2>
     <div class="alert grocery">
-      <span lang="zh">11/8、11/15、11/22 为周日，大型超市休息 → 周六提前备好周日物资</span>
-      <span lang="en">Nov 8, 15, 22 — Large supermarkets CLOSED → Buy Sunday supplies on Saturday!</span>
+      <strong lang="zh">⚠️ 重中之重：挪威周日=大休日</strong><br>
+      <strong lang="en">⚠️ CRITICAL: Sundays in Norway = Major Closures</strong><br>
+      <span lang="zh">大型超市全关门，仅少数加油站便利店开 → <strong>周六务必买好周日全天物资！</strong></span>
+      <span lang="en">Large supermarkets CLOSED. Only selected station stores open → <strong>Buy Sunday supplies on SATURDAY!</strong></span>
     </div>
-    <ul style="margin:12px 0 12px 24px;line-height:1.8">
-      <li>Rema 1000 / Kiwi / Coop — 周日休息</li>
-      <li>Circle K — 部分站点 24 小时营业，可应急</li>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem">
+      <tr style="border-bottom:2px solid var(--border)"><th style="text-align:left;padding:6px">品牌/Chain</th><th>平日/Weekday</th><th>周六/Sat</th><th>周日/Sun</th></tr>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;font-weight:600">Rema 1000</td><td>07–23</td><td>07–21</td><td style="color:var(--danger)">❌ 休息/Closed</td></tr>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;font-weight:600">Kiwi</td><td>07–23</td><td>07–21</td><td style="color:var(--danger)">❌ 休息/Closed</td></tr>
+      <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;font-weight:600">Coop/Extra</td><td>09–20</td><td>09–18</td><td style="color:var(--danger)">❌ 休息/Closed</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 无人机指南 ========== -->
+<section id="drone" hidden>
+  <div class="card">
+    <h2 lang="zh">🚁 无人机（DJI Mini 5 Pro）实战与法规指南</h2>
+    <h2 lang="en">🚁 DJI Mini 5 Pro Field & Regulation Guide</h2>
+    <div class="alert drone">
+      <strong lang="zh">⚠ 核心装备调整：</strong><strong lang="en">⚠️ Core Equipment Note:</strong>
+      <span lang="zh">本次行程携带 <strong>DJI Mini 5 Pro</strong>（重量 &lt;249g），免除欧盟高额第三方责任险强制要求，完美适应挪威空域！</span>
+      <span lang="en">Carrying <strong>DJI Mini 5 Pro</strong> (&lt;249g). Exempt from mandatory EU insurance, perfectly suited for Norway!</span>
+    </div>
+    <ul style="margin:12px 0 16px 24px;line-height:1.8">
+      <li lang="zh"><strong>运营商注册：</strong> <a href="https://flydrone.no/" target="_blank">Flydrone.no</a> 登记，操作员编号：<code>NORhpxnr4m8scgo-r88</code>[cite: 1, 5]。</li>
+      <li lang="en"><strong>Operator ID:</strong> Register on <a href="https://flydrone.no/" target="_blank">Flydrone.no</a>, ID: <code>NORhpxnr4m8scgo-r88</code>[cite: 1, 5].</li>
+      <li lang="zh"><strong>空域查询：</strong> 飞行前务必使用 <a href="https://avinor.no/en/ninoxdrone/" target="_blank">Ninox Drone (Avinor)</a> 核对[cite: 1, 5]。</li>
+      <li lang="en"><strong>Airspace:</strong> Check live airspace via <a href="https://avinor.no/en/ninoxdrone/" target="_blank">Ninox Drone (Avinor)</a>[cite: 1, 5].</li>
+    </ul>
+    <h3 lang="zh" style="margin-top:14px">🔴 严禁飞行的红区（5公里机场缓冲区）</h3>
+    <ul style="margin-left:24px;line-height:1.8;color:var(--danger)">
+      <li><strong>Tromsø TOS Airport</strong> (Day 1 & Day 15–16 [B4])</li>
+      <li><strong>Svolvær SVJ Airport</strong> (Day 8 Skårungen [A5] 附近)</li>
+      <li><strong>Evenes EVE Airport</strong> (Day 13 Liland [B2] 附近)</li>
     </ul>
   </div>
 </section>
 
-<footer style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color:var(--dim);font-size:.8rem;text-align:center">
-  <p>📌 Updated: 06.10.26 · 1110｜云海 & 贵英同行 💑</p>
+<!-- ========== 费用记账 ========== -->
+<section id="expense" hidden>
+  <div class="card">
+    <h2 lang="zh">💰 实时费用记账中心</h2><h2 lang="en">💰 Expense Tracker</h2>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+      <button class="btn fuel" onclick="addExp('fuel')">⛽ 加油/Fuel</button>
+      <button class="btn grocery" onclick="addExp('food')">🍽️ 餐饮/Food</button>
+      <button class="btn" onclick="addExp('stay')">🏠 住宿/Stay</button>
+      <button class="btn" onclick="addExp('trans')">🚗 交通/Trans</button>
+      <button class="btn" onclick="addExp('gear')">📷 用品/Gear</button>
+      <button class="btn" onclick="addExp('other')">📝 其他/Other</button>
+    </div>
+    <div id="expList">
+      <div class="expense-row" style="font-weight:600;border-bottom:2px solid var(--border)">
+        <div lang="zh">项目</div><div lang="en">Item</div><div>NOK</div><div>SGD</div><div></div>
+      </div>
+    </div>
+    <div class="expense-total">
+      <span lang="zh">总计：</span><span lang="en">Total:</span>
+      NOK <span id="tNOK">0.00</span> / SGD <span id="tSGD">0.00</span>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:10px">
+      <button class="btn" onclick="copyExp()" lang="zh">📋 复制清单</button><button class="btn" onclick="copyExp()" lang="en">📋 Copy List</button>
+      <button class="btn" onclick="clearExp()" lang="zh">🗑️ 清空</button><button class="btn" onclick="clearExp()" lang="en">🗑️ Clear</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>✨ Master Merged Planner (A1-B4 Route)｜云海 & 贵英同行 💑</p>
+  <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
+  <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
 </footer>
 
 </div>
 
 <script>
+// ===== 倒计时 =====
 function daysTo(target){
   const t=new Date(target+'T00:00:00'),n=new Date();
   return Math.ceil((t-n)/86400000);
 }
 document.getElementById('cdNum').textContent=daysTo('2026-11-07');
 
+// ===== 双语切换 =====
 const langBtns=document.querySelectorAll('.lang-btn');
 langBtns.forEach(b=>{
   b.onclick=()=>{
@@ -251,14 +698,92 @@ langBtns.forEach(b=>{
   };
 });
 
+// ===== 导航标签切换 =====
 const tabs=document.querySelectorAll('.nav-tab');
 tabs.forEach(t=>{
   t.onclick=()=>{
     const sec=t.dataset.section;
-    document.querySelectorAll('.nav-tab').forEach(x=>x.classList.toggle('active',x.dataset.section===sec));
+    document.querySelectorAll('.nav-tab').forEach(x=>{
+      if(x.dataset.section===sec)x.classList.add('active');
+      else x.classList.remove('active');
+    });
     document.querySelectorAll('section').forEach(s=>s.hidden=s.id!==sec);
   };
 });
+
+// ===== 住宿卡片搜索与地区筛选 =====
+function filterCards() {
+    let query = document.getElementById('searchInput').value.toLowerCase();
+    let cards = document.querySelectorAll('#cardGrid .card');
+    cards.forEach(card => {
+        let text = card.getAttribute('data-search');
+        card.style.display = text.includes(query) ? "flex" : "none";
+    });
+}
+
+function filterRegion(region) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    let cards = document.querySelectorAll('#cardGrid .card');
+    cards.forEach(card => {
+        if(region === 'all' || card.getAttribute('data-region') === region) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+// ===== 油量滑动条 =====
+const slider=document.getElementById('fuelSlider');
+const pctEl=document.getElementById('fuelPct');
+const advEl=document.getElementById('fuelAdvice');
+if(slider){
+  slider.oninput=()=>{
+    const v=+slider.value;
+    pctEl.textContent=v+'%';
+    let c='',t='';
+    if(v>=50){c='var(--ok)';t='✅ 正常 · Normal'};
+    if(v<50&&v>=33){c='var(--warn)';t='⚠️ 过半 · Fill at next station'};
+    if(v<33&&v>=15){c='var(--danger)';t='🔴 偏低 · Fill NOW'};
+    if(v<15){c='var(--danger)';t='💥 危险 · DO NOT travel remote!'};
+    advEl.style.color=c;advEl.textContent=t;
+  };
+  slider.dispatchEvent(new Event('input'));
+}
+
+// ===== 记账系统 =====
+let expenses=JSON.parse(localStorage.getItem('norway-exp')||'[]');
+const catMap={fuel:'⛽ 加油/Fuel',food:'🍽️ 餐饮/Food',stay:'🏠 住宿/Stay',trans:'🚗 交通/Trans',gear:'📷 用品/Gear',other:'📝 其他/Other'};
+function renderExp(){
+  const list=document.getElementById('expList');
+  if(!list)return;
+  list.innerHTML=`<div class="expense-row" style="font-weight:600;border-bottom:2px solid var(--border)"><div lang="zh">项目</div><div lang="en">Item</div><div>NOK</div><div>SGD</div><div></div></div>`;
+  let t=0;
+  expenses.forEach((e,i)=>{
+    t+=e.nok;
+    list.innerHTML+=`<div class="expense-row"><div>${catMap[e.cat]}${e.desc?' · '+e.desc:''}</div><div class="mono">${e.nok.toFixed(2)}</div><div class="mono">${(e.nok/7.34).toFixed(2)}</div><button class="btn" style="padding:2px 6px" onclick="delExp(${i})">×</button></div>`;
+  });
+  document.getElementById('tNOK').textContent=t.toFixed(2);
+  document.getElementById('tSGD').textContent=(t/7.34).toFixed(2);
+  localStorage.setItem('norway-exp',JSON.stringify(expenses));
+}
+function addExp(cat){
+  const nok=parseFloat(prompt('NOK:'));
+  if(!nok||isNaN(nok))return;
+  const desc=prompt('Note (optional):')||'';
+  expenses.push({cat,nok:parseFloat(nok),desc});renderExp();
+}
+function delExp(i){expenses.splice(i,1);renderExp()}
+function clearExp(){if(confirm('Clear all?')){expenses=[];renderExp()}}
+function copyExp(){
+  let txt='Norway Trip Expenses\n';
+  expenses.forEach(e=>txt+=`${catMap[e.cat]} ${e.desc||''} | NOK ${e.nok} | SGD ${(e.nok/7.34).toFixed(2)}\n`);
+  txt+=`\nTotal NOK ${document.getElementById('tNOK').textContent} / SGD ${document.getElementById('tSGD').textContent}`;
+  navigator.clipboard.writeText(txt).then(()=>alert('Copied!'));
+}
+renderExp();
 </script>
 </body>
 </html>
