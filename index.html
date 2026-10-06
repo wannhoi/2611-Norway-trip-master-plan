@@ -10,17 +10,15 @@
 <style>
 :root{
   --bg:#091720; --surface:#112834; --surface-2:#173440; --text:#eaf3f5; --dim:#abc0c9; --border:#294553;
-  --accent:#73d9c5; --accent-soft:#1a3b36; --aurora:#60a5fa; --aurora-soft:#1e293b;
-  --ok:#53c389; --ok-soft:#14281d; --warn:#e0b14a; --warn-soft:#2c2411;
-  --danger:#e8766e; --danger-soft:#301715; --copper:#e39a5e; --copper-soft:#2c2013;
-  --fuel:#f97316; --fuel-soft:#2e1f10; --grocery:#a3e635; --grocery-soft:#233510;
+  --accent:#73d9c5; --accent-soft:#1a3b36; --warn:#e0b14a; --warn-soft:#2c2411;
+  --danger:#e8766e; --danger-soft:#301715; --fuel:#f97316; --fuel-soft:#2e1f10; --grocery:#a3e635; --grocery-soft:#233510;
   --shadow:0 2px 12px rgba(0,0,0,.3);
   color-scheme:dark;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{font-family:'Source Sans 3',system-ui,-apple-system,sans-serif;font-size:15.5px;line-height:1.55;background:var(--bg);color:var(--text);padding:0 16px 40px}
 h1,h2,h3{font-family:'Fraunces',Georgia,serif}
-.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 .wrap{max-width:900px;margin:0 auto}
 header{padding:32px 0 24px;background:radial-gradient(ellipse at top right,#235c57,transparent 70%);border-bottom:1px solid var(--border);margin-bottom:24px}
@@ -35,39 +33,26 @@ header h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;margin-bottom:4px}
 .nav-tab{background:transparent;border:none;padding:8px 12px;border-radius:8px;color:var(--dim);font:inherit;cursor:pointer;font-size:.92rem}
 .nav-tab.active{background:var(--surface);color:var(--accent);border-bottom:2px solid var(--accent);border-radius:8px 8px 0 0}
 section[hidden]{display:none!important}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
-.stat{background:var(--surface);padding:14px 16px}
-.stat .label{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
-.stat .value{font-family:'IBM Plex Mono';font-size:1.25rem;font-weight:600;margin:4px 0}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
 .card h2{font-size:1.2rem;margin-bottom:14px;color:var(--accent)}
-.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:600;margin:4px 4px 4px 0}
-.pill.ok{background:var(--ok-soft);color:var(--ok)}
-.pill.warn{background:var(--warn-soft);color:var(--warn)}
-.pill.danger{background:var(--danger-soft);color:var(--danger)}
-.pill.fuel{background:var(--fuel-soft);color:var(--fuel)}
-.pill.grocery{background:var(--grocery-soft);color:var(--grocery)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.tag{display:inline-block;background:#234854;border-radius:4px;padding:3px 8px;font-size:.72rem;margin:2px}
-.link-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:6px;background:var(--surface-2);color:var(--text);font-size:.8rem;margin:4px 4px 4px 0}
-.link-btn:hover{background:#234854;text-decoration:none}
+.route-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.leg{flex:1;min-width:140px;text-align:center;border-bottom:1px dashed var(--border);padding:8px 0;margin:0 -6px}
+.leg-km{font-family:'IBM Plex Mono';color:var(--accent);font-weight:600;font-size:.9rem}
+.ref-box{background:var(--surface-2);border-radius:8px;padding:12px;margin:16px 0}
+.ref-item{margin:4px 0}
+.sum-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
+.sum-row.total{border-top:2px solid var(--accent);border-bottom:none;margin-top:4px;padding-top:12px;font-weight:600;font-size:1.1rem}
 .alert{padding:12px;border-radius:8px;margin:10px 0}
 .alert.fuel{background:var(--fuel-soft);border-left:3px solid var(--fuel)}
 .alert.grocery{background:var(--grocery-soft);border-left:3px solid var(--grocery)}
-.alert.drone{background:var(--danger-soft);border-left:3px solid var(--danger)}
-input,select{border:1px solid var(--border);border-radius:6px;padding:8px 12px;background:var(--surface-2);color:var(--text);font:inherit;margin:4px 0}
+.link-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:6px;background:var(--surface-2);color:var(--text);font-size:.82rem;margin:4px 0}
+.link-btn:hover{background:#234854;text-decoration:none}
 button.btn{border:1px solid var(--border);border-radius:8px;padding:9px 14px;background:var(--surface);color:var(--text);font:inherit;cursor:pointer;transition:all .2s;margin:4px 0}
-button.btn:hover{border-color:var(--accent)}
-button.btn.fuel{background:var(--fuel);color:#000;border-color:var(--fuel);font-weight:600}
-button.btn.grocery{background:var(--grocery);color:#000;border-color:var(--grocery);font-weight:600}
-.expense-row{display:grid;grid-template-columns:1fr 1fr 1fr 80px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
-.expense-total{font-size:1.3rem;font-weight:600;text-align:right;margin-top:12px;color:var(--accent)}
-footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color:var(--dim);font-size:.8rem}
-.day-card{background:var(--surface-2);border-radius:10px;padding:16px;margin-bottom:12px}
 [lang="en"]{display:none}
 .lang-en [lang="en"]{display:initial}
 .lang-en [lang="zh"]{display:none}
-@media(max-width:600px){.grid{grid-template-columns:1fr}.expense-row{grid-template-columns:1fr 1fr;gap:4px}}
+@media(max-width:600px){.route-line{font-size:.9rem}}
 </style>
 </head>
 <body>
@@ -80,7 +65,7 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
       <p class="eyebrow" lang="en">SG Departure · Norway Road Trip · Aurora Photography</p>
       <h1>北极光远征 · 实战增强版 2026</h1>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 05 Oct 26 (12.14pm)</span>
+      <p class="version-tag">📌 Updated: 05.10.26 · 1930</p>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -89,372 +74,185 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
   </div>
   <div class="countdown" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);border-radius:12px;padding:10px 18px;margin-top:8px">
     <span class="n mono" id="cdNum">&nbsp;</span>
-    <span id="cdText" lang="zh">天 · 出发倒计时</span>
-    <span id="cdText" lang="en">Days to Departure</span>
+    <span lang="zh">天 · 出发倒计时</span>
+    <span lang="en">Days to Departure</span>
   </div>
 </header>
 
 <nav class="nav-bar">
   <button class="nav-tab active" data-section="overview" lang="zh">总览</button>
   <button class="nav-tab" data-section="overview" lang="en">Overview</button>
-  <button class="nav-tab" data-section="daily" lang="zh">每日行程</button>
-  <button class="nav-tab" data-section="daily" lang="en">Daily Plan</button>
-  <button class="nav-tab" data-section="fuel" lang="zh">⛽ 续航加油</button>
-  <button class="nav-tab" data-section="fuel" lang="en">⛽ Fuel Range</button>
-  <button class="nav-tab" data-section="grocery" lang="zh">🛒 补给超市</button>
-  <button class="nav-tab" data-section="grocery" lang="en">🛒 Supplies</button>
-  <button class="nav-tab" data-section="drone" lang="zh">🚁 无人机指南</button>
-  <button class="nav-tab" data-section="drone" lang="en">🚁 Drone Guide</button>
-  <button class="nav-tab" data-section="expense" lang="zh">💰 费用记账</button>
-  <button class="nav-tab" data-section="expense" lang="en">💰 Expenses</button>
-  <button class="nav-tab" data-section="info" lang="zh">📋 航班/须知</button>
-  <button class="nav-tab" data-section="info" lang="en">📋 Info</button>
+  <button class="nav-tab" data-section="route" lang="zh">🗺️ 全程路线</button>
+  <button class="nav-tab" data-section="route" lang="en">🗺️ Full Route</button>
+  <button class="nav-tab" data-section="daily" lang="zh">📅 每日行程</button>
+  <button class="nav-tab" data-section="daily" lang="en">📅 Daily</button>
+  <button class="nav-tab" data-section="fuel" lang="zh">⛽ 加油</button>
+  <button class="nav-tab" data-section="fuel" lang="en">⛽ Fuel</button>
+  <button class="nav-tab" data-section="more" lang="zh">🛒 其他</button>
+  <button class="nav-tab" data-section="more" lang="en">🛒 More</button>
 </nav>
 
 <!-- ========== 总览 ========== -->
 <section id="overview">
-  <div class="stats">
-    <div class="stat"><span class="label" lang="zh">驾驶日均</span><span class="label" lang="en">Drive Avg</span><span class="value">≤2h</span><span style="font-size:.7rem;color:var(--dim)" lang="zh">安全优先</span><span style="font-size:.7rem;color:var(--dim)" lang="en">Safety First</span></div>
-    <div class="stat"><span class="label" lang="zh">周日提醒</span><span class="label" lang="en">Sunday</span><span class="value" style="color:var(--warn)">⚠️ Closed</span><span style="font-size:.7rem;color:var(--dim)" lang="zh">提前采购</span><span style="font-size:.7rem;color:var(--dim)" lang="en">Buy Ahead</span></div>
-    <div class="stat"><span class="label" lang="zh">油箱参考</span><span class="label" lang="en">Tank Ref</span><span class="value">55–65L</span><span style="font-size:.7rem;color:var(--dim)" lang="zh">剩1/3即补</span><span style="font-size:.7rem;color:var(--dim)" lang="en">Fill at 1/3</span></div>
-    <div class="stat"><span class="label" lang="zh">汇率换算</span><span class="label" lang="en">Rate</span><span class="value">÷7.34</span><span style="font-size:.7rem;color:var(--dim)">NOK → SGD</span></div>
-  </div>
   <div class="card">
-    <h2 lang="zh">🗺️ 路线总览</h2>
-    <h2 lang="en">🗺️ Route Summary</h2>
-    <p lang="zh">TOS机场 → 塞尼亚岛 → 萨朗恩/哈斯塔 → 罗弗敦群岛 → 韦斯特罗伦 → 莫尔塞尔夫 → 返回特罗姆瑟</p>
-    <p lang="en">TOS Airport → Senja → Salangen/Håstad → Lofoten Islands → Vesterålen → Målselv → Return to Tromsø</p>
-    <div class="alert fuel">
-      <strong lang="zh">⛽ 核心原则：</strong>
-      <strong lang="en">⛽ Key Rule:</strong>
-      <span lang="zh">油箱剩 1/3 即补油；偏远路段见油站就加满，不要等黄灯</span>
-      <span lang="en">Fill at 1/3 tank; remote sections — top up whenever seen, don't wait for low fuel light</span>
+    <h2 lang="zh">欢迎 👋</h2>
+    <h2 lang="en">Welcome 👋</h2>
+    <p lang="zh">点「🗺️ 全程路线」看完整行程与距离。住宿用代号显示，对照说明见路线页。</p>
+    <p lang="en">Go to 🗺️ Full Route for distances. Stays shown as codes — see reference table.</p>
+  </div>
+</section>
+
+<!-- ========== 全程路线 ========== -->
+<section id="route" hidden>
+  <div class="card">
+    <h2 lang="zh">🗺️ 全程路线一览</h2>
+    <h2 lang="en">🗺️ Full Route Overview</h2>
+
+    <!-- 住宿代号对照 -->
+    <div class="ref-box">
+      <strong lang="zh">📍 住宿代号对照</strong>
+      <strong lang="en">📍 Stay Reference</strong>
+      <div class="ref-item"><b>E1</b> = 塞尼亚岛·锡尔桑 / Senja</div>
+      <div class="ref-item"><b>E2</b> = 罗弗敦·斯沃尔韦尔 / Lofoten·Svolvær</div>
+      <div class="ref-item"><b>E3</b> = 特罗姆瑟 / Tromsø</div>
     </div>
-    <div class="alert grocery">
-      <strong lang="zh">🛒 周日须知：</strong>
-      <strong lang="en">🛒 Sundays:</strong>
-      <span lang="zh">11/8、11/15、11/22 为周日 — 大超市全休，仅少数加油站便利店营业，务必周六备好周日物资</span>
-      <span lang="en">Nov 8, 15, 22 — Large supermarkets closed; only selected station convenience stores open. Buy supplies on Saturday!</span>
+
+    <!-- 路线图 -->
+    <div class="route-line">
+      <span>TOS<br>机场</span>
+      <div class="dot"></div>
+      <div class="leg"><div>TOS → E1</div><div class="leg-km">~140 km</div></div>
+      <div class="dot"></div>
+      <span>E1</span>
+      <div class="leg"><div>E1 → E2</div><div class="leg-km">~360 km</div></div>
+      <div class="dot"></div>
+      <span>E2</span>
+      <div class="leg"><div>E2 → E3</div><div class="leg-km">~230 km</div></div>
+      <div class="dot"></div>
+      <span>E3</span>
+      <div class="leg"><div>E3 → TOS</div><div class="leg-km">~170 km</div></div>
+      <div class="dot"></div>
+      <span>TOS<br>机场</span>
     </div>
+  </div>
+
+  <!-- 距离汇总 -->
+  <div class="card">
+    <h2 lang="zh">📏 距离汇总</h2>
+    <h2 lang="en">📏 Distance Summary</h2>
+    <div class="sum-row">
+      <span lang="zh">TOS → 罗弗敦 (E2)</span>
+      <span lang="en">TOS → Lofoten (E2)</span>
+      <span class="mono">~500 km</span>
+    </div>
+    <div class="sum-row">
+      <span lang="zh">罗弗敦 (E2) → TOS 机场</span>
+      <span lang="en">Lofoten (E2) → TOS Airport</span>
+      <span class="mono">~400 km</span>
+    </div>
+    <div class="sum-row total">
+      <span lang="zh">🚗 全程总计</span>
+      <span lang="en">🚗 Total Trip</span>
+      <span class="mono">~900 km</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <p lang="zh">💡 详细每日行程与油站提醒 → 点「📅 每日行程」</p>
+    <p lang="en">💡 Daily details & fuel tips → Go to 📅 Daily</p>
   </div>
 </section>
 
 <!-- ========== 每日行程 ========== -->
 <section id="daily" hidden>
   <div class="card">
-    <h2 lang="zh">📅 每日行程 · 油站/补给/导航</h2>
-    <h2 lang="en">📅 Daily Plan · Fuel/Supplies/Map</h2>
+    <h2 lang="zh">📅 每日行程（住宿用代号）</h2>
+    <h2 lang="en">📅 Daily Itinerary (Stays by Code)</h2>
 
-    <!-- D1 -->
-    <div class="day-card">
-      <h3>📍 D1｜11/7 — TOS → 塞尼亚岛·锡尔桑</h3>
-      <p lang="zh"><strong>路线：</strong>E8→E6→Fv86 → 约2小时</p>
-      <p lang="en"><strong>Route:</strong> E8→E6→Fv86 → ~2 hrs</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>✅ 取车=满油出发 → 芬斯内斯Finnsnes【E6路旁Circle K/YX】必停补满再上岛</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ✅ Full tank at pickup → Top up in Finnsnes [Circle K/YX by E6] before crossing</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购（机场出发沿途 <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Kvaloysletta" target="_blank" style="color:var(--grocery);text-decoration:underline">Kvaløysletta</a>）：<a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Kvaloysletta" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000</a> / <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Kvaloysletta" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra</a> 购足车载零食与周日食物</p>
-      <p class="pill grocery" lang="en">🛒 En route stop at <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Kvaloysletta" target="_blank" style="color:var(--grocery);text-decoration:underline">Kvaløysletta</a> (<a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Kvaloysletta" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000</a> / <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Kvaloysletta" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra</a>) to buy car snacks & Sunday food</p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=69.2990,17.6250" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
+    <div class="ref-box" style="margin:0 0 16px 0">
+      <small lang="zh">代号对照：E1=塞尼亚岛 · E2=罗弗敦 · E3=特罗姆瑟</small>
+      <small lang="en">Codes: E1=Senja · E2=Lofoten · E3=Tromsø</small>
     </div>
 
-    <!-- D2 -->
-    <div class="day-card">
-      <h3>📍 D2｜11/8 — 塞尼亚岛内</h3>
-      <p lang="zh"><strong>路线：</strong>岛内游览｜短途驾驶</p>
-      <p lang="en"><strong>Route:</strong> Senja local sightseeing｜Short drives</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>⚠️ 周日！仅主要路口油站营业｜剩半箱就补</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ⚠️ SUNDAY! Only main stations open — fill at half tank</p>
-      <p class="pill warn" lang="zh">🛒 周日：无大超市，仅可前往 <a href="https://www.google.com/maps/search/?api=1&query=Circle+K+Silsand" target="_blank" style="color:var(--warn);text-decoration:underline">Circle K Silsand</a> 购简餐</p>
-      <p class="pill warn" lang="en">🛒 SUNDAY: No large supermarkets — only <a href="https://www.google.com/maps/search/?api=1&query=Circle+K+Silsand" target="_blank" style="color:var(--warn);text-decoration:underline">Circle K Silsand</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=69.2990,17.6250" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
+    <div style="background:var(--surface-2);border-radius:8px;padding:14px;margin-bottom:12px">
+      <b>D1 · 11/7</b>｜TOS → E1<br>
+      <small lang="zh">取车满油出发 · 芬斯内斯补油再上岛</small>
+      <small lang="en">Full tank at pickup · Top up in Finnsnes before island</small>
     </div>
 
-    <!-- D3 -->
-    <div class="day-card">
-      <h3>📍 D3｜11/9 — 塞尼亚 → 萨朗恩/哈斯塔</h3>
-      <p lang="zh"><strong>路线：</strong>Fv86→E8 → 约2小时</p>
-      <p lang="en"><strong>Route:</strong> Fv86→E8 → ~2 hrs</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>✅ 回到主路E8油站充足｜途经Bardufoss可补</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ✅ Back to main E8 — stations frequent</p>
-      <p class="pill ok" lang="zh">🛒 顺路采购：经停 <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Sjovegan" target="_blank" style="color:var(--ok);text-decoration:underline">Coop Extra Sjøvegan</a></p>
-      <p class="pill ok" lang="en">🛒 En route: Stop at <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Sjovegan" target="_blank" style="color:var(--ok);text-decoration:underline">Coop Extra Sjøvegan</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=69.2990,17.6250&destination=68.8680,17.9620" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
+    <div style="background:var(--surface-2);border-radius:8px;padding:14px;margin-bottom:12px">
+      <b>D2–D3 · 11/8–9</b>｜E1 周边<br>
+      <small lang="zh">岛内短途 · 周日仅主要油站营业</small>
+      <small lang="en">Local drives · Sunday: only main stations open</small>
     </div>
 
-    <!-- D4-D5 -->
-    <div class="day-card">
-      <h3>📍 D4–D5｜11/10–12 — 哈斯塔 → 韦斯特罗伦·Sjøtun</h3>
-      <p lang="zh"><strong>路线：</strong>E6→E10 → 约2小时10分</p>
-      <p lang="en"><strong>Route:</strong> E6→E10 → ~2h 10m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>🔴 <strong>进入罗弗敦前必须加满</strong>｜斯沃尔韦尔Svolvær主补给点</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> 🔴 <strong>Top up before entering archipelago!</strong> Svolvær main hub</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：<a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Borkenes" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Borkenes</a> / <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Harstad" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra Harstad</a></p>
-      <p class="pill grocery" lang="en">🛒 En route: <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Borkenes" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Borkenes</a> / <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Harstad" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra Harstad</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=68.8680,17.9620&destination=68.7520,16.3210" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
+    <div style="background:var(--surface-2);border-radius:8px;padding:14px;margin-bottom:12px">
+      <b>D4–D7 · 11/10–13</b>｜E1 → E2<br>
+      <small lang="zh">进入罗弗敦前加满 · 斯沃尔韦尔为主补给点</small>
+      <small lang="en">Top up before Lofoten · Svolvær = main supply hub</small>
     </div>
 
-    <!-- D6-D7 -->
-    <div class="day-card">
-      <h3>📍 D6–D7｜11/12–14 — 罗弗敦·劳克维克</h3>
-      <p lang="zh"><strong>路线：</strong>E10 → 约3小时15分</p>
-      <p lang="en"><strong>Route:</strong> E10 → ~3h 15m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>⚠️ 剩半箱即补，沿海支线无油站</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ⚠️ Fill at half tank, no stations on coastal spurs</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：途径 <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Svolvaer" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Svolvær</a> 补齐物资再进劳克维克</p>
-      <p class="pill grocery" lang="en">🛒 En route: Stop at <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Svolvaer" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Svolvær</a> before heading to Laukvik</p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=68.7520,16.3210&destination=68.3630,14.7570" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
+    <div style="background:var(--surface-2);border-radius:8px;padding:14px;margin-bottom:12px">
+      <b>D8–D10 · 11/14–16</b>｜E2 周边<br>
+      <small lang="zh">E10主路有油站 · 渔村无大站</small>
+      <small lang="en">Stations on E10 only · None in remote villages</small>
     </div>
 
-    <!-- D8 -->
-    <div class="day-card">
-      <h3>📍 D8｜11/14 — 劳克维克 → 卡尔斯塔·Skårungen</h3>
-      <p lang="zh"><strong>路线：</strong>Fv888→E10 → 约45分钟</p>
-      <p lang="en"><strong>Route:</strong> Fv888→E10 → ~45m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>⚠️ 靠近SVJ机场5公里限飞区，注意观察</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ⚠️ Near SVJ airport 5km zone, watch airspace</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：<a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Kabelvag" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Kabelvåg</a></p>
-      <p class="pill grocery" lang="en">🛒 En route: <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Kabelvag" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Kabelvåg</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=68.3630,14.7570&destination=68.2140,14.5420" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
-    </div>
-
-    <!-- D9 -->
-    <div class="day-card">
-      <h3>📍 D9｜11/15 — 亨宁斯韦尔·Fiskekrogen</h3>
-      <p lang="zh"><strong>路线：</strong>E10→Fv816 → 约30分钟</p>
-      <p lang="en"><strong>Route:</strong> E10→Fv816 → ~30m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>⚠️ 窄桥与冰面注意慢行</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ⚠️ Watch narrow icy bridge approaches</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：<a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Henningsvaer" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra Henningsvær</a></p>
-      <p class="pill grocery" lang="en">🛒 En route: <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Henningsvaer" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra Henningsvær</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=68.2140,14.5420&destination=68.1520,14.2080" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
-    </div>
-
-    <!-- D10-D11 -->
-    <div class="day-card">
-      <h3>📍 D10–D11｜11/16–18 — 雷纳/哈姆讷øy·Eliassen</h3>
-      <p lang="zh"><strong>路线：</strong>Fv816→E10 → 约2小时10分</p>
-      <p lang="en"><strong>Route:</strong> Fv816→E10 → ~2h 10m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>🔴 南端终点站，出发前务必满油</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> 🔴 Southernmost base, fill up before arrival</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：<a href="https://www.google.com/maps/search/?api=1&query=Kiwi+Reine" target="_blank" style="color:var(--grocery);text-decoration:underline">Kiwi Reine</a> / <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Ramberg" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Ramberg</a></p>
-      <p class="pill grocery" lang="en">🛒 En route: <a href="https://www.google.com/maps/search/?api=1&query=Kiwi+Reine" target="_blank" style="color:var(--grocery);text-decoration:underline">Kiwi Reine</a> / <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Ramberg" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Ramberg</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=68.1520,14.2080&destination=67.9420,13.1430" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
-    </div>
-
-    <!-- D12 -->
-    <div class="day-card">
-      <h3>📍 D12｜11/18 — 斯沃尔韦尔·Svinøya</h3>
-      <p lang="zh"><strong>路线：</strong>E10北上 → 约2小时15分</p>
-      <p lang="en"><strong>Route:</strong> E10 northbound → ~2h 15m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>✅ 开启北返行程，Svolvær大型油站补给</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ✅ Start northbound return, fill in Svolvær</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：<a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Svolvaer" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Svolvær</a></p>
-      <p class="pill grocery" lang="en">🛒 En route: <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Svolvaer" target="_blank" style="color:var(--grocery);text-decoration:underline">Rema 1000 Svolvær</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=67.9420,13.1430&destination=68.2390,14.5680" target="_blank" class="link-btn">🗺️️ Google Maps Route</a></div>
-    </div>
-
-    <!-- D13 -->
-    <div class="day-card">
-      <h3>📍 D13｜11/19 — 利兰/埃弗内斯·Gammelbanken</h3>
-      <p lang="zh"><strong>路线：</strong>E10 → 约2小时30分</p>
-      <p lang="en"><strong>Route:</strong> E10 → ~2h 30m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>⚠️ 靠近EVE机场5公里缓冲区</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ⚠️ Near EVE airport 5km buffer</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：<a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Liland" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra Liland</a></p>
-      <p class="pill grocery" lang="en">🛒 En route: <a href="https://www.google.com/maps/search/?api=1&query=Coop+Extra+Liland" target="_blank" style="color:var(--grocery);text-decoration:underline">Coop Extra Liland</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=68.2390,14.5680&destination=68.4550,16.8920" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
-    </div>
-
-    <!-- D14 -->
-    <div class="day-card">
-      <h3>📍 D14｜11/20 — 莫尔塞尔夫/斯焦尔d·Feriehus</h3>
-      <p lang="zh"><strong>路线：</strong>E10→E6 → 约2小时15分</p>
-      <p lang="en"><strong>Route:</strong> E10→E6 → ~2h 15m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>⚠️ 内陆山区气温低，油耗增加</p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ⚠️ Cold inland temperatures increase fuel burn</p>
-      <p class="pill grocery" lang="zh">🛒 顺路采购：<a href="https://www.google.com/maps/search/?api=1&query=Kiwi+Bardufoss" target="_blank" style="color:var(--grocery);text-decoration:underline">Kiwi Bardufoss</a></p>
-      <p class="pill grocery" lang="en">🛒 En route: <a href="https://www.google.com/maps/search/?api=1&query=Kiwi+Bardufoss" target="_blank" style="color:var(--grocery);text-decoration:underline">Kiwi Bardufoss</a></p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=68.4550,16.8920&destination=69.1350,19.1240" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
-    </div>
-
-    <!-- D15-D16 -->
-    <div class="day-card">
-      <h3>📍 D15–D16｜11/21–22 — 特罗姆瑟 & 机场还车</h3>
-      <p lang="zh"><strong>路线：</strong>E6→E8 → 约1小时45分</p>
-      <p lang="en"><strong>Route:</strong> E6→E8 → ~1h 45m</p>
-      <p lang="zh"><strong>⛽ 加油：</strong>✅ TOS机场南侧Circle K <strong>必须加满再还车</strong></p>
-      <p lang="en"><strong>⛽ Fuel:</strong> ✅ Circle K south of TOS airport — <strong>Must return full</strong></p>
-      <p class="pill danger" lang="zh">🛒 周日！前一晚备好食物，可去市区 <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Tromso" target="_blank" style="color:var(--danger);text-decoration:underline">Rema 1000 Tromsø</a> 采购</p>
-      <p class="pill danger" lang="en">🛒 SUNDAY! Prepare ahead, visit <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Tromso" target="_blank" style="color:var(--danger);text-decoration:underline">Rema 1000 Tromsø</a> prior</p>
-      <div><a href="https://www.google.com/maps/dir/?api=1&origin=69.1350,19.1240&destination=69.6490,18.9550" target="_blank" class="link-btn">🗺️ Google Maps Route</a></div>
+    <div style="background:var(--surface-2);border-radius:8px;padding:14px;margin-bottom:12px">
+      <b>D11–D12 · 11/17–22</b>｜E2 → E3 → TOS<br>
+      <small lang="zh">返程前加满 · 机场还车满箱</small>
+      <small lang="en">Full tank before return · Return full at airport</small>
     </div>
   </div>
 </section>
 
-<!-- ========== 续航加油 ========== -->
+<!-- ========== 加油 ========== -->
 <section id="fuel" hidden>
   <div class="card">
-    <h2 lang="zh">⛽ 续航规划 · 汽油版车型</h2>
-    <h2 lang="en">⛽ Fuel Range Guide · Petrol Vehicle</h2>
+    <h2 lang="zh">⛽ 加油要点</h2>
+    <h2 lang="en">⛽ Fuel Quick Guide</h2>
     <div class="alert fuel">
-      <strong lang="zh">关键原则：</strong>
-      <strong lang="en">Key Rule:</strong>
-      <span lang="zh">北部地广人稀，油站间距可达80–120km；剩半箱就找油站，别赌</span>
-      <span lang="en">Northern Norway — stations can be 80–120km apart. Fill at half tank, don't gamble</span>
+      <span lang="zh">剩 1/3 油即补 · 偏远路段见站就加 · 周日提前准备</span>
+      <span lang="en">Fill at 1/3 · Top up early on remote sections · Plan ahead on Sundays</span>
     </div>
-    <h3 lang="zh">📊 车辆参考参数</h3>
-    <h3 lang="en">📊 Vehicle Specs</h3>
-    <ul style="margin:12px 0 16px 24px;line-height:1.8">
-      <li lang="zh">预估油耗：四驱汽油 · 冬季约 8–10L/100km</li>
-      <li lang="en">Consumption: 4WD petrol · Winter ~8–10L/100km</li>
-      <li lang="zh">油箱/满箱续航：约55–65L → 550–650km（理想路况）</li>
-      <li lang="en">Tank/Range: ~55–65L → 550–650km (ideal conditions)</li>
-      <li lang="zh">警戒线：剩余1/3或200km以下 → 见站即补</li>
-      <li lang="en">Warning level: Below 1/3 or 200km → Fill immediately</li>
+    <ul style="margin:12px 0 12px 24px;line-height:1.8">
+      <li lang="zh">E1 岛上西侧油站较少</li>
+      <li lang="en">Fewer stations on west Senja (E1)</li>
+      <li lang="zh">进入E2罗弗敦前务必加满</li>
+      <li lang="en">Fill fully before entering Lofoten (E2)</li>
+      <li lang="zh">E2 只在E10主路有大站</li>
+      <li lang="en">Major stations only along E10 in Lofoten (E2)</li>
+      <li lang="zh">返回TOS前最后加满</li>
+      <li lang="en">Final fill before returning to TOS</li>
     </ul>
-    <h3 lang="zh">🔍 快速判断：现在要加油吗？</h3>
-    <h3 lang="en">🔍 Quick Check: Fill Now?</h3>
-    <div style="background:var(--surface-2);padding:16px;border-radius:8px;margin:12px 0">
-      <label lang="zh">当前油量：</label><label lang="en">Current Fuel:</label>
-      <input type="range" id="fuelSlider" min="0" max="100" value="50" style="width:100%;margin:8px 0">
-      <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--dim)">
-        <span lang="zh">空</span><span lang="en">Empty</span>
-        <span id="fuelPct">50%</span>
-        <span lang="zh">满</span><span lang="en">Full</span>
-      </div>
-      <div id="fuelAdvice" style="margin-top:12px;font-weight:600"></div>
-    </div>
   </div>
 </section>
 
-<!-- ========== 补给超市 ========== -->
-<section id="grocery" hidden>
+<!-- ========== 其他 ========== -->
+<section id="more" hidden>
   <div class="card">
-    <h2 lang="zh">🛒 超市/补给站 · 周日营业提醒</h2>
-    <h2 lang="en">🛒 Supplies & Shopping · Sunday Hours</h2>
-    <div class="alert grocery">
-      <strong lang="zh">⚠️ 重中之重：挪威周日=大休日</strong><br>
-      <strong lang="en">⚠️ CRITICAL: Sundays in Norway = Major Closures</strong><br>
-      <span lang="zh">大型超市全关门，仅少数加油站便利店开 → <strong>周六务必买好周日全天物资！</strong></span>
-      <span lang="en">Large supermarkets CLOSED. Only selected station stores open → <strong>Buy Sunday supplies on SATURDAY!</strong></span>
-    </div>
-    <h3 lang="zh">🏬 品牌营业时间一览</h3>
-    <h3 lang="en">🏬 Opening Hours by Chain</h3>
-    <table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem">
-      <tr style="border-bottom:2px solid var(--border)"><th style="text-align:left;padding:6px">品牌/Chain</th><th>平日/Weekday</th><th>周六/Sat</th><th>周日/Sun</th></tr>
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;font-weight:600">Rema 1000</td><td>07–23</td><td>07–21</td><td style="color:var(--danger)">❌ 休息/Closed</td></tr>
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;font-weight:600">Kiwi</td><td>07–23</td><td>07–21</td><td style="color:var(--danger)">❌ 休息/Closed</td></tr>
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;font-weight:600">Coop/Extra</td><td>09–20</td><td>09–18</td><td style="color:var(--danger)">❌ 休息/Closed</td></tr>
-    </table>
-  </div>
-</section>
-
-<!-- ========== 无人机指南 ========== -->
-<section id="drone" hidden>
-  <div class="card">
-    <h2 lang="zh">🚁 无人机（DJI Mini 5 Pro）实战与法规指南</h2>
-    <h2 lang="en">🚁 DJI Mini 5 Pro Field & Regulation Guide</h2>
-    <div class="alert drone">
-      <strong lang="zh">⚠️️ 核心装备调整：</strong>
-      <strong lang="en">⚠️ Core Equipment Note:</strong>
-      <span lang="zh">本次行程携带 <strong>DJI Mini 5 Pro</strong>（重量 &lt;249g），免除欧盟高额第三方责任险（0.75M SDR）强制要求，完美适应挪威空域！</span>
-      <span lang="en">Carrying <strong>DJI Mini 5 Pro</strong> (&lt;249g). Exempt from mandatory EU third-party liability insurance, perfectly suited for Norway!</span>
-    </div>
-    <h3 lang="zh">📌 必须执行的合规步骤</h3>
-    <h3 lang="en">📌 Mandatory Compliance Steps</h3>
-    <ul style="margin:12px 0 16px 24px;line-height:1.8">
-      <li lang="zh"><strong>运营商注册：</strong> 登录 <a href="https://flydrone.no/" target="_blank">Flydrone.no</a> 登记，获取并牢记运营商编号：<code>NORhpxnr4m8scgo-r88</code>[cite: 1, 5]。</li>
-      <li lang="en"><strong>Operator Registration:</strong> Register on <a href="https://flydrone.no/" target="_blank">Flydrone.no</a>, note your Operator ID: <code>NORhpxnr4m8scgo-r88</code>[cite: 1, 5].</li>
-      <li lang="zh"><strong>机身标签：</strong> 必须将 Operator ID 打印并贴在无人机机身显眼处[cite: 1]。</li>
-      <li lang="en"><strong>Physical Label:</strong> Must affix your Operator ID visibly onto the drone body[cite: 1].</li>
-      <li lang="zh"><strong>空域查询工具：</strong> 飞行前务必使用 <a href="https://avinor.no/en/ninoxdrone/" target="_blank">Ninox Drone (Avinor)</a> 实时核对[cite: 1, 5]。</li>
-      <li lang="en"><strong>Airspace Check:</strong> Always check live airspace via <a href="https://avinor.no/en/ninoxdrone/" target="_blank">Ninox Drone (Avinor)</a> before takeoff[cite: 1, 5].</li>
-    </ul>
-    <h3 lang="zh">🔴 严禁飞行的红区（5公里机场缓冲区）</h3>
-    <h3 lang="en">🔴 Strict No-Fly Zones (5km Airport Buffers)</h3>
-    <p style="margin-bottom:8px" lang="zh">以下住宿点/区域附近 5 公里内严禁起飞，或需向空管申请特许：</p>
-    <p style="margin-bottom:8px" lang="en">Takeoff strictly prohibited or requires ATC clearance within 5km of:</p>
-    <ul style="margin-left:24px;line-height:1.8;color:var(--danger)">
-      <li><strong>Tromsø TOS Airport</strong> (Day 1 & Day 15–16 特罗姆瑟住宿)</li>
-      <li><strong>Svolvær SVJ Airport</strong> (Day 8 卡尔斯塔 Skårungen 附近)</li>
-      <li><strong>Evenes EVE Airport</strong> (Day 13 利兰 Gammelbanken 附近)</li>
-    </ul>
-    <h3 lang="zh">💡 极光夜航与电池小贴士</h3>
-    <h3 lang="en">💡 Night Aurora & Battery Tips</h3>
-    <p style="margin:8px 0" lang="zh">1. 极光夜间飞行必须加装防撞绿色闪光灯。2. 挪威11月气温低，电池建议贴身保暖或使用暖宝宝预热，防止电压骤降掉电。</p>
-    <p style="margin:8px 0" lang="en">1. Night aurora flights require an anti-collision green strobe light. 2. Cold November temps mean keeping batteries warm in pockets before flight to avoid voltage drop.</p>
-  </div>
-</section>
-
-<!-- ========== 费用记账 ========== -->
-<section id="expense" hidden>
-  <div class="card">
-    <h2 lang="zh">💰 实时费用记账中心</h2>
-    <h2 lang="en">💰 Expense Tracker</h2>
-    <p style="margin-bottom:12px;color:var(--dim)" lang="zh">拍下收据→按类别填入→自动换算SGD · 数据保存在本机</p>
-    <p style="margin-bottom:12px;color:var(--dim)" lang="en">Snap receipt→Enter→Auto convert to SGD · Data stored locally</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
-      <button class="btn fuel" onclick="addExp('fuel')">⛽ 加油/Fuel</button>
-      <button class="btn grocery" onclick="addExp('food')">🍽️ 餐饮/Food</button>
-      <button class="btn" onclick="addExp('stay')">🏠 住宿/Stay</button>
-      <button class="btn" onclick="addExp('trans')">🚗 交通/Trans</button>
-      <button class="btn" onclick="addExp('gear')">📷 用品/Gear</button>
-      <button class="btn" onclick="addExp('other')">📝 其他/Other</button>
-    </div>
-    <div id="expList">
-      <div class="expense-row" style="font-weight:600;border-bottom:2px solid var(--border)">
-        <div lang="zh">项目</div><div lang="en">Item</div>
-        <div>NOK</div><div>SGD</div><div></div>
-      </div>
-    </div>
-    <div class="expense-total">
-      <span lang="zh">总计：</span><span lang="en">Total:</span>
-      NOK <span id="tNOK">0.00</span> / SGD <span id="tSGD">0.00</span>
-    </div>
-    <div style="margin-top:16px;display:flex;gap:10px">
-      <button class="btn" onclick="copyExp()" lang="zh">📋 复制清单</button>
-      <button class="btn" onclick="copyExp()" lang="en">📋 Copy List</button>
-      <button class="btn" onclick="clearExp()" lang="zh">🗑️ 清空</button>
-      <button class="btn" onclick="clearExp()" lang="en">🗑️ Clear</button>
-    </div>
-  </div>
-</section>
-
-<!-- ========== 航班/须知 ========== -->
-<section id="info" hidden>
-  <div class="card">
-    <h2 lang="zh">✈️ 航班与租车信息</h2>
-    <h2 lang="en">✈️ Flights & Rental Info</h2>
-    <ul style="margin-left:20px;line-height:1.8">
-      <li lang="zh">去程：AY132/AY935 → 抵达TOS 11/7 08:30</li>
-      <li lang="en">Outbound: AY132/AY935 → Arrive TOS Nov 7 08:30</li>
-      <li lang="zh">返程：AY946/AY131 → 11/22 18:45</li>
-      <li lang="en">Return: AY946/AY131 → Nov 22 18:45</li>
-      <li lang="zh">租车：SIXT 四驱汽油车｜取11/7 09:00｜还11/22 15:30｜TOS机场</li>
-      <li lang="en">Rental: SIXT 4WD Petrol｜Pickup Nov 7 09:00｜Return Nov 22 15:30｜TOS Airport</li>
-      <li lang="zh">紧急电话：113急救 / 110火警 / 112通用</li>
-      <li lang="en">Emergency: 113 Medical / 110 Fire / 112 General</li>
-    </ul>
+    <h2 lang="zh">🛒 周日采购提醒</h2>
+    <h2 lang="en">🛒 Sunday Shopping Note</h2>
+    <p lang="zh">11/8、15、22 为周日，大超市休息 → 周六备好周日物资</p>
+    <p lang="en">Nov 8, 15, 22 — supermarkets closed → Buy supplies on Saturday</p>
   </div>
 </section>
 
 <footer>
-  <p>✨ Updated: 05 Oct 26 (12.14pm)｜云海 & 贵英同行 💑</p>
-  <p lang="zh">数据本机保存 · 更换设备请重新复制最新版</p>
-  <p lang="en">Data stored locally · Copy latest version when changing devices</p>
+  <p>📌 Updated: 05.10.26 · 1930｜云海 & 贵英同行 💑</p>
 </footer>
 
 </div>
 
 <script>
-// ===== 倒计时 =====
+// 倒计时
 function daysTo(target){
   const t=new Date(target+'T00:00:00'),n=new Date();
   return Math.ceil((t-n)/86400000);
 }
 document.getElementById('cdNum').textContent=daysTo('2026-11-07');
 
-// ===== 双语切换 =====
+// 双语切换
 const langBtns=document.querySelectorAll('.lang-btn');
 langBtns.forEach(b=>{
   b.onclick=()=>{
@@ -463,68 +261,15 @@ langBtns.forEach(b=>{
   };
 });
 
-// ===== 导航 =====
+// 导航
 const tabs=document.querySelectorAll('.nav-tab');
 tabs.forEach(t=>{
   t.onclick=()=>{
     const sec=t.dataset.section;
-    document.querySelectorAll('.nav-tab').forEach(x=>{
-      if(x.dataset.section===sec)x.classList.add('active');
-      else x.classList.remove('active');
-    });
+    document.querySelectorAll('.nav-tab').forEach(x=>x.classList.toggle('active',x.dataset.section===sec));
     document.querySelectorAll('section').forEach(s=>s.hidden=s.id!==sec);
   };
 });
-
-// ===== 油量判断 =====
-const slider=document.getElementById('fuelSlider');
-const pctEl=document.getElementById('fuelPct');
-const advEl=document.getElementById('fuelAdvice');
-if(slider){
-  slider.oninput=()=>{
-    const v=+slider.value;
-    pctEl.textContent=v+'%';
-    let c='',t='';
-    if(v>=50){c='var(--ok)';t='✅ 正常 · Normal'};
-    if(v<50&&v>=33){c='var(--warn)';t='⚠️ 过半 · Fill at next station'};
-    if(v<33&&v>=15){c='var(--danger)';t='🔴 偏低 · Fill NOW'};
-    if(v<15){c='var(--danger)';t='💥 危险 · DO NOT travel remote!'};
-    advEl.style.color=c;advEl.textContent=t;
-  };
-  slider.dispatchEvent(new Event('input'));
-}
-
-// ===== 记账系统 =====
-let expenses=JSON.parse(localStorage.getItem('norway-exp')||'[]');
-const catMap={fuel:'⛽ 加油/Fuel',food:'🍽️ 餐饮/Food',stay:'🏠 住宿/Stay',trans:'🚗 交通/Trans',gear:'📷 用品/Gear',other:'📝 其他/Other'};
-function renderExp(){
-  const list=document.getElementById('expList');
-  if(!list)return;
-  list.innerHTML=`<div class="expense-row" style="font-weight:600;border-bottom:2px solid var(--border)"><div lang="zh">项目</div><div lang="en">Item</div><div>NOK</div><div>SGD</div><div></div></div>`;
-  let t=0;
-  expenses.forEach((e,i)=>{
-    t+=e.nok;
-    list.innerHTML+=`<div class="expense-row"><div>${catMap[e.cat]}${e.desc?' · '+e.desc:''}</div><div class="mono">${e.nok.toFixed(2)}</div><div class="mono">${(e.nok/7.34).toFixed(2)}</div><button class="btn" style="padding:2px 6px" onclick="delExp(${i})">×</button></div>`;
-  });
-  document.getElementById('tNOK').textContent=t.toFixed(2);
-  document.getElementById('tSGD').textContent=(t/7.34).toFixed(2);
-  localStorage.setItem('norway-exp',JSON.stringify(expenses));
-}
-function addExp(cat){
-  const nok=parseFloat(prompt('NOK:'));
-  if(!nok||isNaN(nok))return;
-  const desc=prompt('Note (optional):')||'';
-  expenses.push({cat,nok:parseFloat(nok),desc});renderExp();
-}
-function delExp(i){expenses.splice(i,1);renderExp()}
-function clearExp(){if(confirm('Clear all?')){expenses=[];renderExp()}}
-function copyExp(){
-  let txt='Norway Trip Expenses\n';
-  expenses.forEach(e=>txt+=`${catMap[e.cat]} ${e.desc||''} | NOK ${e.nok} | SGD ${(e.nok/7.34).toFixed(2)}\n`);
-  txt+=`\nTotal NOK ${document.getElementById('tNOK').textContent} / SGD ${document.getElementById('tSGD').textContent}`;
-  navigator.clipboard.writeText(txt).then(()=>alert('Copied!'));
-}
-renderExp();
 </script>
 </body>
 </html>
