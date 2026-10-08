@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>挪威北极光远征 · 路线与住宿大师规划版</title>
+<title>2611 挪威自驾・光与景之约</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,6 +31,27 @@ header{padding:32px 0 24px;background:radial-gradient(ellipse at top right,#235c
 .version-tag{font-size:.75rem;color:var(--dim);margin-top:6px;display:inline-block}
 .eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
 header h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;margin-bottom:4px}
+.hd-sub{font-size:.95rem;color:var(--text);margin:2px 0 6px}
+.hd-kit{margin:4px 0 8px;max-width:920px}
+.hd-kit summary{list-style:none;cursor:pointer;display:inline-block;border-radius:8px}
+.hd-kit summary::-webkit-details-marker{display:none}
+.hd-kit summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hd-kit-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:7px 12px;border-radius:8px;font-size:.9rem;font-weight:500}
+.hd-kit summary:hover .hd-kit-btn,.hd-kit[open] .hd-kit-btn{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.hd-kit-n{font-style:normal;font-size:.75rem;background:var(--surface-2);color:var(--dim);border-radius:10px;padding:1px 7px}
+.hd-kit-caret{font-size:.8rem;transition:transform .15s}
+.hd-kit[open] .hd-kit-caret{transform:rotate(180deg)}
+.hd-kit-panel{width:min(860px,calc(100vw - 64px));margin-top:8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.hd-kit-themes{font-size:.8rem;color:var(--dim);margin-bottom:10px}
+.hd-kit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:10px}
+.hd-kit-grp{background:var(--surface-2);border-radius:8px;padding:9px 11px}
+.hd-kit-grp h4{font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.04em;margin-bottom:5px}
+.hd-kit-grp ul{list-style:none}
+.hd-kit-grp li{padding:3px 0}
+.hd-kit-grp b{display:block;font-size:.9rem;font-weight:600;color:var(--text)}
+.hd-kit-grp small{display:block;font-size:.76rem;color:var(--dim);line-height:1.35}
+.hd-g{white-space:nowrap}
+.lang-en header p[lang="en"],.lang-en header h1[lang="en"]{display:block}
 .nav-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
 .nav-tab{background:transparent;border:none;padding:8px 12px;border-radius:8px;color:var(--dim);font:inherit;cursor:pointer;font-size:.92rem}
 .nav-tab.active{background:var(--surface);color:var(--accent);border-bottom:2px solid var(--accent);border-radius:8px 8px 0 0}
@@ -843,10 +864,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div>
       <p class="eyebrow" lang="zh">新加坡出发 · 挪威自驾 · 极光摄影之旅</p>
       <p class="eyebrow" lang="en">SG Departure · Norway Road Trip · Aurora Photography</p>
-      <h1 lang="zh">北极光远征 · 路线与住宿大师规划版</h1>
-      <h1 lang="en">Norway Expedition Master Planner</h1>
-      <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑 (DJI Mini 5 Pro Setup)</p>
-      <span class="version-tag">🕒 Updated: 7 Oct 2026, 17:55 SGT</span>
+      <h1 lang="zh">2611 挪威自驾・光与景之约</h1>
+      <h1 lang="en">2611 Norway Road Trip · A Date with Light &amp; Landscape</h1>
+      <p class="hd-sub" lang="zh"><span class="hd-g">路线住宿</span> · <span class="hd-g">行摄计划</span> · <span class="hd-g">自驾保障</span> · <span class="hd-g">双语切换</span> · <span class="hd-g">All in One</span></p>
+      <p class="hd-sub" lang="en"><span class="hd-g">Route &amp; Stays</span> · <span class="hd-g">Photo Plan</span> · <span class="hd-g">Road-Trip Support</span> · <span class="hd-g">Bilingual</span> · <span class="hd-g">All in One</span></p>
+      <details class="hd-kit">
+        <summary><span class="hd-kit-btn">📷 <span lang="zh">摄影器材清单</span><span lang="en">Photo &amp; video gear</span><i class="hd-kit-n">10</i><span class="hd-kit-caret" aria-hidden="true">▾</span></span></summary>
+        <div class="hd-kit-panel">
+          <p class="hd-kit-themes"><span lang="zh">拍摄主题：极光 · 峡湾 · 风景 · 航拍 · 全景 · 延时 · 人像</span><span lang="en">Shooting themes: Aurora · Fjords · Landscape · Aerial · 360 · Time-lapse · Portrait</span></p>
+          <div class="hd-kit-grid"><div class="hd-kit-grp"><h4>📷 <span lang="zh">主力相机</span><span lang="en">Main cameras</span></h4><ul><li><b>Sony A7R4</b><small><span lang="zh">风景 · 极光</span><span lang="en">Landscape · aurora</span></small></li><li><b>Sony A6700</b><small><span lang="zh">夜间极光延时</span><span lang="en">Night aurora time-lapse</span></small></li></ul></div><div class="hd-kit-grp"><h4>🚁 <span lang="zh">航拍</span><span lang="en">Aerial</span></h4><ul><li><b>DJI Mini 5 Pro</b><small><span lang="zh">峡湾航拍 · 250 g 以下</span><span lang="en">Fjord aerials · sub-250 g</span></small></li></ul></div><div class="hd-kit-grp"><h4>🌌 <span lang="zh">全景 · 延时</span><span lang="en">360 · time-lapse</span></h4><ul><li><b><span lang="zh">DJI OSMO 360 一代 / 二代</span><span lang="en">DJI OSMO 360 Gen 1 / Gen 2</span></b><small><span lang="zh">双机接力极光延时</span><span lang="en">Paired for continuous aurora time-lapse</span></small></li><li><b>Insta360 X6</b><small><span lang="zh">全景极光延时</span><span lang="en">360 aurora time-lapse</span></small></li></ul></div><div class="hd-kit-grp"><h4>🎒 <span lang="zh">随身 · 行车</span><span lang="en">Pocket · on the road</span></h4><ul><li><b>Insta360 Luna Ultra</b><small><span lang="zh">口袋相机 · 人像合影</span><span lang="en">Pocket camera · portraits</span></small></li><li><b>DJI OSMO Nano</b><small><span lang="zh">行车记录</span><span lang="en">Dashcam on the drive</span></small></li></ul></div><div class="hd-kit-grp"><h4>📱 <span lang="zh">手机</span><span lang="en">Phones</span></h4><ul><li><b>Apple iPhone 16 Pro Max × 2</b><small><span lang="zh">随手拍 · 备用</span><span lang="en">Quick shots · backup</span></small></li></ul></div></div>
+        </div>
+      </details>
+      <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
+      <span class="version-tag">🕒 Updated: 08.10.26 · 0933</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1485,6 +1515,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
+  <p class="version-tag">🕒 Updated: 08.10.26 · 0933</p>
 </footer>
 
 </div>
