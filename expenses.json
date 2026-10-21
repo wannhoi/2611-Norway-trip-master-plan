@@ -1,0 +1,131 @@
+{
+ "schema": 1,
+ "updated": "261021 1054",
+ "fx": {
+  "NOK_per_SGD": 7.34,
+  "note": "Indicative NOK per SGD; actual Trust card rate can be reconciled later"
+ },
+ "prepaid": [
+  {
+   "type": "air",
+   "item": "Finnair — card charge posted 15 Jun",
+   "date": "260615",
+   "amount": 1414.16,
+   "currency": "SGD",
+   "status": "paid"
+  },
+  {
+   "type": "air",
+   "item": "Finnair — card charge posted 16 Jun",
+   "date": "260616",
+   "amount": 1414.16,
+   "currency": "SGD",
+   "status": "paid"
+  },
+  {
+   "type": "car",
+   "item": "SIXT 7–22 Nov, 16 rental days",
+   "date": "",
+   "amount": 18668.55,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Wilderness Villa with the panorama lakeview",
+   "date": "",
+   "amount": 3333.45,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Garsnes Brygge",
+   "date": "",
+   "amount": 1762.69,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Sjøtun",
+   "date": "",
+   "amount": 3600.0,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Lofoten Sea View Cabin",
+   "date": "",
+   "amount": 3697.69,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Skårungen - Hotel, Cabins and Camping",
+   "date": "",
+   "amount": 2868.75,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Fiskekrogen Rorbuer",
+   "date": "",
+   "amount": 2049.11,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Eliassen Rorbuer",
+   "date": "",
+   "amount": 6178.98,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Svinøya Rorbuer",
+   "date": "",
+   "amount": 2116.12,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Gammelbanken Liland",
+   "date": "",
+   "amount": 1450.0,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Feriehus ved Fjellfroskvatnet",
+   "date": "",
+   "amount": 1912.04,
+   "currency": "NOK",
+   "status": "booked"
+  },
+  {
+   "type": "stay",
+   "item": "Ersfjordbotn Apartment (Airbnb)",
+   "date": "",
+   "amount": 535.26,
+   "currency": "SGD",
+   "status": "booked"
+  },
+  {
+   "type": "insurance",
+   "item": "Singlife Travel Prestige — both travellers",
+   "date": "",
+   "amount": 473.96,
+   "currency": "SGD",
+   "status": "booked"
+  }
+ ],
+ "entries": []
+}
