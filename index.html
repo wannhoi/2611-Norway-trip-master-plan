@@ -115,6 +115,31 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .ci-call:hover{background:var(--accent);color:#06211c}
 .ci-src{font-size:0.74rem;color:var(--dim);margin-top:10px}
 .notes-area{font-size:0.8rem;color:var(--dim);font-style:italic;margin-top:8px}
+.pg-matrix{width:100%;border-collapse:collapse;font-size:0.86rem;margin:10px 0}
+.pg-matrix th{text-align:left;color:var(--dim);font-weight:600;padding:7px 10px;border-bottom:1px solid var(--border);white-space:nowrap}
+.pg-matrix td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.pg-matrix tr:last-child td{border-bottom:0}
+.pg-sc{margin-bottom:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+.pg-sum{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;font-weight:700;font-size:1rem;border-left:4px solid var(--accent);background:var(--surface-2)}
+.pg-sum::-webkit-details-marker{display:none}
+.pg-sum:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.pg-sc[open] .pg-sum{border-bottom:1px solid var(--border)}
+.pg-care{transition:transform .15s;color:var(--dim)}
+.pg-sc[open] .pg-care{transform:rotate(180deg)}
+.pg-sub{font-weight:400;font-size:0.82rem;color:var(--dim);margin-left:8px}
+.pg-body{padding:14px 16px}
+.pg-gear{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.pg-gear:last-child{margin-bottom:0}
+.pg-gear h4{margin:0 0 10px;font-size:0.95rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pg-role{font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.02em}
+.pg-role.primary{background:var(--accent-soft);color:var(--accent)}
+.pg-role.relay{background:var(--aurora-soft);color:var(--aurora)}
+.pg-role.backup{background:var(--surface);color:var(--dim);border:1px solid var(--border)}
+.pg-role.skip{background:var(--danger-soft);color:var(--danger)}
+.pg-note{font-size:0.86rem;line-height:1.55;color:var(--text);margin:10px 0 0}
+.pg-note b{color:var(--accent)}
+.pg-tip{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.86rem;line-height:1.55;margin:10px 0}
+.pg-tip b{color:var(--accent)}
 
 [lang="en"]{display:none}
 .lang-en [lang="en"]{display:initial}
@@ -1031,7 +1056,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 28.10.26 · 0944</span>
+      <span class="version-tag">🕒 Updated: 28.10.26 · 1108</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1061,6 +1086,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <button class="nav-tab" data-section="grocery" lang="en">🛒 Supplies</button>
   <button class="nav-tab" data-section="drone" lang="zh">🚁 无人机指南</button>
   <button class="nav-tab" data-section="drone" lang="en">🚁 Drone Guide</button>
+  <button class="nav-tab" data-section="photo" lang="zh">📷 摄影指南</button>
+  <button class="nav-tab" data-section="photo" lang="en">📷 Photo &amp; Video Guide</button>
   <button class="nav-tab" data-section="expense" lang="zh">💰 费用记账</button>
   <button class="nav-tab" data-section="expense" lang="en">💰 Expenses</button>
 <button class="nav-tab" data-section="insurance" lang="zh">🛡️ 旅行保险</button><button class="nav-tab" data-section="insurance" lang="en">🛡️ Insurance</button>
@@ -1615,6 +1642,238 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </div>
 </section>
 
+<!-- ========== 摄影 / 视频指南 ========== -->
+<!-- PHOTO-GUIDE START -->
+<section id="photo" hidden>
+  <div class="card">
+    <h2><span lang="zh">📷 摄影 / 视频实战指南</span><span lang="en">📷 Photo &amp; Video Field Guide</span></h2>
+    <p style="color:var(--dim);font-size:0.9rem;margin-top:-6px">
+      <span lang="zh">两人共享全部器材；下方按场景列出「主力 / 接力 / 备用」分工与即用参数，机身/配件清单见页首「摄影器材清单」。视频部分不使用微单，统一用动作相机与 iPhone 16 Pro Max。</span>
+      <span lang="en">All gear is shared between you two. Scenarios below set out a Primary / Relay / Backup role with ready-to-use settings for each; the full kit list is in the "Photo &amp; video gear" panel at the top of the page. For video, mirrorless bodies are skipped on purpose — action cams + iPhone 16 Pro Max only.</span>
+    </p>
+
+    <h3 style="margin-top:18px"><span lang="zh">🎯 场景速查表</span><span lang="en">🎯 Scenario Quick-Pick</span></h3>
+    <div style="overflow-x:auto"><table class="pg-matrix">
+      <thead><tr>
+        <th><span lang="zh">场景</span><span lang="en">Scenario</span></th>
+        <th><span lang="zh">主力</span><span lang="en">Primary</span></th>
+        <th><span lang="zh">接力 / 辅助</span><span lang="en">Relay / Support</span></th>
+        <th><span lang="zh">为什么</span><span lang="en">Why</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td>🌌 <span lang="zh">极光</span><span lang="en">Aurora</span></td>
+          <td>A7R4 + 14mm F1.8 GM</td>
+          <td>A6700+Viltrox 13mm（延时）· Osmo 360 ×2（接力）· Luna Ultra（合影）</td>
+          <td><span lang="zh">全画幅高感最干净，长曝光细节最好</span><span lang="en">Full-frame gives the cleanest high-ISO and the most long-exposure detail</span></td></tr>
+        <tr><td>🏞️ <span lang="zh">风光</span><span lang="en">Landscape</span></td>
+          <td>A7R4 + 20-70mm F4 G</td>
+          <td>A6700+Viltrox 13mm（超广角）· Mini 5 Pro（航拍）· X6/Osmo 360（全景）</td>
+          <td><span lang="zh">变焦兼顾构图弹性，航拍/全景补充视角</span><span lang="en">The zoom covers most framing; drone &amp; 360 add angles you can't get on foot</span></td></tr>
+        <tr><td>🎥 <span lang="zh">视频（无微单）</span><span lang="en">Video (no mirrorless)</span></td>
+          <td>iPhone 16 Pro Max</td>
+          <td>Osmo Nano（行车/POV）· X6（全景补拍）· Osmo 360 ×2（内外同步）· Luna Ultra（口播）· Mini 5 Pro（空拍开场）</td>
+          <td><span lang="zh">动作相机免云台、广角好固定，适合车上和路边抓拍</span><span lang="en">Gimbal-free action cams mount anywhere — ideal for in-car and roadside grabs</span></td></tr>
+        <tr><td>📱 <span lang="zh">通用 / 随手</span><span lang="en">General / Everyday</span></td>
+          <td>iPhone 16 Pro Max</td>
+          <td>Osmo Nano（别在外套）· Luna Ultra（合影）· X6/Osmo 360（打卡点全景）</td>
+          <td><span lang="zh">轻便、开机即拍，留给大相机专心构图</span><span lang="en">Light and instant-on, so the big cameras stay free for considered shots</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="pg-tip">
+      <b><span lang="zh">❄️ 北极寒冷天气通用提示</span><span lang="en">❄️ Arctic cold-weather basics</span></b><br>
+      <span lang="zh">备用电池放外套内袋贴身保温（低温可让续航腰斩）；相机从室外带回车内/室内前，先装入拉链袋或扣紧相机包静置 30–60 分钟再打开，避免镜头和传感器结露；触屏在严寒下反应慢，优先用实体按键/转盘操作；常备吹气球和超细纤维布清除飘雪；拍极光前用红光头灯布置机位，保护夜视并不打扰他人。</span>
+      <span lang="en">Keep spare batteries in an inner jacket pocket — cold can cut battery life by 30–50%. Before bringing a camera from outside into a warm car/cabin, seal it in a zip-lock bag or leave it closed in its bag for 30–60 min first, to avoid condensation on the lens/sensor. Touchscreens get sluggish in freezing temps — prefer physical buttons/dials where you can. Carry a rocket blower and microfiber cloth for blowing snow. When setting up for aurora, use a red-light headlamp to preserve night vision and avoid blinding other photographers.</span>
+    </div>
+
+    <!-- AURORA -->
+    <details class="pg-sc" open>
+      <summary class="pg-sum" style="border-left-color:var(--aurora)">
+        <span>🌌 <span lang="zh">极光 Aurora</span><span class="pg-sub" lang="zh">— 夜空 · 长曝光 · 延时</span><span lang="en">Aurora</span><span class="pg-sub" lang="en">— night sky · long exposure · time-lapse</span></span>
+        <span class="pg-care" aria-hidden="true">▾</span>
+      </summary>
+      <div class="pg-body">
+        <div class="pg-gear">
+          <h4>📷 Sony A7R4 + 14mm F1.8 GM <span class="pg-role primary"><span lang="zh">主力</span><span lang="en">Primary</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">模式</span><span lang="en">Mode</span></span><span class="ci-value">M <span lang="zh">手动</span><span lang="en">Manual</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">光圈</span><span lang="en">Aperture</span></span><span class="ci-value">f/1.8–f/2.2</span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">快门</span><span lang="en">Shutter</span></span><span class="ci-value">3–6s</span></div>
+            <div class="ci-row"><span class="ci-label">ISO</span><span class="ci-value">1600–3200<span lang="zh">（弱极光可到 6400）</span><span lang="en">(up to 6400 for faint aurora)</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">白平衡</span><span lang="en">White balance</span></span><span class="ci-value">3800–4200K <span lang="zh">手动</span><span lang="en">manual</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">对焦</span><span lang="en">Focus</span></span><span class="ci-value">MF ∞ <span lang="zh">（放大实时取景对准亮星）</span><span lang="en">(zoom live-view on a bright star)</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">格式</span><span lang="en">Format</span></span><span class="ci-value">RAW</span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">三脚架必须，关闭机身防抖与长曝光降噪；2 秒自拍或快门线；拍完当晚对焦环用胶带固定，隔天免重调。</span><span lang="en">Tripod mandatory; turn off in-body stabilization and Long Exposure NR; use a 2s self-timer or remote release. Tape the focus ring once set so you don't have to refocus the next night.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>📷 Sony A6700 + Viltrox 13mm F1.4 <span class="pg-role relay"><span lang="zh">延时接力</span><span lang="en">Relay / Time-lapse</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">单张曝光</span><span lang="en">Each frame</span></span><span class="ci-value">3–5s</span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">间隔</span><span lang="en">Interval</span></span><span class="ci-value">1–2s <span lang="zh">（曝光后间隙）</span><span lang="en">gap after exposure</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">光圈</span><span lang="en">Aperture</span></span><span class="ci-value">f/1.8–f/2 <span lang="zh">（比全开收一档，边角更锐）</span><span lang="en">(one stop down from wide-open for sharper corners)</span></span></div>
+            <div class="ci-row"><span class="ci-label">ISO</span><span class="ci-value">2000–4000</span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">帧数建议</span><span lang="en">Frame count</span></span><span class="ci-value">200–400+ <span lang="zh">（约 15–30 秒 24–30fps 成片）</span><span lang="en">(≈15–30s clip at 24–30fps)</span></span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">用机身内置 Interval Shoot（或 Imaging Edge App）；白平衡与曝光必须锁定手动值，否则延时会闪烁；备好 USB-C 充电宝供长时间拍摄。</span><span lang="en">Use the in-camera Interval Shoot function (or Imaging Edge app); lock white balance and exposure manually or the time-lapse will flicker. Keep a USB-C power bank running for long sessions.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🌐 DJI Osmo 360 ×2 <span class="pg-role relay"><span lang="zh">双机接力延时</span><span lang="en">Relay Time-lapse</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">模式</span><span lang="en">Mode</span></span><span class="ci-value">Pro/Manual · Starlapse</span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">快门</span><span lang="en">Shutter</span></span><span class="ci-value">1–2s</span></div>
+            <div class="ci-row"><span class="ci-label">ISO</span><span class="ci-value">3200–6400</span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">白平衡</span><span lang="en">White balance</span></span><span class="ci-value"><span lang="zh">锁定，避免闪烁</span><span lang="en">Locked, to avoid flicker</span></span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">两台分开摆位（一台 360° 全景延时，一台用 Boost 170° 拍地景＋极光构图），电量约 100 分钟一轮，互相接力即可整晚不断档；-20°C 机身可用，但电池仍需保暖备用。</span><span lang="en">Set both up separately — one shooting a full 360° time-lapse of the sky dome, the other in Boost 170° mode framing the landscape + aurora. Each runs ~100 min per charge; relay them so coverage never drops overnight. The body is rated to -20°C, but batteries still need to be kept warm as spares.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🌐 Insta360 X6 <span class="pg-role backup"><span lang="zh">备用全景延时</span><span lang="en">Backup 360 Time-lapse</span></span></h4>
+          <p class="pg-note"><span lang="zh">双 1/1.1" 大底是三台全景相机里低光最好的一台，设置与 Osmo 360 相同逻辑（Pro/Night 模式、锁定白平衡、接力供电）。可作为 Osmo 360 的第三路备援，或正常旅拍时顶替其中一台执行普通全景/延时任务。</span><span lang="en">Its dual 1/1.1" sensors give it the best low-light of the three 360 cameras here. Use the same settings logic as the Osmo 360s (Pro/Night mode, locked WB, relay charging). Treat it as a third backup angle for aurora nights, or swap it in for regular 360 photo/time-lapse duty on non-aurora nights.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🎒 Insta360 Luna Ultra <span class="pg-role backup"><span lang="zh">合影 / 人像</span><span lang="en">Portraits with the aurora</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">镜头</span><span lang="en">Lens</span></span><span class="ci-value">20mm f/1.8 <span lang="zh">（主广角）</span><span lang="en">(main wide)</span></span></div>
+            <div class="ci-row"><span class="ci-label">ISO</span><span class="ci-value">3200–6400</span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">快门</span><span lang="en">Shutter</span></span><span class="ci-value">1/4–1s <span lang="zh">（机械云台手持可用）</span><span lang="en">(usable handheld thanks to the mechanical gimbal)</span></span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">当大相机都锁在三脚架上构图时，用它快速拍「两人站在极光下」的合影／短片；超过约 1 秒快门就找车顶或石头架稳。</span><span lang="en">While the bigger cameras are locked on tripods composing, grab the "both of us under the aurora" photo or clip with this instead. Brace it on a car roof or rock for anything slower than about 1 second.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🚁 DJI Mini 5 Pro <span class="pg-role skip"><span lang="zh">慎用</span><span lang="en">Use with caution</span></span></h4>
+          <p class="pg-note"><span lang="zh">不建议用于极光正式长曝光：悬停晃动难以支持多秒曝光，夜间飞行需防撞灯＋目视范围内，低温续航明显缩水。若条件允许（风小、仍有微光的蓝调时刻），可趁天还没全黑、极光刚起时飞一张「地景剪影＋极光」的建立镜头，曝光控制在 1–2 秒内，拍完立刻降落。</span><span lang="en">Not recommended for real long-exposure aurora shots — hover shake makes multi-second exposures impractical, night flight needs an anti-collision strobe and visual line of sight, and cold cuts battery life noticeably. If conditions allow (low wind, still some residual light at blue hour as the aurora starts), you can grab one establishing aerial of the landscape silhouette against the first aurora glow — keep exposure to 1–2s and land right after.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🎬 DJI Osmo Nano &amp; 📱 iPhone 16 Pro Max <span class="pg-role backup"><span lang="zh">轻量备用</span><span lang="en">Light backup</span></span></h4>
+          <p class="pg-note"><span lang="zh">Osmo Nano 传感器较小，纯极光成像能力最弱，仅在画面里有额外光源（头灯、车灯、市镇灯光）时用 SuperNight 模式抓一个主观视角画面。iPhone 用「夜间模式」，支架或车顶固定，长按锁定曝光，自动曝光可到 10–30 秒，作为社交分享用的快速备用机。</span><span lang="en">The Osmo Nano's smaller sensor is the weakest of the group for pure aurora light — only use its SuperNight mode for a POV shot when there's some extra light source in frame (headlamp, car lights, town glow). On iPhone, use Night mode on a tripod or car roof, tap-and-hold to lock exposure (auto exposure can run 10–30s) — a solid quick backup for social sharing.</span></p>
+        </div>
+      </div>
+    </details>
+
+    <!-- LANDSCAPE -->
+    <details class="pg-sc">
+      <summary class="pg-sum" style="border-left-color:var(--ok)">
+        <span>🏞️ <span lang="zh">风光 Landscape</span><span class="pg-sub" lang="zh">— 峡湾 · 雪山 · 日出日落</span><span lang="en">Landscape</span><span class="pg-sub" lang="en">— fjords · mountains · golden hour</span></span>
+        <span class="pg-care" aria-hidden="true">▾</span>
+      </summary>
+      <div class="pg-body">
+        <div class="pg-gear">
+          <h4>📷 Sony A7R4 + 20-70mm F4 G <span class="pg-role primary"><span lang="zh">主力</span><span lang="en">Primary</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">光圈</span><span lang="en">Aperture</span></span><span class="ci-value">f/8–f/11</span></div>
+            <div class="ci-row"><span class="ci-label">ISO</span><span class="ci-value">100 <span lang="zh">（基础感光度）</span><span lang="en">(base)</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">白平衡</span><span lang="en">White balance</span></span><span class="ci-value"><span lang="zh">日光/阴天</span><span lang="en">Daylight / Cloudy</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">格式</span><span lang="en">Format</span></span><span class="ci-value">RAW</span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">6100 万像素高解析机身适合裁切和大图输出；水面/天空反光强时加偏振镜；高反差场景用 ±2EV 包围曝光后期合成。</span><span lang="en">The 61MP high-resolution body is great for cropping or large prints. Add a polarizer when water/sky glare is strong; bracket ±2EV on high-contrast scenes for HDR blending later.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>📷 Sony A6700 + Viltrox 13mm F1.4 <span class="pg-role backup"><span lang="zh">超广角</span><span lang="en">Ultra-wide</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">光圈</span><span lang="en">Aperture</span></span><span class="ci-value">f/5.6–f/8 <span lang="zh">（收光圈换边角锐度）</span><span lang="en">(stopped down for corner sharpness)</span></span></div>
+            <div class="ci-row"><span class="ci-label">ISO</span><span class="ci-value">100</span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">等效约 19.5mm，适合狭窄街巷、教堂内部、码头全景；广角畸变会放大边缘畸变，构图时避免把人/建筑贴近画面边缘。</span><span lang="en">~19.5mm full-frame equivalent — great for narrow lanes, church interiors, and harbour panoramas. Wide-angle distortion is strongest at the edges, so keep people/buildings away from the frame border.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🚁 DJI Mini 5 Pro <span class="pg-role primary"><span lang="zh">航拍主力</span><span lang="en">Aerial primary</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">色彩模式</span><span lang="en">Color mode</span></span><span class="ci-value">Normal/HLG <span lang="zh">（快速分享）</span><span lang="en">(ready to share)</span> / D-Log M <span lang="zh">（需后期调色）</span><span lang="en">(if grading)</span></span></div>
+            <div class="ci-row"><span class="ci-label">ISO</span><span class="ci-value">100</span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">黄金时刻飞行，静态照用 AEB 包围曝光应对高反差峡湾；起飞前先查对照「无人机指南」红区清单；电池低温耗电快，起飞前用体温焐热电池几分钟再装机。</span><span lang="en">Fly during golden hour; use AEB bracketing for high-contrast fjord stills. Check the red-zone list on the Drone Guide tab before every launch; warm the battery against your body for a few minutes before fitting it, since cold drains it fast.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🌐 Insta360 X6 / DJI Osmo 360 <span class="pg-role backup"><span lang="zh">全景打卡</span><span lang="en">360 panorama</span></span></h4>
+          <p class="pg-note"><span lang="zh">观景台、停车场等空间局促处最好用：拍一张 360°/200MP 全景，回程再用 App 重新取景裁出想要的角度，省去现场反复换镜头构图的时间。</span><span lang="en">Best at cramped viewpoints and car parks — shoot one 360°/200MP panorama and reframe the angle you want later in the app, instead of fumbling with lens changes on the spot.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🎒 Insta360 Luna Ultra <span class="pg-role backup"><span lang="zh">长焦补充</span><span lang="en">Tele reach</span></span></h4>
+          <p class="pg-note"><span lang="zh">60mm 等效镜头＋最高 12x 变焦，适合压缩远山层次或单独拍出山顶细节，不用额外带长焦镜头。</span><span lang="en">The 60mm-equivalent lens with up to 12x zoom compresses distant ridgelines or isolates a mountain-top detail — no need to carry a separate telephoto.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>📱 iPhone 16 Pro Max <span class="pg-role backup"><span lang="zh">全景 / 取景参考</span><span lang="en">Pano / scouting</span></span></h4>
+          <p class="pg-note"><span lang="zh">全景模式拍超宽画幅（两支定焦都不够广的场景）；也常用来先拍一张构图草稿，再决定用哪台「正式」相机架设。</span><span lang="en">Use Pano mode for anything wider than either prime lens covers; also handy as a quick composition sketch before deciding which "real" camera to set up.</span></p>
+        </div>
+      </div>
+    </details>
+
+    <!-- VIDEO -->
+    <details class="pg-sc">
+      <summary class="pg-sum" style="border-left-color:var(--copper)">
+        <span>🎥 <span lang="zh">视频 Video</span><span class="pg-sub" lang="zh">— 不用微单，动作相机 + 手机</span><span lang="en">Video</span><span class="pg-sub" lang="en">— no mirrorless, action cams + phone</span></span>
+        <span class="pg-care" aria-hidden="true">▾</span>
+      </summary>
+      <div class="pg-body">
+        <div class="pg-gear">
+          <h4>📱 iPhone 16 Pro Max <span class="pg-role primary"><span lang="zh">日常 Vlog 主力</span><span lang="en">Primary daily vlog</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">分辨率</span><span lang="en">Resolution</span></span><span class="ci-value">4K60 <span lang="zh">（Dolby Vision HDR）</span><span lang="en">(Dolby Vision HDR)</span></span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">口播／访谈用「电影模式」营造浅景深；走路跟拍用「动作模式」免云台也能稳；海边风大时尽量挡风或用外接麦克风减少风噪。</span><span lang="en">Use Cinematic mode for talking-head/interview shots with shallow depth of field; Action mode for stabilized walking b-roll without a gimbal. Coastal wind is strong — shield the mic or use an external one to cut wind noise.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🎬 DJI Osmo Nano <span class="pg-role primary"><span lang="zh">行车 / POV 主力</span><span lang="en">Primary POV / dashcam</span></span></h4>
+          <div class="ci-box">
+            <div class="ci-row"><span class="ci-label"><span lang="zh">分辨率</span><span lang="en">Resolution</span></span><span class="ci-value">4K60 <span lang="zh">/ 4K120 慢动作</span><span lang="en">/ 4K120 slow-mo</span></span></div>
+            <div class="ci-row"><span class="ci-label"><span lang="zh">色彩</span><span lang="en">Color</span></span><span class="ci-value">10-bit D-Log M <span lang="zh">（需调色）</span><span lang="en">(if grading)</span> / Normal</span></div>
+          </div>
+          <p class="pg-note"><span lang="zh">别在外套领口、吸附车内仪表台或装到 Vision Dock 配件支架上；手持走动开 HorizonBalancing 防歪斜，颠簸路段的车内拍摄开 RockSteady 3.0；晨昏光线暗时用 SuperNight。</span><span lang="en">Clip it to a jacket collar, suction-mount it on the dash, or use it on the Vision Dock accessory mount. Turn on HorizonBalancing for handheld walking shots and RockSteady 3.0 for bumpy in-car footage; use SuperNight in dim dawn/dusk light.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🌐 Insta360 X6 <span class="pg-role relay"><span lang="zh">全景路拍</span><span lang="en">360 road-trip coverage</span></span></h4>
+          <p class="pg-note"><span lang="zh">吸盘固定在挡风玻璃或车顶朝外，8K50 全方位收录，渡轮/沿海公路风景不断变化时「先拍全景，后期再决定看哪边」最省心。</span><span lang="en">Suction-mount it facing out from the windshield or roof. 8K50 captures everything around you — for ferries and coastal drives where the view keeps changing, "shoot the whole sphere, decide which way to look later" is the easiest approach.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🌐 DJI Osmo 360 ×2 <span class="pg-role relay"><span lang="zh">车内外同步</span><span lang="en">Synced interior + exterior</span></span></h4>
+          <p class="pg-note"><span lang="zh">一台车顶/车外朝景，一台车内朝人，剪辑时双机位同步切换；也可在停靠点一台拍主体一台拍环境，省去来回换镜头。</span><span lang="en">One outside facing the scenery, one inside facing the cabin — cut between the two synced angles in the edit. At stops, run one on the subject and one on the surroundings instead of repositioning a single camera.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🎒 Insta360 Luna Ultra <span class="pg-role backup"><span lang="zh">口播 / 跟拍</span><span lang="en">Walk-and-talk narration</span></span></h4>
+          <p class="pg-note"><span lang="zh">机械云台＋人物追踪是动作相机里最接近「正式访谈机」的一台，适合固定机位口播，或夹在背包肩带上边走边说。</span><span lang="en">Its mechanical gimbal + subject tracking make it the closest thing to a proper interview camera among the action cams — use it on a fixed stand for narration, or clipped to a backpack strap for walk-and-talk clips.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🚁 DJI Mini 5 Pro <span class="pg-role backup"><span lang="zh">空拍开场</span><span lang="en">Aerial establishing shot</span></span></h4>
+          <p class="pg-note"><span lang="zh">每天路段开头/结尾飞一个空中掠过或上升揭示镜头，给当日 Vlog 片段开场；记得先查红区清单。</span><span lang="en">A flyover or reveal-from-above shot at the start or end of each day's leg makes a good vlog-segment opener — check the red-zone list first.</span></p>
+        </div>
+      </div>
+    </details>
+
+    <!-- GENERAL -->
+    <details class="pg-sc">
+      <summary class="pg-sum" style="border-left-color:var(--accent)">
+        <span>📱 <span lang="zh">通用 / 日常 General</span><span class="pg-sub" lang="zh">— 随手拍 · 家庭合影</span><span lang="en">General</span><span class="pg-sub" lang="en">— quick shots · family photos</span></span>
+        <span class="pg-care" aria-hidden="true">▾</span>
+      </summary>
+      <div class="pg-body">
+        <div class="pg-gear">
+          <h4>📱 iPhone 16 Pro Max ×2 <span class="pg-role primary"><span lang="zh">随身主力</span><span lang="en">Always-on primary</span></span></h4>
+          <p class="pg-note"><span lang="zh">两人各一台，开机即拍、即时分享家人群；让大相机专心应付需要构图的镜头。</span><span lang="en">One each, instant-on and easy to share straight to the family group chat — frees the bigger cameras to focus on considered shots.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🎬 DJI Osmo Nano <span class="pg-role backup"><span lang="zh">别着走</span><span lang="en">Clip-on and go</span></span></h4>
+          <p class="pg-note"><span lang="zh">上下车、登船、走步道等自然动作片段，夹着就能拍，不用特地掏出手机。</span><span lang="en">Getting in/out of the car, boarding the ferry, walking a trail — clip it on and it just records, no need to fish out a phone.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🎒 Insta360 Luna Ultra <span class="pg-role backup"><span lang="zh">双人合影</span><span lang="en">Photos of you both</span></span></h4>
+          <p class="pg-note"><span lang="zh">云台稳、追踪准，是两人合影成功率最高的一台 — 架在栏杆或路牌上，设置追踪后退后入镜即可。</span><span lang="en">Steady gimbal and reliable tracking make this the highest-success-rate camera for photos of the two of you — prop it on a railing or signpost, start tracking, and step into frame.</span></p>
+        </div>
+        <div class="pg-gear">
+          <h4>🌐 X6 / Osmo 360 <span class="pg-role backup"><span lang="zh">打卡点全景</span><span lang="en">Viewpoint 360s</span></span></h4>
+          <p class="pg-note"><span lang="zh">知名打卡点（Henningsvær 足球场、Reine 观景台等）顺手拍一张 360°，比排队等位置拍直出照更省时间。</span><span lang="en">At the well-known viewpoints (Henningsvær football pitch, Reine lookout, etc.), a quick 360° shot beats queueing for "the" angle everyone else is fighting for.</span></p>
+        </div>
+      </div>
+    </details>
+
+    <div class="pg-tip">
+      <b><span lang="zh">🤝 两人协作建议</span><span lang="en">🤝 Two-person workflow</span></b><br>
+      <span lang="zh">极光之夜：一人守 A7R4 手动构图/对焦，另一人设好 A6700 延时后即可脱手，并负责 Osmo 360 两台的电量接力；Luna Ultra 揣在口袋里，趁换电池的空档快速拍合影。行车日：副驾负责 Osmo Nano 行车视角与 X6 全景，驾驶与副驾轮流在每个停靠点操作 Mini 5 Pro（先查红区）。建议准备一个「极光包」：2 支三脚架、保暖好的备用电池、红光头灯、快门线/遥控（若不用手机 App）、镜头布、暖宝宝。</span>
+      <span lang="en">Aurora nights: one of you mans the A7R4 for hands-on manual composition/focus, the other sets up the A6700 time-lapse (then it's hands-free) and handles the Osmo 360 battery relay. Keep the Luna Ultra in a pocket for quick together-shots between intervals. On driving days: the passenger runs the Osmo Nano POV + X6 360 coverage, and you can alternate who flies the Mini 5 Pro at each stop (check the red-zone list first). Worth packing an "aurora bag": 2 tripods, warmed spare batteries, a red-light headlamp, a remote shutter/intervalometer cable (if not using the phone app), a lens cloth, and hand warmers.</span>
+    </div>
+  </div>
+</section>
+
 <!-- ========== 费用记账 ========== -->
 
 <!-- INFO-BLOCK START -->
@@ -1711,7 +1970,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 28.10.26 · 0944</p>
+  <p class="version-tag">🕒 Updated: 28.10.26 · 1108</p>
 </footer>
 
 </div>
