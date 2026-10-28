@@ -96,12 +96,24 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .info-value{color:var(--text);font-weight:600;text-align:right}
 .highlight-alert{color:var(--danger);font-weight:700}
 .facilities{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-.link-bar{display:flex;gap:8px;margin-top:auto}
+.link-bar{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
 .source-link,.maps-btn{flex:1;display:inline-block;text-decoration:none;padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;text-align:center;box-sizing:border-box}
 .source-link{background:var(--surface-2);border:1px solid var(--border);color:var(--text)}
 .source-link:hover{background:var(--border)}
 .maps-btn{background:#16a34a;color:white}
 .maps-btn:hover{background:#15803d}
+.checkin-btn{flex:1 1 100%;order:3;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;text-align:center;box-sizing:border-box;border:1px solid var(--warn);background:var(--warn-soft);color:var(--warn);cursor:pointer;font-family:inherit}
+.checkin-btn:hover{background:var(--warn);color:#241a05}
+.ci-box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.ci-row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.9rem}
+.ci-row:last-child{border-bottom:0}
+.ci-label{color:var(--dim);font-weight:500}
+.ci-value{color:var(--text);font-weight:700;text-align:right;font-family:'IBM Plex Mono',ui-monospace,monospace}
+.ci-note{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.88rem;line-height:1.5;margin-bottom:10px}
+.ci-note b{color:var(--accent)}
+.ci-call{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 14px;border-radius:8px;background:var(--accent-soft);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:0.85rem;text-decoration:none}
+.ci-call:hover{background:var(--accent);color:#06211c}
+.ci-src{font-size:0.74rem;color:var(--dim);margin-top:10px}
 .notes-area{font-size:0.8rem;color:var(--dim);font-style:italic;margin-top:8px}
 
 [lang="en"]{display:none}
@@ -1019,7 +1031,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 21.10.26 · 1210</span>
+      <span class="version-tag">🕒 Updated: 28.10.26 · 0944</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1165,6 +1177,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=Troms%C3%B8+Airport&destination=69.2471,17.6377" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=Troms%C3%B8+Airport&destination=69.2471,17.6377" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="A1"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1193,6 +1206,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=68.86945,17.769283" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=68.86945,17.769283" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="A2"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1221,6 +1235,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=68.86945,17.769283&destination=68.7331,16.189183" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.86945,17.769283&destination=68.7331,16.189183" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="A3"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1249,6 +1264,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=68.7331,16.189183&destination=68.392317,14.588317" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.7331,16.189183&destination=68.392317,14.588317" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="A4"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1277,6 +1293,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=68.392317,14.588317&destination=68.206367,14.42585" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.392317,14.588317&destination=68.206367,14.42585" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="A5"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1305,6 +1322,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=68.206367,14.42585&destination=68.15375,14.20345" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.206367,14.42585&destination=68.15375,14.20345" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="A6"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1334,6 +1352,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=68.15375,14.20345&destination=67.94615,13.133567" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.15375,14.20345&destination=67.94615,13.133567" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="A7"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1362,6 +1381,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=67.94615,13.133567&destination=68.234367,14.57965" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=67.94615,13.133567&destination=68.234367,14.57965" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="B1"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1390,6 +1410,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=68.234367,14.57965&destination=68.47635,16.883867" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.234367,14.57965&destination=68.47635,16.883867" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="B2"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1418,6 +1439,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=68.47635,16.883867&destination=69.066067,19.312617" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.47635,16.883867&destination=69.066067,19.312617" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="B3"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1447,6 +1469,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="link-bar">
           <a href="https://drive.google.com/file/d/1xjeBT2j3MqLnukHrgEHCCoLQVr67Y3nG/view" target="_blank" class="source-link" data-source-link="source-14" lang="zh">📁 确认函</a><a href="https://drive.google.com/file/d/1xjeBT2j3MqLnukHrgEHCCoLQVr67Y3nG/view" target="_blank" class="source-link" data-source-link="source-14" lang="en">📁 Confirmation</a>
           <a href="https://www.google.com/maps/dir/?api=1&origin=69.066067,19.312617&destination=69.689822,18.595040" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.066067,19.312617&destination=69.689822,18.595040" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <button type="button" class="checkin-btn" data-checkin="B4"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
     </div>
@@ -1688,7 +1711,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 21.10.26 · 1210</p>
+  <p class="version-tag">🕒 Updated: 28.10.26 · 0944</p>
 </footer>
 
 </div>
@@ -2120,6 +2143,81 @@ document.addEventListener('click',function(e){
 });
 </script>
 <!-- FILE-VIEWER-SCRIPT END -->
+<!-- CHECKIN-INFO-SCRIPT START -->
+<script>
+/* Per-accommodation check-in info modal, powered by TripViewer.open().
+   Source data: Booking.com confirmation PDFs + host messages (Gmail), compiled 28 Oct 2026.
+   Confirmation #, PIN, and the B3 lockbox code are shown here at the user's explicit request
+   (28 Oct 2026) — note this page is on a public GitHub Pages repo. */
+(function(){
+'use strict';
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function bi(zh,en){return '<span lang="zh">'+zh+'</span><span lang="en">'+en+'</span>'}
+var CHECKIN={
+ A1:{name:'Wilderness Villa Panorama Lakeview',phone:'+47 97 34 04 42',conf:'5288.039.952',pin:'3294',
+   ci:'7 Nov (Sat) 17:00–22:00',co:'9 Nov (Mon)',
+   note:bi('请提前告知房东预计到达时间；详细入住说明会在抵达前约 3 天（约 11 月 4 日）发来。','Let the host know your expected arrival time in advance — full check-in details are sent roughly 3 days before arrival (around 4 Nov).'),
+   src:'Booking.com confirmation · host message (Gmail, 12 Aug 2026)'},
+ A2:{name:'Garsnes Brygge',phone:'+47 93 42 06 87',conf:'5634.509.853',pin:'0251',
+   ci:'9 Nov (Mon) 15:00–21:00',co:'10 Nov (Tue) 07:00–12:00',
+   note:bi('提前告知到达时间；钓鱼船需提前预订，也可请房东安排船长向导。','Let the host know your arrival time in advance; fishing boats must be booked ahead — an optional boat guide can also be arranged.'),
+   src:'Booking.com confirmation · host message (Gmail, 17 Aug 2026)'},
+ A3:{name:'Sjøtun',phone:'+47 46 34 58 51',conf:'6166.742.714',pin:'6181',
+   ci:'10 Nov (Tue) 15:00–23:30',co:'12 Nov (Thu) 10:30–11:30',
+   note:bi('提前告知到达时间；该房源没有网络连接。','Let the host know your arrival time in advance; this property has no internet access.'),
+   src:'Booking.com confirmation'},
+ A4:{name:'Lofoten Sea View Cabin',phone:'+47 95 41 01 97',conf:'6368.789.274',pin:'6190',
+   ci:'12 Nov (Thu) from 15:00',co:'14 Nov (Sat) 11:00–12:00',
+   note:bi('标准入住，无需提前通知。','Standard check-in, no advance notice required.'),
+   src:'Booking.com confirmation'},
+ A5:{name:'Skårungen Cabins',phone:'+47 90 14 19 78',conf:'6431.809.971',pin:'1988',
+   ci:'14 Nov (Sat) 15:00–22:00',co:'15 Nov (Sun) 07:30–11:00',
+   note:bi('提前告知预计到达时间。','Let the host know your expected arrival time in advance.'),
+   src:'Booking.com confirmation'},
+ A6:{name:'Fiskekrogen Rorbuer',phone:'+47 76 07 46 52',conf:'6223.104.864',pin:'3296',
+   ci:'15 Nov (Sun) 15:00–19:00',co:'16 Nov (Mon) 01:00–11:00',
+   note:bi('提前告知到达时间；餐厅营业时间随季节变化，可直接联系房源确认。','Let the host know your arrival time in advance; restaurant hours vary by season — contact the property to confirm.'),
+   src:'Booking.com confirmation'},
+ A7:{name:'Eliassen Rorbuer',phone:'+47 45 81 48 45',conf:'6925.941.864',pin:'6695',
+   ci:'16 Nov (Mon) from 15:00',co:'18 Nov (Wed) until 11:00',
+   note:bi('提前告知预计到达时间。','Let the host know your expected arrival time in advance.'),
+   src:'Booking.com confirmation'},
+ B1:{name:'Svinøya Rorbuer',phone:'+47 76 06 99 30',conf:'5166.230.787',pin:'5377',
+   ci:'18 Nov (Wed) from 15:00',co:'19 Nov (Thu) until 11:00',
+   note:bi('保证 15:00 起可办理入住，地点在前台（Børsen Spiseri 餐厅内，入口在左侧）。若抵达时前台已关闭，钥匙与欢迎包会放在正门外的钥匙箱内。早餐 07:30–10:00（需在入住时加订）；餐厅 17:00–22:00（建议预订）。接送/出租车：+47 22 38 83 09。','Guaranteed check-in from 15:00 at reception, inside Børsen Spiseri restaurant (entrance on the left). If reception is closed when you arrive, your key and welcome pack are in the key box outside the main entrance. Breakfast 07:30–10:00 (add at check-in if not booked); restaurant 17:00–22:00 (reserve ahead). Transfer/taxi: +47 22 38 83 09.'),
+   src:'Booking.com confirmation · host message (Gmail, 19 Aug 2026)'},
+ B2:{name:'Gammelbanken Liland',phone:'+47 40 72 48 67',conf:'6604.071.489',pin:'1338',
+   ci:'19 Nov (Thu) 15:00–00:00',co:'20 Nov (Fri) 06:00–12:00',
+   note:bi('无人前台，钥匙箱自助入住 — 房东会在抵达前一天发来密码及说明。如有疑问可联系房东 Trond / Analyn：+47 97 00 23 03 / +47 40 72 48 67。','Self-check-in via a key box — the host sends the code and instructions the day before arrival. Contact hosts Trond / Analyn with any questions: +47 97 00 23 03 / +47 40 72 48 67.'),
+   src:'Booking.com confirmation · host message (Gmail, 20 Aug 2026)'},
+ B3:{name:'Feriehus ved Fjellfroskvatnet',phone:'+47 91 64 97 06',conf:'5886.571.078',pin:'7466',lockbox:'2406',
+   ci:'20 Nov (Fri) from 15:00',co:'21 Nov (Sat) until 12:00',
+   note:bi('无人前台，自助入住：钥匙放在正门左侧的钥匙箱内，密码为 <b>2406</b>（房东单独发送，4 Sep 2026）。房东就住在隔壁，有任何问题可直接联系。18 岁以下客人须由家长或法定监护人陪同入住。','Self check-in: the key is in a lockbox to the left of the front door, code <b>2406</b> (sent separately by the host, 4 Sep 2026). Hosts live in the house next door — just reach out if anything comes up. Guests under 18 must check in with a parent or legal guardian.'),
+   src:'Booking.com confirmation · host message (Gmail, 4 Sep 2026)'},
+ B4:{name:'Ersfjordbotn – Apartment by the Sea & Mountains',phone:'',
+   ci:'21 Nov (Sat) from 15:00',co:'22 Nov (Sun) by 11:00',
+   note:bi('Airbnb 房源 — 请在抵达前通过 Airbnb App 联系房东 Bjørn 获取入住说明（经由楼管/房东开门）。房屋正前方可免费停车；附近步行可达更暗的极光观测点。','Airbnb stay — message host Bjørn in the Airbnb app before you arrive for entry instructions (check-in is via building staff/the host). Free parking right in front of the house; darker aurora-viewing spots are a short walk away.'),
+   src:'Booking confirmation (dashboard notes) · host: Bjørn, via Airbnb app'}
+};
+document.addEventListener('click',function(e){
+  var b=e.target.closest?e.target.closest('button[data-checkin]'):null;if(!b||!window.TripViewer)return;
+  var k=b.dataset.checkin,d=CHECKIN[k];if(!d)return;
+  var rows='<div class="ci-box">'+
+    '<div class="ci-row"><span class="ci-label">'+bi('入住','Check-in')+'</span><span class="ci-value">'+esc(d.ci)+'</span></div>'+
+    '<div class="ci-row"><span class="ci-label">'+bi('退房','Check-out')+'</span><span class="ci-value">'+esc(d.co)+'</span></div>'+
+    (d.phone?'<div class="ci-row"><span class="ci-label">'+bi('电话','Phone')+'</span><span class="ci-value">'+esc(d.phone)+'</span></div>':'')+
+    (d.conf?'<div class="ci-row"><span class="ci-label">'+bi('确认号','Confirmation #')+'</span><span class="ci-value">'+esc(d.conf)+'</span></div>':'')+
+    (d.pin?'<div class="ci-row"><span class="ci-label">'+bi('PIN 码','PIN code')+'</span><span class="ci-value">'+esc(d.pin)+'</span></div>':'')+
+    (d.lockbox?'<div class="ci-row"><span class="ci-label">'+bi('钥匙箱密码','Lockbox code')+'</span><span class="ci-value">'+esc(d.lockbox)+'</span></div>':'')+
+    '</div>'+
+    '<div class="ci-note"><b>'+bi('如何入住','Getting in')+'</b><br>'+d.note+'</div>'+
+    (d.phone?'<a class="ci-call" href="tel:'+esc(d.phone.replace(/\s+/g,''))+'">📞 '+bi('致电房源','Call property')+'</a>':'')+
+    '<div class="ci-src">'+bi('来源','Source')+': '+esc(d.src)+'</div>';
+  TripViewer.open('🔑 ['+k+'] '+esc(d.name)+' — '+bi('入住须知','Check-in Info'),rows);
+});
+})();
+</script>
+<!-- CHECKIN-INFO-SCRIPT END -->
 <!-- EXPENSES-SCRIPT START -->
 <script>
 /* Trip expenses: Prepaid + on-trip log (yymmdd), by day and by type, running total and per person.
