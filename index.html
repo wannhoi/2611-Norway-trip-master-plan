@@ -177,6 +177,13 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .pg-drone.check{background:var(--warn-soft);color:var(--warn)}
 .pg-drone.no{background:var(--danger-soft);color:var(--danger)}
 .pg-note{font-size:0.86rem;line-height:1.55;color:var(--text);margin:10px 0 0}
+.ins-item{border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden;background:var(--surface-2)}
+.ins-item summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;font-weight:600;list-style:none}
+.ins-item summary::-webkit-details-marker{display:none}
+.ins-item[open] summary{border-bottom:1px solid var(--border)}
+.ins-item .ins-body{padding:10px 12px;font-size:.84rem;color:var(--dim);line-height:1.6}
+.ins-care{color:var(--dim);font-size:.8rem;transition:transform .15s;flex-shrink:0}
+.ins-item[open] .ins-care{transform:rotate(180deg)}
 .pg-photo{margin:6px 0 0}.pg-photo a{font-size:.82rem;color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}.pg-photo a:hover{text-decoration:none;opacity:.8}
 .pg-note b{color:var(--accent)}
 .pg-tip{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 14px;font-size:0.86rem;line-height:1.55;margin:10px 0}
@@ -1106,7 +1113,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 02.11.26 · 1950</span>
+      <span class="version-tag">🕒 Updated: 02.11.26 · 2010</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -2422,15 +2429,128 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </div></section>
 <!-- INFO-BLOCK END -->
 <!-- INSURANCE-BLOCK START -->
-<section id="insurance" hidden><div class="tc-wrap"><h2><span lang="en">🛡️ Travel insurance essentials</span><span lang="zh">🛡️ 旅行保险要点</span></h2>
-<div class="tc-metrics"><div class="tc-metric">Plan / 计划<div class="tc-big">Singlife Prestige</div>Worldwide · Group · Single trip</div><div class="tc-metric">Cover / 保障日期<div class="tc-big">6–24 Nov 2026</div>Hoi + Kui Eng Soon</div><div class="tc-metric">Quoted premium / 两人报价<div class="tc-big">S$473.96</div>Application reference 61190156 · 15 Jul 2026</div></div>
-<p class="tc-warn">Quoted premium: S$473.96 for both. Payment and issued policy: to verify. / 两人保费报价 S$473.96；付款及正式保单待确认。</p>
-<p>Selected add-ons / 已选附加保障: <strong>Rental Vehicle Cover + COVID-19</strong>. Cancel For Any Reason, Winter Sports and Pre-existing Medical Conditions are not listed as selected in the application.</p>
-<details open><summary>Essential benefits / 主要保障</summary><p class="tc-small">SGD limits generally per insured person per trip, except where stated. Group package: Family Total figures do not apply. These are maximum benefits, subject to policy conditions and the issued schedule.</p><div class="tc-table"><table><thead><tr><th>Section</th><th>Benefit</th><th>Prestige limit</th><th>Important conditions</th></tr></thead><tbody><tr><td>4a / 4b</td><td>Overseas medical (age ≤70) / emergency evacuation</td><td>Unlimited</td><td>COVID-19 and pre-existing conditions have separate terms.</td></tr><tr><td>1a</td><td>Accidental death / permanent disablement (age ≤70)</td><td>S$500,000</td><td>Subject to insured event and policy terms.</td></tr><tr><td>12 / 13</td><td>Trip cancellation / postponement</td><td>S$20,000 / S$3,000</td><td>Specified insured events; bad weather alone does not automatically qualify.</td></tr><tr><td>15a / 15b</td><td>Trip interruption: return to SG / itinerary change</td><td>S$15,000 / S$3,000</td><td>Specified insured events and conditions.</td></tr><tr><td>16</td><td>Travel delay overseas</td><td>S$100 per consecutive 6h; max S$2,000</td><td>Singapore departure delay: S$100 after 6h. Obtain carrier evidence.</td></tr><tr><td>18</td><td>Baggage delay overseas</td><td>S$200 per consecutive 6h; max S$2,000</td><td>Singapore baggage delay: S$150 after 6h.</td></tr><tr><td>19</td><td>Baggage and personal belongings</td><td>S$8,000 total; S$700 per article or grouped set</td><td>Laptop sublimit S$1,000. Depreciation and evidence requirements apply.</td></tr><tr><td>21</td><td>Passport / travel documents</td><td>S$5,000</td><td>Policy conditions apply.</td></tr><tr><td>11</td><td>Personal liability</td><td>S$1,500,000</td><td>Liability from motor vehicles and drones is excluded.</td></tr><tr><td>32a</td><td>Rental vehicle excess — selected add-on</td><td>S$2,500</td><td>One vehicle under the policy; do not double for two travellers. Named driver, licensed rental company, comprehensive motor cover required; public roads only.</td></tr><tr><td>32b</td><td>Rental vehicle return — selected add-on</td><td>S$500</td><td>For covered overseas inpatient hospitalisation preventing return.</td></tr><tr><td>33a</td><td>COVID-19 — selected add-on</td><td>Medical S$200,000; evacuation / repatriation unlimited</td><td>Singapore medical S$4,000; separate COVID-19 conditions apply.</td></tr><tr><td>33d / 33e</td><td>COVID-19 cancellation / postponement / interruption</td><td>S$7,500; itinerary change S$1,500</td><td>Subject to Section 33 conditions.</td></tr></tbody></table></div></details>
-<details open><summary>Self drive, cameras and drone / 自驾、摄影器材和无人机</summary><ul><li><strong>SIXT excess NOK 20,000 vs rental excess benefit S$2,500:</strong> different currencies and conditions; do not assume full reimbursement. Do not multiply the rental benefit by two travellers.</li><li><strong>Camera gear:</strong> S$700 article / grouped-set sublimit can be far below replacement cost for a Sony body or lens. Keep purchase receipts, serial numbers and photos; electronic-device depreciation applies. Ask Singlife how a body and lenses are grouped, and whether drone damage / loss is insured. Drone liability is explicitly excluded under Section 11.</li><li>Report baggage theft / loss to local police within 24 hours of discovery. Do not leave gear unattended; secure transport and accommodation storage matter.</li><li>Ordinary aurora viewing and photography do not mean a Winter Sports add-on was purchased. Verify cover before any skiing or other restricted activity.</li><li>Pre-existing-condition cover is not selected; general exclusions apply. Weather-related itinerary changes are not an automatic claim.</li></ul></details>
-<details open><summary>Emergency and claim checklist / 紧急联系与索赔</summary><p><a class="btn" href="tel:+6564609391">☎ Singlife 24h Travel Assistant: +65 6460 9391</a></p><ol><li>Contact the assistant promptly for medical / evacuation arrangements; notify Singlife as soon as possible of a potential claim.</li><li>Retain original receipts, medical reports, police / carrier reports, booking invoices, boarding passes and proof of ownership. Retain rental agreement, damage report and excess payment evidence for a car claim.</li><li>Submit the claim with relevant documents within 30 days after return to Singapore. Based on planned return 23 Nov: target 23 Dec 2026; adjust if return changes.</li></ol><p class="tc-small">Contact and deadlines transcribed from the supplied policy wording (Travel Assistant and General Conditions). Verify against the issued schedule before travel.</p></details>
-<details><summary>Source documents / 来源文件（链接）</summary><p><a class="btn" download="Singlife_travel-summary-of-cover.pdf" href="documents/24-singlife-travel-summary-of-cover.pdf" data-source-link="source-23">Download summary of cover</a> <a class="btn" download="Singlife_travel-policy-document.pdf" href="documents/25-singlife-travel-policy-document.pdf" data-source-link="source-24">Download full policy wording</a> </p><p class="tc-small">Source: Singlife application, summary of cover and policy wording. Original documents: Info → Insurance Sources / Earlier References.</p></details>
-</div></section>
+<section id="insurance" hidden>
+  <div class="card">
+    <h2><span lang="en">🛡️ Travel insurance essentials</span><span lang="zh">🛡️ 旅行保险要点</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:4px 0 14px">
+      <div style="background:var(--surface-2);border-radius:10px;padding:12px">
+        <div style="color:var(--dim);font-size:.78rem"><span lang="zh">计划</span><span lang="en">Plan</span></div>
+        <div style="font-size:1.1rem;font-weight:700;color:var(--accent)">Singlife Prestige</div>
+        <div style="font-size:.8rem;color:var(--dim)">Worldwide · Group · Single trip</div>
+      </div>
+      <div style="background:var(--surface-2);border-radius:10px;padding:12px">
+        <div style="color:var(--dim);font-size:.78rem"><span lang="zh">保障日期</span><span lang="en">Cover</span></div>
+        <div style="font-size:1.1rem;font-weight:700;color:var(--accent)">6–24 Nov 2026</div>
+        <div style="font-size:.8rem;color:var(--dim)">Hoi + Kui Eng Soon</div>
+      </div>
+      <div style="background:var(--surface-2);border-radius:10px;padding:12px">
+        <div style="color:var(--dim);font-size:.78rem"><span lang="zh">两人报价</span><span lang="en">Quoted premium</span></div>
+        <div style="font-size:1.1rem;font-weight:700;color:var(--accent)">S$473.96</div>
+        <div style="font-size:.8rem;color:var(--dim)">Ref 61190156 · 15 Jul 2026</div>
+      </div>
+    </div>
+    <div class="alert" style="background:var(--warn-soft);border-left:3px solid var(--warn)"><span lang="zh">⚠️ 两人保费报价 S$473.96；付款及正式保单待确认。</span><span lang="en">⚠️ Quoted premium S$473.96 for both — payment and issued policy still to verify.</span></div>
+    <p class="pg-note"><span lang="zh">已选附加保障：<strong>租车自付额保障 + COVID-19</strong>。「任何原因取消」「冬季运动」「既有病症」未在申请中勾选。</span><span lang="en">Selected add-ons: <strong>Rental Vehicle Cover + COVID-19</strong>. Cancel For Any Reason, Winter Sports and Pre-existing Medical Conditions are NOT selected.</span></p>
+    <a class="btn" href="tel:+6564609391" style="display:inline-flex;align-items:center;gap:8px;background:var(--danger-soft);color:var(--danger);border:1px solid var(--danger);font-weight:700;padding:12px 16px;border-radius:10px;margin-top:6px;width:fit-content">☎️ <span lang="zh">Singlife 24小时旅行援助热线：+65 6460 9391</span><span lang="en">Singlife 24h Travel Assistant: +65 6460 9391</span></a>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0"><span lang="zh">⭐ 最重要的 5 项保障（优先看这里）</span><span lang="en">⭐ Top 5 essential coverages (check these first)</span></h3>
+    <p class="pg-note" style="margin-top:0"><span lang="zh">点击展开查看理赔须知</span><span lang="en">Tap any item to see its claim conditions</span></p>
+
+    <details class="ins-item">
+      <summary><span>🏥 <span lang="zh">海外医疗/紧急后送</span><span lang="en">Overseas medical / emergency evacuation</span></span><span style="color:var(--ok);font-weight:700;white-space:nowrap">Unlimited <span class="ins-care">▾</span></span></summary>
+      <div class="ins-body">Section 4a/4b · age ≤70 — <span lang="zh">COVID-19 与既有病症适用另一套条款</span><span lang="en">COVID-19 and pre-existing conditions have separate terms</span></div>
+    </details>
+    <details class="ins-item">
+      <summary><span>🚗 <span lang="zh">租车自付额（已选附加）</span><span lang="en">Rental vehicle excess (selected add-on)</span></span><span style="color:var(--accent);font-weight:700;white-space:nowrap">S$2,500 <span class="ins-care">▾</span></span></summary>
+      <div class="ins-body">Section 32a — <span lang="zh">一张保单只保一辆车，两人不可叠加；须为指定驾驶人、持牌租车公司、全险车辆，仅限公共道路</span><span lang="en">One vehicle per policy — do NOT double for two travellers. Named driver, licensed rental company, comprehensive motor cover required; public roads only</span></div>
+    </details>
+    <details class="ins-item">
+      <summary><span>🦠 COVID-19<span lang="zh">（已选附加）</span><span lang="en"> (selected add-on)</span></span><span style="color:var(--accent);font-weight:700;white-space:nowrap;text-align:right"><span lang="zh">医疗 S$200,000；后送无限额</span><span lang="en">Medical S$200k; evac unlimited</span> <span class="ins-care">▾</span></span></summary>
+      <div class="ins-body">Section 33a/33d/33e — <span lang="zh">新加坡境内医疗上限 S$4,000；取消/延误/行程变更另受 Section 33 条款约束</span><span lang="en">Singapore-side medical capped at S$4,000; cancellation/postponement/itinerary-change subject to Section 33 conditions</span></div>
+    </details>
+    <details class="ins-item">
+      <summary><span>✈️ <span lang="zh">行程取消/延期</span><span lang="en">Trip cancellation / postponement</span></span><span style="color:var(--accent);font-weight:700;white-space:nowrap">S$20,000 / S$3,000 <span class="ins-care">▾</span></span></summary>
+      <div class="ins-body">Section 12/13 — <span lang="zh">仅限保单列明的承保事件；单纯天气不佳不自动构成理由</span><span lang="en">Specified insured events only; bad weather alone does not automatically qualify</span></div>
+    </details>
+    <details class="ins-item">
+      <summary><span>🧳 <span lang="zh">行李与随身物品</span><span lang="en">Baggage and personal belongings</span></span><span style="color:var(--accent);font-weight:700;white-space:nowrap;text-align:right"><span lang="zh">共 S$8,000</span><span lang="en">S$8,000 total</span> <span class="ins-care">▾</span></span></summary>
+      <div class="ins-body">Section 19 — S$700 <span lang="zh">单件/成组上限；笔电子限额 S$1,000；需扣除折旧并提供购买证明</span><span lang="en">per article/grouped-set sublimit; laptop sublimit S$1,000; depreciation applies — keep proof of purchase</span></div>
+    </details>
+  </div>
+
+  <details class="pg-sc" open>
+    <summary class="pg-sum" style="border-left-color:var(--danger)">
+      <span>🚗📷🚁 <span lang="zh">自驾 · 相机 · 无人机 — 理赔要点</span><span lang="en">Self-drive, cameras & drone — claim notes</span></span>
+      <span class="pg-care" aria-hidden="true">▾</span>
+    </summary>
+    <div class="pg-body">
+      <ul style="margin:0 0 0 20px;line-height:1.8">
+        <li><span lang="zh"><strong>SIXT 自付额 NOK 20,000 vs 保单租车保障 S$2,500：</strong>币种与条件不同，不能假设全额获赔，也不要按两名旅客重复计算。</span><span lang="en"><strong>SIXT excess NOK 20,000 vs policy's rental benefit S$2,500:</strong> different currencies and conditions — don't assume full reimbursement, and don't double the benefit for two travellers.</span></li>
+        <li><span lang="zh"><strong>相机器材：</strong>S$700 单件/成组上限可能远低于 Sony 机身或镜头的重置成本。保留购买收据、序号与照片，电子产品需扣折旧。向 Singlife 确认机身+镜头如何归类为一组，以及无人机损坏/遗失是否承保——无人机责任在 Section 11 中已明确排除。</span><span lang="en"><strong>Camera gear:</strong> the S$700 article/grouped-set sublimit can be far below replacement cost for a Sony body or lens. Keep receipts, serial numbers and photos — electronic-device depreciation applies. Ask Singlife how a body+lenses are grouped, and whether drone damage/loss is covered — drone liability is explicitly excluded under Section 11.</span></li>
+        <li><span lang="zh">行李失窃/遗失须在发现后 24 小时内报警。不要让器材无人看管，运输与住宿存放也要留意。</span><span lang="en">Report baggage theft/loss to local police within 24 hours of discovery. Don't leave gear unattended — secure transport and accommodation storage matter.</span></li>
+        <li><span lang="zh">一般拍摄极光不等于已购买「冬季运动」附加保障；若有滑雪等受限活动，出发前先确认是否承保。</span><span lang="en">Ordinary aurora viewing/photography does not mean a Winter Sports add-on was purchased — verify cover before any skiing or other restricted activity.</span></li>
+        <li><span lang="zh">既有病症未纳入承保，一般除外条款适用；天气导致的行程变更不会自动构成理赔。</span><span lang="en">Pre-existing-condition cover is not selected — general exclusions apply. Weather-related itinerary changes are not an automatic claim.</span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="pg-sc" open>
+    <summary class="pg-sum" style="border-left-color:var(--ok)">
+      <span>📋 <span lang="zh">理赔步骤</span><span lang="en">Claim checklist</span></span>
+      <span class="pg-care" aria-hidden="true">▾</span>
+    </summary>
+    <div class="pg-body">
+      <ol style="margin:0 0 10px 20px;line-height:1.8">
+        <li><span lang="zh">尽快联系援助热线安排医疗/后送事宜；并尽早通知 Singlife 潜在理赔。</span><span lang="en">Contact the assistance line promptly for medical/evacuation arrangements; notify Singlife as soon as possible of a potential claim.</span></li>
+        <li><span lang="zh">保留正本收据、医疗报告、警察/航司报告、订房确认、登机牌及物品所有权证明；若涉车辆理赔，保留租车合约、损坏报告及自付额支付凭证。</span><span lang="en">Retain original receipts, medical reports, police/carrier reports, booking invoices, boarding passes and proof of ownership. For a car claim, keep the rental agreement, damage report and excess-payment evidence.</span></li>
+        <li><span lang="zh">返回新加坡后 30 天内连同相关文件提交理赔。按预定 11/23 回程计算，目标在 2026/12/23 前完成；若回程日期有变需相应调整。</span><span lang="en">Submit the claim with relevant documents within 30 days of returning to Singapore. Based on the planned 23 Nov return, target 23 Dec 2026 — adjust if the return date changes.</span></li>
+      </ol>
+      <p class="pg-note" style="margin:0">📞 <a class="btn" href="tel:+6564609391">Singlife 24h Travel Assistant: +65 6460 9391</a></p>
+      <p class="pg-note" style="margin-top:10px"><span lang="zh">联络方式与期限摘自提供的保单条款（旅行援助及一般条款）；出发前请以正式保单为准核实。</span><span lang="en">Contact and deadlines transcribed from the supplied policy wording (Travel Assistant and General Conditions) — verify against the issued schedule before travel.</span></p>
+    </div>
+  </details>
+
+  <details class="pg-sc">
+    <summary class="pg-sum">
+      <span>📄 <span lang="zh">完整保障明细表（全部条款）</span><span lang="en">Full benefit schedule (all sections)</span></span>
+      <span class="pg-care" aria-hidden="true">▾</span>
+    </summary>
+    <div class="pg-body">
+      <p class="pg-note" style="margin-top:0"><span lang="zh">除另有说明外，SGD 额度一般为每位受保人每次行程的上限；团体保单不适用家庭总额条款。以下为最高赔付额，仍受保单条款及正式保单约束。</span><span lang="en">SGD limits are generally per insured person per trip, except where stated. Group package: Family Total figures do not apply. These are maximum benefits, subject to policy conditions and the issued schedule.</span></p>
+      <div style="overflow-x:auto"><table class="pg-matrix">
+        <thead><tr><th>Section</th><th>Benefit</th><th>Prestige limit</th><th>Important conditions</th></tr></thead>
+        <tbody>
+          <tr><td>4a / 4b</td><td>Overseas medical (age ≤70) / emergency evacuation</td><td>Unlimited</td><td>COVID-19 and pre-existing conditions have separate terms.</td></tr>
+          <tr><td>1a</td><td>Accidental death / permanent disablement (age ≤70)</td><td>S$500,000</td><td>Subject to insured event and policy terms.</td></tr>
+          <tr><td>12 / 13</td><td>Trip cancellation / postponement</td><td>S$20,000 / S$3,000</td><td>Specified insured events; bad weather alone does not automatically qualify.</td></tr>
+          <tr><td>15a / 15b</td><td>Trip interruption: return to SG / itinerary change</td><td>S$15,000 / S$3,000</td><td>Specified insured events and conditions.</td></tr>
+          <tr><td>16</td><td>Travel delay overseas</td><td>S$100 per consecutive 6h; max S$2,000</td><td>Singapore departure delay: S$100 after 6h. Obtain carrier evidence.</td></tr>
+          <tr><td>18</td><td>Baggage delay overseas</td><td>S$200 per consecutive 6h; max S$2,000</td><td>Singapore baggage delay: S$150 after 6h.</td></tr>
+          <tr><td>19</td><td>Baggage and personal belongings</td><td>S$8,000 total; S$700 per article or grouped set</td><td>Laptop sublimit S$1,000. Depreciation and evidence requirements apply.</td></tr>
+          <tr><td>21</td><td>Passport / travel documents</td><td>S$5,000</td><td>Policy conditions apply.</td></tr>
+          <tr><td>11</td><td>Personal liability</td><td>S$1,500,000</td><td>Liability from motor vehicles and drones is excluded.</td></tr>
+          <tr><td>32a</td><td>Rental vehicle excess — selected add-on</td><td>S$2,500</td><td>One vehicle under the policy; do not double for two travellers. Named driver, licensed rental company, comprehensive motor cover required; public roads only.</td></tr>
+          <tr><td>32b</td><td>Rental vehicle return — selected add-on</td><td>S$500</td><td>For covered overseas inpatient hospitalisation preventing return.</td></tr>
+          <tr><td>33a</td><td>COVID-19 — selected add-on</td><td>Medical S$200,000; evacuation / repatriation unlimited</td><td>Singapore medical S$4,000; separate COVID-19 conditions apply.</td></tr>
+          <tr><td>33d / 33e</td><td>COVID-19 cancellation / postponement / interruption</td><td>S$7,500; itinerary change S$1,500</td><td>Subject to Section 33 conditions.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </details>
+
+  <details class="pg-sc">
+    <summary class="pg-sum">
+      <span>🔗 <span lang="zh">来源文件</span><span lang="en">Source documents</span></span>
+      <span class="pg-care" aria-hidden="true">▾</span>
+    </summary>
+    <div class="pg-body">
+      <p><a class="btn" download="Singlife_travel-summary-of-cover.pdf" href="documents/24-singlife-travel-summary-of-cover.pdf" data-source-link="source-23">Download summary of cover</a> <a class="btn" download="Singlife_travel-policy-document.pdf" href="documents/25-singlife-travel-policy-document.pdf" data-source-link="source-24">Download full policy wording</a></p>
+      <p class="pg-note" style="margin:10px 0 0">Source: Singlife application, summary of cover and policy wording. Original documents: Info → Insurance Sources / Earlier References.</p>
+    </div>
+  </details>
+</section>
 <!-- INSURANCE-BLOCK END -->
 <section id="expense" hidden>
 <div class="card" id="ex-root">
@@ -2505,7 +2625,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 02.11.26 · 1950</p>
+  <p class="version-tag">🕒 Updated: 02.11.26 · 2010</p>
 </footer>
 
 </div>
