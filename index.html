@@ -981,6 +981,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .ex-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .ex-tabs button{cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--dim);padding:7px 12px;border-radius:8px;font:inherit;font-size:.9rem}
 .ex-tabs button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.ex-type-row{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.ex-type-row:empty{display:none}
+.ex-chip{cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--dim);padding:5px 10px;border-radius:9px;font:inherit;font-size:.78rem;white-space:nowrap}
+.ex-chip:hover,.ex-chip:focus-visible{background:var(--accent-soft);color:var(--accent);outline:none}
+.ex-chip[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
 .ex-day{border:1px solid var(--border);border-radius:8px;margin:6px 0;background:var(--surface)}
 .ex-day summary,.ex-day.ex-none{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:8px 12px;cursor:pointer;font-size:.9rem}
 .ex-day.ex-none{cursor:default;color:var(--dim);opacity:.7;padding:6px 12px;font-size:.84rem}
@@ -1098,7 +1103,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 02.11.26 · 1700</span>
+      <span class="version-tag">🕒 Updated: 02.11.26 · 1730</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -2344,10 +2349,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
  <h2 lang="zh">💰 行程费用 · 预付 + 每日支出</h2><h2 lang="en">💰 Trip expenses · Prepaid + daily spending</h2>
  <div id="ex-total"></div><div id="ex-meta"></div>
  <div class="ex-tabs" role="group" aria-label="View">
-  <button type="button" data-ex-view="day" aria-pressed="true">📅 <span lang="zh">按日</span><span lang="en">By day</span></button>
+  <button type="button" data-ex-view="day" aria-pressed="true">📅 <span lang="zh">行程中（按日）</span><span lang="en">During trip (by day)</span></button>
   <button type="button" data-ex-view="type" aria-pressed="false">📊 <span lang="zh">按类别</span><span lang="en">By type</span></button>
-  <button type="button" data-ex-view="prepaid" aria-pressed="false">🧾 <span lang="zh">预付</span><span lang="en">Prepaid</span></button>
+  <button type="button" data-ex-view="prepaid" aria-pressed="false">💳 <span lang="zh">出发前</span><span lang="en">Before trip</span></button>
  </div>
+ <div id="ex-type-row" class="ex-type-row"></div>
  <div id="ex-view"></div>
  <div class="ex-actions">
   <button type="button" data-ex-viewall>👁 <span lang="zh">查看全部记录</span><span lang="en">View all records</span></button>
@@ -2361,6 +2367,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <li><span lang="zh">11 月 6–23 日每 3 小时自动处理：读取日期、商家、金额、付款卡与类别，改名为 yymmdd_商家_金额NOK，移入 z Archived，并更新本页。</span><span lang="en">Every 3 hours from 6–23 Nov, new receipts are read (date, shop, amount, card, type), renamed yymmdd_shop_amountNOK, moved to z Archived, and this page is updated.</span></li>
   <li><span lang="zh">看不清的收据会标记「待核实」，不会猜测金额。</span><span lang="en">Unclear receipts are marked “to verify” — amounts are never guessed.</span></li>
   <li><span lang="zh">SGD 按参考汇率换算；之后可按 Trust 账单的实际汇率核对。</span><span lang="en">SGD uses an indicative rate; it can be reconciled to the actual Trust statement rate later.</span></li>
+  <li><span lang="zh">「行程中」每日列表上方可按类别筛选（点一下类别芯片只看该类别，再点「全部」恢复）。</span><span lang="en">The "During trip" daily list has type chips above it — click one to filter to just that type, click "All" to go back.</span></li>
+  <li><span lang="zh">「出发前」= 出发前已刷卡/已预订的费用（机票、租车、住宿、保险）。信用卡账单截图或 PDF 上传后告诉我一声，我会读取并补进这个分类。</span><span lang="en">"Before trip" = charges already made or booked before departure (flights, car, stays, insurance). Upload a credit card statement screenshot or PDF and let me know — I'll read it and add the relevant lines here.</span></li>
  </ol></details>
 </div>
 <script id="ex-data" type="application/json">{"schema":1,"updated":"261021 1054","fx":{"NOK_per_SGD":7.34,"note":"Indicative NOK per SGD; actual Trust card rate can be reconciled later"},"prepaid":[{"type":"air","item":"Finnair — card charge posted 15 Jun","date":"260615","amount":1414.16,"currency":"SGD","status":"paid"},{"type":"air","item":"Finnair — card charge posted 16 Jun","date":"260616","amount":1414.16,"currency":"SGD","status":"paid"},{"type":"car","item":"SIXT 7–22 Nov, 16 rental days","date":"","amount":18668.55,"currency":"NOK","status":"booked"},{"type":"stay","item":"Wilderness Villa with the panorama lakeview","date":"","amount":3333.45,"currency":"NOK","status":"booked"},{"type":"stay","item":"Garsnes Brygge","date":"","amount":1762.69,"currency":"NOK","status":"booked"},{"type":"stay","item":"Sjøtun","date":"","amount":3600.0,"currency":"NOK","status":"booked"},{"type":"stay","item":"Lofoten Sea View Cabin","date":"","amount":3697.69,"currency":"NOK","status":"booked"},{"type":"stay","item":"Skårungen - Hotel, Cabins and Camping","date":"","amount":2868.75,"currency":"NOK","status":"booked"},{"type":"stay","item":"Fiskekrogen Rorbuer","date":"","amount":2049.11,"currency":"NOK","status":"booked"},{"type":"stay","item":"Eliassen Rorbuer","date":"","amount":6178.98,"currency":"NOK","status":"booked"},{"type":"stay","item":"Svinøya Rorbuer","date":"","amount":2116.12,"currency":"NOK","status":"booked"},{"type":"stay","item":"Gammelbanken Liland","date":"","amount":1450.0,"currency":"NOK","status":"booked"},{"type":"stay","item":"Feriehus ved Fjellfroskvatnet","date":"","amount":1912.04,"currency":"NOK","status":"booked"},{"type":"stay","item":"Ersfjordbotn Apartment (Airbnb)","date":"","amount":535.26,"currency":"SGD","status":"booked"},{"type":"insurance","item":"Singlife Travel Prestige — both travellers","date":"","amount":473.96,"currency":"SGD","status":"booked"}],"entries":[]}</script>
@@ -2409,7 +2417,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 02.11.26 · 1700</p>
+  <p class="version-tag">🕒 Updated: 02.11.26 · 1730</p>
 </footer>
 
 </div>
@@ -2947,7 +2955,7 @@ var DAYS=[['261106','D0','新加坡 → 赫尔辛基 → 特罗姆瑟（航班�
  ['261120','D14','B2 → B3 Feriehus Fjellfroskvatnet','B2 → B3 Feriehus Fjellfroskvatnet'],['261121','D15','B3 → B4 Ersfjordbotn','B3 → B4 Ersfjordbotn'],
  ['261122','D16','B4 → TOS 还车 · 回程航班','B4 → TOS car return · flight home'],['261123','D17','抵达新加坡','Arrive Singapore']];
 var PAY={Trust:['Trust','Trust'],Backup:['备用信用卡','Backup card'],Cash:['现金','Cash'],Other:['其他','Other']};
-var data=EMBED,src='embed',view='day';
+var data=EMBED,src='embed',view='day',typeFilter='all';
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function bi(zh,en){return '<span lang="zh">'+zh+'</span><span lang="en">'+en+'</span>'}
 function rate(){var r=Number(data.fx&&data.fx.NOK_per_SGD);return r>0?r:7.34}
@@ -2969,8 +2977,18 @@ function render(){
   root.querySelector('#ex-meta').innerHTML=bi('更新','Updated')+': '+esc(data.updated||'—')+' · '+(src==='live'?bi('在线数据','live data'):src==='cache'?bi('本机上次数据（离线）','last copy on this device (offline)'):bi('文件内快照','snapshot in this file'))+
     ' · NOK→SGD '+bi('参考汇率','indicative rate')+' '+rate()+' NOK = S$1';
   Array.prototype.forEach.call(root.querySelectorAll('[data-ex-view]'),function(b){b.setAttribute('aria-pressed',String(b.dataset.exView===view))});
+  var trow=root.querySelector('#ex-type-row');
+  if(view==='day'){
+    var present={};ent.forEach(function(x){present[x.type]=true});
+    var chips='<button type="button" class="ex-chip" data-ex-type="all" aria-pressed="'+String(typeFilter==='all')+'">'+bi('全部','All')+'</button>';
+    ORDER.forEach(function(k){if(!present[k])return;chips+='<button type="button" class="ex-chip" data-ex-type="'+k+'" aria-pressed="'+String(typeFilter===k)+'">'+tname(k)+'</button>'});
+    trow.innerHTML=chips;
+  } else {
+    trow.innerHTML='';
+  }
   var out=root.querySelector('#ex-view');
-  if(view==='day')out.innerHTML=byDay(ent);else if(view==='type')out.innerHTML=byType(pre,ent,tot);else out.innerHTML=prepaid(pre,tp);
+  var dayEnt=typeFilter==='all'?ent:ent.filter(function(x){return x.type===typeFilter});
+  if(view==='day')out.innerHTML=byDay(dayEnt,typeFilter);else if(view==='type')out.innerHTML=byType(pre,ent,tot);else out.innerHTML=prepaid(pre,tp);
 }
 function row(x){
   var p=PAY[x.payment]||PAY.Other;
@@ -2978,8 +2996,8 @@ function row(x){
     (x.note?'<small>'+esc(x.note)+'</small>':'')+(x.verify?'<small class="ex-warn">⚠ '+bi('待核实','to verify')+'</small>':'')+'</span>'+
     '<span class="ex-amt">'+(x.currency==='NOK'?'NOK '+f2(x.amount):esc(x.currency)+' '+f2(x.amount))+'<small>S$ '+f2(sgd(x))+'</small></span><span class="ex-pay">'+bi(p[0],p[1])+'</span></li>';
 }
-function byDay(ent){
-  if(!ent.length)return '<p class="ex-empty">'+bi('还没有行程支出。把收据照片上传到 Drive 收据文件夹，系统会自动记录（11 月 6–23 日每 3 小时更新）。','No on-trip expenses yet. Upload receipt photos to the Drive receipts folder and they are recorded automatically (updates every 3 hours, 6–23 Nov).')+'</p>';
+function byDay(ent,filterKey){
+  if(!ent.length)return '<p class="ex-empty">'+(filterKey&&filterKey!=='all'?bi('这个类别目前还没有记录。','No entries of this type yet.'):bi('还没有行程支出。把收据照片上传到 Drive 收据文件夹，系统会自动记录（11 月 6–23 日每 3 小时更新）。','No on-trip expenses yet. Upload receipt photos to the Drive receipts folder and they are recorded automatically (updates every 3 hours, 6–23 Nov).'))+'</p>';
   var by={};ent.forEach(function(x){(by[x.date]=by[x.date]||[]).push(x)});
   var known=DAYS.map(function(d){return d[0]}),extra=Object.keys(by).filter(function(d){return known.indexOf(d)<0}).sort();
   var cum=0,h='';
@@ -3024,7 +3042,8 @@ function load(){
 }
 root.addEventListener('click',function(e){
   var b=e.target.closest('button');if(!b)return;
-  if(b.dataset.exView){view=b.dataset.exView;render()}
+  if(b.dataset.exView){view=b.dataset.exView;typeFilter='all';render();return}
+  if(b.dataset.exType){typeFilter=b.dataset.exType;render();return}
   if(b.hasAttribute('data-ex-refresh'))load();
   if(b.hasAttribute('data-ex-csv')){var t=csv(),bl=new Blob([t],{type:'text/csv;charset=utf-8'}),a=document.createElement('a'),u=URL.createObjectURL(bl);a.href=u;a.download=fname();document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000)}
   if(b.hasAttribute('data-ex-viewall')&&window.TripViewer){var t2=csv();TripViewer.csv('全部费用记录 · All expense records',t2,{content:t2,type:'text/csv;charset=utf-8',name:fname()})}
