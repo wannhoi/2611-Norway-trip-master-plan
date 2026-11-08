@@ -102,6 +102,13 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .source-link:hover{background:var(--border)}
 .maps-btn{background:#16a34a;color:white}
 .maps-btn:hover{background:#15803d}
+.nav-quick{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:10px 0}
+.nav-big{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:10px;background:#16a34a;color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;line-height:1.25}
+.nav-big small{font-weight:500;opacity:.9;font-size:.74rem}
+.nav-big:hover{background:#15803d;text-decoration:none}
+.nav-big.air{background:#2563eb}
+.nav-copy{display:inline-block;margin:4px 0 8px;padding:9px 14px;border-radius:8px;border:0;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.85rem;cursor:pointer}
+
 .checkin-btn{flex:1 1 100%;order:3;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;text-align:center;box-sizing:border-box;border:1px solid var(--warn);background:var(--warn-soft);color:var(--warn);cursor:pointer;font-family:inherit}
 .checkin-btn:hover{background:var(--warn);color:#241a05}
 .ci-box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
@@ -1133,7 +1140,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 05.11.26 · 2046</span>
+      <span class="version-tag">🕒 Updated: 08.11.26 · 1930</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1175,7 +1182,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 <!-- ========== 路线与总览 (Overview & Map) ========== -->
 <section id="overview">
-  <div class="card" style="background:linear-gradient(135deg, #112834, #1a3b36);border:1px solid var(--accent);">
+  <div class="card" id="navQuick" style="border:1px solid #16a34a;">
+    <h2 lang="zh">🧭 一键导航（CarPlay）</h2><h2 lang="en">🧭 One-tap Navigation (CarPlay)</h2>
+    <p lang="zh">点任意住宿 → 自动打开 Google Maps 并从<strong>当前位置</strong>算好路线 → 点「开始」即可，iPhone 连接 CarPlay 后会同步显示。</p>
+    <p lang="en">Tap any stay → Google Maps opens with a route from <strong>where you are now</strong> → tap Start; it shows on CarPlay when your iPhone is connected.</p>
+    <div class="nav-quick"><a class="nav-big air" href="https://www.google.com/maps/dir/?api=1&destination=Troms%C3%B8+Airport&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="TOS" data-nav-name="Tromsø Airport 机场"><span>🧭 TOS · Tromsø Airport 机场</span><small>Pickup / drop-off</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="A1" data-nav-name="Wilderness Villa"><span>🧭 A1 · Wilderness Villa</span><small>7–9 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=68.86945,17.769283&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="A2" data-nav-name="Garsnes Brygge"><span>🧭 A2 · Garsnes Brygge</span><small>9–10 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=68.7331,16.189183&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="A3" data-nav-name="Sjøtun"><span>🧭 A3 · Sjøtun</span><small>10–12 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=68.392317,14.588317&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="A4" data-nav-name="Lofoten Sea View Cabin"><span>🧭 A4 · Lofoten Sea View Cabin</span><small>12–14 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=68.206367,14.42585&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="A5" data-nav-name="Skårungen"><span>🧭 A5 · Skårungen</span><small>14–15 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=68.15375,14.20345&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="A6" data-nav-name="Fiskekrogen Rorbuer"><span>🧭 A6 · Fiskekrogen Rorbuer</span><small>15–16 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=67.94615,13.133567&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="A7" data-nav-name="Eliassen Rorbuer"><span>🧭 A7 · Eliassen Rorbuer</span><small>16–18 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=68.234367,14.57965&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="B1" data-nav-name="Svinøya Rorbuer"><span>🧭 B1 · Svinøya Rorbuer</span><small>18–19 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=68.47635,16.883867&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="B2" data-nav-name="Gammelbanken Liland"><span>🧭 B2 · Gammelbanken Liland</span><small>19–20 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=69.066067,19.312617&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="B3" data-nav-name="Fjellfroskvatnet House"><span>🧭 B3 · Fjellfroskvatnet House</span><small>20–21 Nov 2026</small></a><a class="nav-big " href="https://www.google.com/maps/dir/?api=1&destination=69.689822,18.59504&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" data-nav-code="B4" data-nav-name="Ersfjordbotn"><span>🧭 B4 · Ersfjordbotn</span><small>21–22 Nov 2026</small></a></div>
+    <button type="button" class="nav-copy" id="navCopyBtn"><span lang="zh">📋 复制全部链接（粘贴到 WhatsApp）</span><span lang="en">📋 Copy all links (paste into WhatsApp)</span></button>
+    <p lang="zh" style="font-size:.78rem;opacity:.85">若在 WhatsApp 内置浏览器里打不开：长按链接 → 在浏览器/Google 地图中打开。</p>
+    <p lang="en" style="font-size:.78rem;opacity:.85">If it won't open inside WhatsApp's in-app browser: long-press the link → open in browser / Google Maps.</p>
+  </div>
+    <div class="card" style="background:linear-gradient(135deg, #112834, #1a3b36);border:1px solid var(--accent);">
     <h2 lang="zh">🗺️ 分组路线导航总览 (Group 1: A1–A7 去程 & Group 2: B1–B4 返程)</h2>
     <h2 lang="en">🗺️ Grouped Route Navigation (Group 1: A1–A7 Outbound & Group 2: B1–B4 Return)</h2>
     <p lang="zh" style="margin-bottom:12px">为确保 Google Maps 完整展示所有途经点不被截断，路线已分为两组独立导航：</p>
@@ -1282,7 +1298,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: TOS Airport → Brensholmen Ferry → A1 Silsand (~2h 23m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=Troms%C3%B8+Airport&destination=69.2471,17.6377" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=Troms%C3%B8+Airport&destination=69.2471,17.6377" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="A1"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1311,7 +1327,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: A1 Silsand → A2 Sjøvegan (85 km, 1h 25m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=68.86945,17.769283" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=68.86945,17.769283" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=68.86945,17.769283&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.86945,17.769283&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="A2"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1340,7 +1356,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: A2 Sjøvegan → A3 Vebbestad (125 km, 2h 10m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=68.86945,17.769283&destination=68.7331,16.189183" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.86945,17.769283&destination=68.7331,16.189183" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=68.7331,16.189183&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.7331,16.189183&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="A3"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1369,7 +1385,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: A3 Vebbestad → A4 Laukvik (195 km, 3h 15m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=68.7331,16.189183&destination=68.392317,14.588317" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.7331,16.189183&destination=68.392317,14.588317" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=68.392317,14.588317&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.392317,14.588317&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="A4"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1398,7 +1414,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: A4 Laukvik → A5 Kabelvåg (40 km, 45m) — ⚠️ SVJ Airport zone</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=68.392317,14.588317&destination=68.206367,14.42585" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.392317,14.588317&destination=68.206367,14.42585" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=68.206367,14.42585&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.206367,14.42585&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="A5"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1427,7 +1443,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: A5 Kabelvåg → A6 Henningsvær (25 km, 30m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=68.206367,14.42585&destination=68.15375,14.20345" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.206367,14.42585&destination=68.15375,14.20345" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=68.15375,14.20345&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.15375,14.20345&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="A6"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1457,7 +1473,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: A6 Henningsvær → A7 Hamnøy (110 km, 2h 10m) — Centerpiece stay</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=68.15375,14.20345&destination=67.94615,13.133567" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.15375,14.20345&destination=67.94615,13.133567" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=67.94615,13.133567&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=67.94615,13.133567&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="A7"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1486,7 +1502,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: A7 Hamnøy → B1 Svolvær (120 km, 2h 15m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=67.94615,13.133567&destination=68.234367,14.57965" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=67.94615,13.133567&destination=68.234367,14.57965" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=68.234367,14.57965&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.234367,14.57965&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="B1"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1515,7 +1531,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: B1 Svolvær → B2 Liland (165 km, 2h 30m) — ⚠️ EVE Airport zone</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=68.234367,14.57965&destination=68.47635,16.883867" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.234367,14.57965&destination=68.47635,16.883867" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=68.47635,16.883867&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.47635,16.883867&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="B2"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1544,7 +1560,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">Route Leg: B2 Liland → B3 Skjold (145 km, 2h 15m) — Premium clear skies</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=68.47635,16.883867&destination=69.066067,19.312617" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.47635,16.883867&destination=69.066067,19.312617" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=69.066067,19.312617&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.066067,19.312617&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="B3"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1574,7 +1590,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="notes-area">21 Nov: B3 → B4 Ersfjordbotn (≈116 km, 2h 11m). 22 Nov: B4 → TOS (≈16.5 km, 24 min); check out by 11:00, SIXT return 15:30. Check-in is via building staff — message host Bjørn in the Airbnb app before arrival for entry instructions. Host tips: free parking right in front of the house; darker aurora spots a short walk away. Replaces the Booking.com "Best view of Aurora Borealis" stay (cancelled free, 14 Oct 2026).</div>
         <div class="link-bar">
           <a href="documents/27-261121-airbnb-ersfjordbotn-confirmation.pdf" class="source-link" data-source-link="source-14" lang="zh">📁 确认函</a><a href="documents/27-261121-airbnb-ersfjordbotn-confirmation.pdf" class="source-link" data-source-link="source-14" lang="en">📁 Confirmation</a>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=69.066067,19.312617&destination=69.689822,18.595040" target="_blank" class="maps-btn" lang="zh">📍 导航</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.066067,19.312617&destination=69.689822,18.595040" target="_blank" class="maps-btn" lang="en">📍 Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=69.689822,18.595040&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.689822,18.595040&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
           <button type="button" class="checkin-btn" data-checkin="B4"><span lang="zh">🔑 入住须知</span><span lang="en">🔑 Check-in Info</span></button>
         </div>
       </div>
@@ -1595,76 +1611,76 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <p lang="en"><strong>Route:</strong> TOS Airport → <strong>Brensholmen Ferry</strong> → Senja [A1] ｜ ~2h 23m (Plan B land route via E8/E6 if ferry closed due to weather)</p>
       <p lang="zh"><strong>⛽ 加油：</strong>✅ 取车=满油出发 → 抵达塞尼亚前补满</p>
       <p class="pill grocery" lang="zh">🛒 顺路采购：离开机场经停 <a href="https://www.google.com/maps/search/?api=1&query=Rema+1000+Kvaloysletta" target="_blank" style="color:var(--grocery);text-decoration:underline">Kvaløysletta</a>（Rema 1000 / Coop Extra）提前购足车载零食与周日食物</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=Brensholmen+ferry+kai" target="_blank" class="link-btn" lang="zh">🗺 Google Maps 渡轮路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=Brensholmen+ferry+kai" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Ferry Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=Brensholmen+ferry+kai&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺 Google Maps 渡轮路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=Brensholmen+ferry+kai&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Ferry Route</a></div>
       <div style="margin-top:10px;background:var(--surface-2);border-radius:8px;padding:10px 12px">
         <p lang="zh" style="margin:0 0 6px 0"><strong>🪨 顺路去 Tungeneset 魔鬼牙栈道？3 条路线选项</strong>（取车后，天气允许就走渡轮最顺路）：</p>
         <p lang="en" style="margin:0 0 6px 0"><strong>🪨 Fitting in Tungeneset after car pickup? 3 route options</strong> (ferry is most direct if the weather's fine):</p>
         <p lang="zh" style="margin:4px 0">① <strong>渡轮 + 直接前往</strong>：TOS → Brensholmen 渡轮 → Botnhamn → Tungeneset → 再南下 A1 锡尔桑。渡轮段约 35 分钟航程，之后约 1 小时沿海岸公路到 Tungeneset；最省时，但完全依赖渡轮航班与海况。</p>
         <p lang="en" style="margin:4px 0">① <strong>Ferry + straight there</strong>: TOS → Brensholmen ferry → Botnhamn → Tungeneset → then south to A1 Silsand. ~35 min crossing, then ~1h along the coast road to Tungeneset — fastest option, but fully dependent on the ferry running and calm seas.</p>
-        <div style="margin:4px 0 10px 0"><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=69.2471,17.6377&waypoints=Brensholmen+ferry+kai|69.6754,17.0117&travelmode=driving" target="_blank" class="link-btn" lang="zh">🗺️ 路线① 渡轮直达</a><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=69.2471,17.6377&waypoints=Brensholmen+ferry+kai|69.6754,17.0117&travelmode=driving" target="_blank" class="link-btn" lang="en">🗺️ Option① Ferry direct</a></div>
+        <div style="margin:4px 0 10px 0"><a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&waypoints=Brensholmen+ferry+kai|69.6754,17.0117&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ 路线① 渡轮直达</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&waypoints=Brensholmen+ferry+kai|69.6754,17.0117&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Option① Ferry direct</a></div>
         <p lang="zh" style="margin:4px 0">② <strong>渡轮 + 先入住再日游</strong>：TOS → 渡轮 → 直接到 A1 锡尔桑办理入住，稍作休息；Tungeneset 留到 D2（11/8）当天再专程来回，不赶路、也能挑天气更好的时段去。</p>
         <p lang="en" style="margin:4px 0">② <strong>Ferry + check in first, day-trip later</strong>: TOS → ferry → straight to A1 Silsand to check in and rest; save Tungeneset for D2 (11/8) as an unhurried round trip, so you can pick the better-weather window.</p>
-        <div style="margin:4px 0 10px 0"><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=69.6754,17.0117&travelmode=driving" target="_blank" class="link-btn" lang="zh">🗺️ 路线② A1↔Tungeneset 往返</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=69.6754,17.0117&travelmode=driving" target="_blank" class="link-btn" lang="en">🗺️ Option② A1↔Tungeneset round trip</a></div>
+        <div style="margin:4px 0 10px 0"><a href="https://www.google.com/maps/dir/?api=1&destination=69.6754,17.0117&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ 路线② A1↔Tungeneset 往返</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.6754,17.0117&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Option② A1↔Tungeneset round trip</a></div>
         <p lang="zh" style="margin:4px 0">③ <strong>备用陆路 Plan B（渡轮因风浪停航时）</strong>：TOS → E8→E6→Fv855→Fv86（不经渡轮，约 189 km／~3h15m 到 A1）→ 再由 Fv863 绕到 Tungeneset。全程较长，仅在渡轮停航时使用。</p>
         <p lang="en" style="margin:4px 0">③ <strong>Land-only Plan B (if the ferry is weathered off)</strong>: TOS → E8→E6→Fv855→Fv86 (no ferry, ~189 km / ~3h15m to A1) → then Fv863 around to Tungeneset. Considerably longer — only use if the ferry isn't running.</p>
-        <div style="margin:4px 0 0 0"><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=69.6754,17.0117&travelmode=driving" target="_blank" class="link-btn" lang="zh">🗺️ 路线③ 陆路绕行</a><a href="https://www.google.com/maps/dir/?api=1&origin=Tromso+Airport&destination=69.6754,17.0117&travelmode=driving" target="_blank" class="link-btn" lang="en">🗺️ Option③ Land detour</a></div>
+        <div style="margin:4px 0 0 0"><a href="https://www.google.com/maps/dir/?api=1&destination=69.6754,17.0117&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ 路线③ 陆路绕行</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.6754,17.0117&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Option③ Land detour</a></div>
         <p class="pg-note" style="margin:10px 0 0 0;font-size:.82rem;color:var(--dim)"><span lang="zh">⏱ 各路线的实际里程/时间以点击链接后 Google Maps 实时计算为准（会反映当天路况与是否能排渡轮），这里只给路径与取舍逻辑。出发前务必查 <a href="https://www.torghatten-nord.no" target="_blank" rel="noopener">Torghatten Nord</a> 的冬季渡轮班次。</span><span lang="en">⏱ Exact distance/time will come from Google Maps live when you open each link (it reflects the day's conditions and ferry slot). These three just lay out the routing logic. Check <a href="https://www.torghatten-nord.no" target="_blank" rel="noopener">Torghatten Nord</a>'s winter ferry timetable before you go.</span></p>
       </div>
     </div>
     <div class="day-card">
       <h3>📍 D2｜11/8 — 塞尼亚岛内 [A1]</h3>
       <p lang="zh"><strong>路线：</strong>岛内游览｜短途驾驶 ⚠️ 周日无大超市</p><p lang="en"><strong>Route:</strong> Senja local sightseeing ⚠️ Sunday closures</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=69.2471,17.6377" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=69.2471,17.6377" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D3｜11/9 — 塞尼亚 → 萨朗恩·Sjøvegan [A2]</h3>
       <p lang="zh"><strong>路线：</strong>Fv86→E8 → 约1小时25分</p><p lang="en"><strong>Route:</strong> Fv86→E8 → ~1h 25m</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=68.86945,17.769283" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.2471,17.6377&destination=68.86945,17.769283" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=68.86945,17.769283&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.86945,17.769283&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D4–D5｜11/10–12 — 萨朗恩 → 韦斯特罗伦·Vebbestad [A3]</h3>
       <p lang="zh"><strong>路线：</strong>E6/E10 → 约2小时10分</p><p lang="en"><strong>Route:</strong> E6/E10 → ~2h 10m</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.86945,17.769283&destination=68.7331,16.189183" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.86945,17.769283&destination=68.7331,16.189183" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=68.7331,16.189183&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.7331,16.189183&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D6–D7｜11/12–14 — 罗弗敦·劳克维克 [A4]</h3>
       <p lang="zh"><strong>路线：</strong>E10 → 约3小时15分 🔴 <strong>进入罗弗敦前必须加满油</strong></p><p lang="en"><strong>Route:</strong> E10 → ~3h 15m 🔴 <strong>Top up before Lofoten</strong></p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.7331,16.189183&destination=68.392317,14.588317" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.7331,16.189183&destination=68.392317,14.588317" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=68.392317,14.588317&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.392317,14.588317&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D8｜11/14 — 劳克维克 → 卡尔斯塔·Skårungen [A5]</h3>
       <p lang="zh"><strong>路线：</strong>Fv888→E10 → 约45分钟 ⚠️ 靠近SVJ机场5公里限飞区</p><p lang="en"><strong>Route:</strong> Fv888→E10 → ~45m ⚠️ SVJ 5km airport zone</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.392317,14.588317&destination=68.206367,14.42585" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.392317,14.588317&destination=68.206367,14.42585" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=68.206367,14.42585&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.206367,14.42585&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D9｜11/15 — 亨宁斯韦尔·Fiskekrogen [A6]</h3>
       <p lang="zh"><strong>路线：</strong>E10→Fv816 → 约30分钟</p><p lang="en"><strong>Route:</strong> E10→Fv816 → ~30m</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.206367,14.42585&destination=68.15375,14.20345" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.206367,14.42585&destination=68.15375,14.20345" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=68.15375,14.20345&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.15375,14.20345&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D10–D11｜11/16–18 — 雷纳/哈姆讷øy·Eliassen Rorbuer [A7]</h3>
       <p lang="zh"><strong>路线：</strong>Fv816→E10 → 约2小时10分</p><p lang="en"><strong>Route:</strong> Fv816→E10 → ~2h 10m</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.15375,14.20345&destination=67.94615,13.133567" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.15375,14.20345&destination=67.94615,13.133567" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=67.94615,13.133567&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=67.94615,13.133567&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D12｜11/18 — 斯沃尔韦尔·Svinøya [B1]</h3>
       <p lang="zh"><strong>路线：</strong>E10北上 → 约2小时15分</p><p lang="en"><strong>Route:</strong> E10 northbound → ~2h 15m</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=67.94615,13.133567&destination=68.234367,14.57965" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=67.94615,13.133567&destination=68.234367,14.57965" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=68.234367,14.57965&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.234367,14.57965&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D13｜11/19 — 利兰/埃弗内斯·Gammelbanken [B2]</h3>
       <p lang="zh"><strong>路线：</strong>E10 → 约2小时30分 ⚠️ 靠近EVE机场5公里缓冲区</p><p lang="en"><strong>Route:</strong> E10 → ~2h 30m ⚠️ EVE airport zone</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.234367,14.57965&destination=68.47635,16.883867" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.234367,14.57965&destination=68.47635,16.883867" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=68.47635,16.883867&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.47635,16.883867&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
       <h3>📍 D14｜11/20 — 莫尔塞尔夫/斯焦尔d·Feriehus [B3]</h3>
       <p lang="zh"><strong>路线：</strong>E10→E6 → 约2小时15分</p><p lang="en"><strong>Route:</strong> E10→E6 → ~2h 15m</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=68.47635,16.883867&destination=69.066067,19.312617" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=68.47635,16.883867&destination=69.066067,19.312617" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=69.066067,19.312617&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.066067,19.312617&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
     <div class="day-card">
-      <h3>📍 D15–D16｜11/21–22 — 特罗姆瑟 & 机场还车 [B4]</h3><p><strong>B4 · Ersfjordbotn – Apartment by the sea and mountains (Airbnb)</strong> · 21–22 Nov (1 night) · Ersfjordvegen 134, 9107 Tromsø. Check-in 15:00; check-out 11:00. SGD 535.26.</p><button class="btn" type="button" id="show-last-stay">🏡 View B4 accommodation / 查看最后一晚住宿</button><p><a class="link-btn" href="https://www.google.com/maps/dir/?api=1&amp;origin=69.689822,18.595040&amp;destination=Tromso+Airport&amp;travelmode=driving" target="_blank" rel="noopener">22 Nov: B4 → TOS airport / 机场还车</a> SIXT return 15:30 · flight 18:45.</p>
+      <h3>📍 D15–D16｜11/21–22 — 特罗姆瑟 & 机场还车 [B4]</h3><p><strong>B4 · Ersfjordbotn – Apartment by the sea and mountains (Airbnb)</strong> · 21–22 Nov (1 night) · Ersfjordvegen 134, 9107 Tromsø. Check-in 15:00; check-out 11:00. SGD 535.26.</p><button class="btn" type="button" id="show-last-stay">🏡 View B4 accommodation / 查看最后一晚住宿</button><p><a class="link-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Tromso+Airport&amp;travelmode=driving&amp;dir_action=navigate" target="_blank" rel="noopener">22 Nov: B4 → TOS airport / 机场还车</a> SIXT return 15:30 · flight 18:45.</p>
       <p lang="zh"><strong>路线：</strong>E6→E8 → 约1小时45分 🛒 周日采购提醒</p><p lang="en"><strong>Route:</strong> E6→E8 → ~1h 45m 🛒 Sunday prep</p>
-      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&origin=69.066067,19.312617&destination=69.689822,18.595040" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&origin=69.066067,19.312617&destination=69.689822,18.595040" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
+      <div style="margin-top:8px;"><a href="https://www.google.com/maps/dir/?api=1&destination=69.689822,18.595040&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="zh">🗺️ Google Maps 导航路线</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.689822,18.595040&travelmode=driving&dir_action=navigate" target="_blank" class="link-btn" lang="en">🗺️ Google Maps Route</a></div>
     </div>
   </div>
 </section>
@@ -2001,15 +2017,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <th><span lang="zh">海鲜专卖（如有）</span><span lang="en">Seafood specialty (if any)</span></th>
       </tr></thead>
       <tbody>
-        <tr><td><strong>Day 1 · TOS 取车后/After car pickup</strong></td><td><strong style="color:#16a34a">🌟 EUROSPAR Kvaløysletta 🛒</strong><a href="https://www.google.com/maps?q=69.6912,18.8642" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">取车后顺路先补货——机场往 Kvaløya 方向，比市区 Rema/Extra 更大、货品更齐全 / Right on the way from the airport toward Kvaløya — worth stopping here to stock up before heading out, bigger &amp; better stocked than the central Rema/Extra chains</span></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
-        <tr><td><strong>A1 Silsand</strong></td><td>Extra Silsand 🛒<a href="https://www.google.com/maps?q=69.2426,17.9491" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
-        <tr><td><strong>A2 Sjøvegan</strong></td><td>Extra Sjøvegan 🛒<a href="https://www.google.com/maps?q=68.877,17.8299" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
+        <tr><td><strong>Day 1 · TOS 取车后/After car pickup</strong></td><td><strong style="color:#16a34a">🌟 EUROSPAR Kvaløysletta 🛒</strong><a href="https://www.google.com/maps/dir/?api=1&destination=69.6912,18.8642&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">取车后顺路先补货——机场往 Kvaløya 方向，比市区 Rema/Extra 更大、货品更齐全 / Right on the way from the airport toward Kvaløya — worth stopping here to stock up before heading out, bigger &amp; better stocked than the central Rema/Extra chains</span></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
+        <tr><td><strong>A1 Silsand</strong></td><td>Extra Silsand 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=69.2426,17.9491&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
+        <tr><td><strong>A2 Sjøvegan</strong></td><td>Extra Sjøvegan 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=68.877,17.8299&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
         <tr><td><strong>A3 Vebbestad</strong></td><td><span lang="zh">村内无大型超市；<strong>离开 A2 前先补货</strong></span><span lang="en">No major supermarket in the village — <strong>stock up before leaving A2</strong></span></td><td>—</td><td>—</td></tr>
-        <tr><td><strong>A4 Laukvik</strong></td><td>Matkroken Laukvik 🛒<a href="https://www.google.com/maps?q=68.3882,14.4183" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><br><span class="pg-note" style="margin:0">小型本地店/small local shop, limited range</span></td><td>10:00–18:00（周六至16:00）<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
-        <tr><td><strong>A5 Kabelvåg</strong></td><td>Extra Kabelvåg 🛒<a href="https://www.google.com/maps?q=68.21,14.4769" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
-        <tr><td><strong>A6 Henningsvær</strong></td><td><span lang="zh">村内无大型超市；邻近 Extra Leknes 🛒<a href="https://www.google.com/maps?q=68.1488,13.6171" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（约在 A6→A7 沿途）</span><span lang="en">No major supermarket in the village itself; nearest is Extra Leknes 🛒 (right along the A6→A7 route)</span></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td><strong>Futurum Seafood</strong> 🐟<a href="https://www.google.com/maps?q=68.1541,14.2032" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">村内高品质鳕鱼/三文鱼，建议先电话确认零售时间 / in-village, excellent cod &amp; salmon — call ahead to confirm retail hours</span></td></tr>
-        <tr><td><strong>A6→A7 沿途/en route</strong></td><td>—</td><td>—</td><td><strong>Lofoten Seafood Center</strong> 🐟<a href="https://www.google.com/maps?q=68.0863,13.635" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（near Ballstad）<span class="pg-note" style="margin:0">周一至五 09:00–15:30，周末休；鲑鱼养殖+鳕鱼文化中心，鲜/冻海鲜零售 / Mon–Fri 09:00–15:30, closed weekends; salmon-farm &amp; stockfish heritage centre, sells fresh/frozen seafood</span></td></tr>
-        <tr><td><strong>A7 Hamnøy / Reine</strong></td><td>Extra Leknes 🛒<a href="https://www.google.com/maps?q=68.1488,13.6171" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（沿途经过/passed en route）</td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td><strong style="color:#0891b2">🌟 Anita's Sjømat</strong> 🐟<a href="https://www.google.com/maps?q=67.9419,13.1113" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（Sakrisøy，就在 A7 隔壁/right next door to A7）<span class="pg-note" style="margin:0">红色老屋海鲜店，海鲜浓汤/鱼堡+零售，几乎天天营业（周日 10:30–18:30），评价极高——<strong>很可能就是你记得的那家</strong> / Iconic red fisherman's cottage — seafood soup, fish burgers &amp; retail, open nearly every day (Sun 10:30–18:30), extremely well reviewed. <strong>Very likely the one you were trying to recall.</strong></span></td></tr>
+        <tr><td><strong>A4 Laukvik</strong></td><td>Matkroken Laukvik 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=68.3882,14.4183&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><br><span class="pg-note" style="margin:0">小型本地店/small local shop, limited range</span></td><td>10:00–18:00（周六至16:00）<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
+        <tr><td><strong>A5 Kabelvåg</strong></td><td>Extra Kabelvåg 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=68.21,14.4769&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
+        <tr><td><strong>A6 Henningsvær</strong></td><td><span lang="zh">村内无大型超市；邻近 Extra Leknes 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=68.1488,13.6171&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（约在 A6→A7 沿途）</span><span lang="en">No major supermarket in the village itself; nearest is Extra Leknes 🛒 (right along the A6→A7 route)</span></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td><strong>Futurum Seafood</strong> 🐟<a href="https://www.google.com/maps/dir/?api=1&destination=68.1541,14.2032&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">村内高品质鳕鱼/三文鱼，建议先电话确认零售时间 / in-village, excellent cod &amp; salmon — call ahead to confirm retail hours</span></td></tr>
+        <tr><td><strong>A6→A7 沿途/en route</strong></td><td>—</td><td>—</td><td><strong>Lofoten Seafood Center</strong> 🐟<a href="https://www.google.com/maps/dir/?api=1&destination=68.0863,13.635&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（near Ballstad）<span class="pg-note" style="margin:0">周一至五 09:00–15:30，周末休；鲑鱼养殖+鳕鱼文化中心，鲜/冻海鲜零售 / Mon–Fri 09:00–15:30, closed weekends; salmon-farm &amp; stockfish heritage centre, sells fresh/frozen seafood</span></td></tr>
+        <tr><td><strong>A7 Hamnøy / Reine</strong></td><td>Extra Leknes 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=68.1488,13.6171&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（沿途经过/passed en route）</td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td><strong style="color:#0891b2">🌟 Anita's Sjømat</strong> 🐟<a href="https://www.google.com/maps/dir/?api=1&destination=67.9419,13.1113&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（Sakrisøy，就在 A7 隔壁/right next door to A7）<span class="pg-note" style="margin:0">红色老屋海鲜店，海鲜浓汤/鱼堡+零售，几乎天天营业（周日 10:30–18:30），评价极高——<strong>很可能就是你记得的那家</strong> / Iconic red fisherman's cottage — seafood soup, fish burgers &amp; retail, open nearly every day (Sun 10:30–18:30), extremely well reviewed. <strong>Very likely the one you were trying to recall.</strong></span></td></tr>
       </tbody>
     </table></div>
   </div>
@@ -2025,10 +2041,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <th><span lang="zh">海鲜专卖（如有）</span><span lang="en">Seafood specialty (if any)</span></th>
       </tr></thead>
       <tbody>
-        <tr><td><strong>B1 Svolvær</strong></td><td>SPAR Svolvær 🛒<a href="https://www.google.com/maps?q=68.2337,14.5568" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>24 小时/24h<br><span style="color:var(--danger)">仅周日休/Sun closed only</span></td><td>Svolvær Seafood 🐟<a href="https://www.google.com/maps?q=68.2291,14.5545" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">帝王蟹/海螯虾批发，仅收现金，帝王蟹通常仅周四供应，建议先电话确认 / King crab &amp; langoustine wholesaler, cash only, king crab usually Thursdays only — call ahead</span></td></tr>
-        <tr><td><strong>B2 Liland</strong></td><td>Joker Liland 🛒<a href="https://www.google.com/maps?q=68.4768,16.8851" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><br><span class="pg-note" style="margin:0">小型本地店/small local shop</span></td><td>08:00–19:00（周六至17:00）<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
-        <tr><td><strong>B3 Skjold</strong></td><td>Extra Øverbygd 🛒<a href="https://www.google.com/maps?q=69.0246,19.2956" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><br><span class="pg-note" style="margin:0">Skjold 本地无大超市，最近的在此（约 5km）/ Skjold itself has none — this is the nearest, ~5km away</span></td><td>07:00–22:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
-        <tr><td><strong>B4 Ersfjordbotn / TOS</strong></td><td><strong style="color:#16a34a">🌟 EUROSPAR Kvaløysletta 🛒</strong><a href="https://www.google.com/maps?q=69.6912,18.8642" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">大型超市，就在 Kvaløya 岛上近 B4；同一家 Day 1 取车后也可顺路先去补货，比 Rema/Extra 更大、货品更齐全，熏三文鱼/熟食区评价很好 / Large supermarket right on Kvaløya near B4 — the same shop you can stop at right after car pickup on Day 1 too. Bigger &amp; better stocked than the Rema/Extra chains, well-reviewed smoked salmon &amp; hot-food counter</span><br><span class="pg-note" style="margin:0">市区另有连锁超市可选/chain supermarkets also available once back in central Tromsø</span></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>Dragøy Jekta 🐟<a href="https://www.google.com/maps?q=69.6743,18.9207" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（近 B4/close to B4）<span class="pg-note" style="margin:0">家常鲜鱼熟食外带，10:00–21:00（周六至18:00），周日休 / casual fresh-fish takeaway, 10:00–21:00 (Sat to 18:00), closed Sundays</span><br>Fiskekompaniet 🐟<a href="https://www.google.com/maps?q=69.6501,18.9602" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（市区/city centre）<span class="pg-note" style="margin:0">高级海鲜餐厅，适合最后一晚犒赏自己，周日休 / upscale seafood restaurant, a nice treat on the last night, closed Sundays</span></td></tr>
+        <tr><td><strong>B1 Svolvær</strong></td><td>SPAR Svolvær 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=68.2337,14.5568&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a></td><td>24 小时/24h<br><span style="color:var(--danger)">仅周日休/Sun closed only</span></td><td>Svolvær Seafood 🐟<a href="https://www.google.com/maps/dir/?api=1&destination=68.2291,14.5545&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">帝王蟹/海螯虾批发，仅收现金，帝王蟹通常仅周四供应，建议先电话确认 / King crab &amp; langoustine wholesaler, cash only, king crab usually Thursdays only — call ahead</span></td></tr>
+        <tr><td><strong>B2 Liland</strong></td><td>Joker Liland 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=68.4768,16.8851&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><br><span class="pg-note" style="margin:0">小型本地店/small local shop</span></td><td>08:00–19:00（周六至17:00）<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
+        <tr><td><strong>B3 Skjold</strong></td><td>Extra Øverbygd 🛒<a href="https://www.google.com/maps/dir/?api=1&destination=69.0246,19.2956&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><br><span class="pg-note" style="margin:0">Skjold 本地无大超市，最近的在此（约 5km）/ Skjold itself has none — this is the nearest, ~5km away</span></td><td>07:00–22:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>—</td></tr>
+        <tr><td><strong>B4 Ersfjordbotn / TOS</strong></td><td><strong style="color:#16a34a">🌟 EUROSPAR Kvaløysletta 🛒</strong><a href="https://www.google.com/maps/dir/?api=1&destination=69.6912,18.8642&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a><span class="pg-note" style="margin:0">大型超市，就在 Kvaløya 岛上近 B4；同一家 Day 1 取车后也可顺路先去补货，比 Rema/Extra 更大、货品更齐全，熏三文鱼/熟食区评价很好 / Large supermarket right on Kvaløya near B4 — the same shop you can stop at right after car pickup on Day 1 too. Bigger &amp; better stocked than the Rema/Extra chains, well-reviewed smoked salmon &amp; hot-food counter</span><br><span class="pg-note" style="margin:0">市区另有连锁超市可选/chain supermarkets also available once back in central Tromsø</span></td><td>07:00–23:00<br><span style="color:var(--danger)">周日休/Sun closed</span></td><td>Dragøy Jekta 🐟<a href="https://www.google.com/maps/dir/?api=1&destination=69.6743,18.9207&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（近 B4/close to B4）<span class="pg-note" style="margin:0">家常鲜鱼熟食外带，10:00–21:00（周六至18:00），周日休 / casual fresh-fish takeaway, 10:00–21:00 (Sat to 18:00), closed Sundays</span><br>Fiskekompaniet 🐟<a href="https://www.google.com/maps/dir/?api=1&destination=69.6501,18.9602&travelmode=driving&dir_action=navigate" target="_blank" rel="noopener" style="margin-left:4px;text-decoration:none">📍</a>（市区/city centre）<span class="pg-note" style="margin:0">高级海鲜餐厅，适合最后一晚犒赏自己，周日休 / upscale seafood restaurant, a nice treat on the last night, closed Sundays</span></td></tr>
       </tbody>
     </table></div>
     <p class="pg-note" style="margin-top:10px"><span lang="zh">⚠️ 以上营业时间来自公开资料，节假日/季节可能调整，建议出发前用 Google Maps 再次核实。</span><span lang="en">⚠️ Hours above are from public listings and may shift on holidays or by season — worth a quick double-check on Google Maps before you go.</span></p>
@@ -2721,7 +2737,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 05.11.26 · 2046</p>
+  <p class="version-tag">🕒 Updated: 08.11.26 · 1930</p>
 </footer>
 
 </div>
@@ -2938,7 +2954,7 @@ function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&am
 function bi(zh,en){return '<span lang="zh">'+zh+'</span><span lang="en">'+en+'</span>'}
 function hm(m){var h=Math.floor(m/60),r=Math.round(m%60);return (h?h+'h ':'')+(h&&r<10?'0':'')+r+'m'}
 function km(v){return Math.round(v)+' km'}
-function nav(lat,lon){return 'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(lat+','+lon)+'&travelmode=driving'}
+function nav(lat,lon){return 'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(lat+','+lon)+'&travelmode=driving&dir_action=navigate'}
 function pin(label,cls){return L.divIcon({className:'nm-pinwrap',html:'<span class="nm-pin '+cls+'">'+label+'</span>',iconSize:[0,0],iconAnchor:[0,0]})}
 function dot(label,cls){return L.divIcon({className:'nm-pinwrap',html:'<span class="nm-dot '+cls+'">'+label+'</span>',iconSize:[0,0],iconAnchor:[0,0]})}
 function name(k){var p=D.pts[k];return p?bi(esc(p.zh),esc(p.en)):esc(k)}
@@ -3095,7 +3111,7 @@ let config=seed;try{const cached=JSON.parse(localStorage.getItem(key));if(cached
 const $=id=>document.getElementById(id),escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function validID(id){return typeof id==='string'&&/^[A-Za-z0-9_-]{6,200}$/.test(id)}
 for(const g of ['A','B']){if(!config[g]||!validID(config[g].mid))config[g]={mid:'',embed:false};config[g].embed=config[g].embed===true}
-function navURL(p){return 'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(p.lat+','+p.lon)+'&travelmode=driving'}
+function navURL(p){return 'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(p.lat+','+p.lon)+'&travelmode=driving&dir_action=navigate'}
 function mapURL(g){return 'https://www.google.com/maps/d/viewer?mid='+encodeURIComponent(config[g].mid)}
 function csv(g){const rows=[['Code','ShortName','Accommodation','Address','Latitude','Longitude','CheckIn','CheckOut','StayDates','Nights','NavigationURL']];points.filter(p=>p.code.startsWith(g)).forEach(p=>rows.push([p.code,p.short,p.name,p.address,p.lat,p.lon,p.checkin,p.checkout,p.dates,p.nights,navURL(p)]));return '\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n')}
 function norwayTimestampName(){const parts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Singapore',day:'numeric',month:'numeric',year:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).map(p=>[p.type,p.value]));return `挪威旅行_终极版_(${Number(parts.day)}.${Number(parts.month)}.${parts.year})_${parts.hour}${parts.minute}.html`}function download(content,type,name){const blob=new Blob([content],{type}),a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
@@ -3213,7 +3229,7 @@ function kml(title,text,dl,note){
     var name=(p.getElementsByTagName('name')[0]||{}).textContent||'',desc=(p.getElementsByTagName('description')[0]||{}).textContent||'';
     var pt=p.getElementsByTagName('Point')[0],ls=p.getElementsByTagName('LineString')[0];
     var co=((p.getElementsByTagName('coordinates')[0]||{}).textContent||'').trim().split(/\s+/).filter(Boolean).map(function(x){return x.split(',').map(Number)});
-    if(pt&&co[0])rows.push([folder,name,'📍 Pin',desc,co[0][1],co[0][0],'https://www.google.com/maps/dir/?api=1&destination='+co[0][1]+','+co[0][0]+'&travelmode=driving']);
+    if(pt&&co[0])rows.push([folder,name,'📍 Pin',desc,co[0][1],co[0][0],'https://www.google.com/maps/dir/?api=1&destination='+co[0][1]+','+co[0][0]+'&travelmode=driving&dir_action=navigate']);
     else if(ls)rows.push([folder,name,'〰 Route',(desc?desc+' · ':'')+co.length+' points · ~'+Math.round(km(co))+' km drawn','','','']);
   });
   open(title+' <small>· '+(rows.length-1)+' '+bi('项','items')+'</small>',table(rows),dl,note);
@@ -3577,5 +3593,12 @@ label();setInterval(label,60000);
 })();
 </script>
 <!-- FREE-CANCEL-CALENDAR END -->
+<script>
+(function(){document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#navCopyBtn');if(!b)return;
+var t=Array.prototype.map.call(document.querySelectorAll('#navQuick a.nav-big'),function(a){return a.getAttribute('data-nav-code')+' '+a.getAttribute('data-nav-name')+'\n'+a.href}).join('\n\n');
+function done(){var o=b.innerHTML;b.textContent='✅ Copied';setTimeout(function(){b.innerHTML=o},1800)}
+try{navigator.clipboard.writeText(t).then(done,fb)}catch(x){fb()}
+function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(ta);done()}})})();
+</script>
 </body>
 </html>
