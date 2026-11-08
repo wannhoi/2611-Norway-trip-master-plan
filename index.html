@@ -111,6 +111,9 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 
 .checkin-btn{flex:1 1 100%;order:3;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;text-align:center;box-sizing:border-box;border:1px solid var(--warn);background:var(--warn-soft);color:var(--warn);cursor:pointer;font-family:inherit}
 .checkin-btn:hover{background:var(--warn);color:#241a05}
+.past-toggle-on{border-color:var(--accent)!important;background:var(--accent-soft)!important;color:var(--accent)!important;font-weight:600}
+.card.stay-past{opacity:.5}
+.stay-past-badge{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;color:var(--dim);background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:2px 7px;margin-left:8px}
 .ci-box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
 .ci-row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.9rem}
 .ci-row:last-child{border-bottom:0}
@@ -1140,7 +1143,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 08.11.26 · 1930</span>
+      <span class="version-tag">🕒 Updated: 08.11.26 · 2015</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1270,6 +1273,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <button class="filter-btn" onclick="filterRegion('Lofoten')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;cursor:pointer;">Lofoten (A4-B1)</button>
       <button class="filter-btn" onclick="filterRegion('Tromso')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;cursor:pointer;">Tromsø / Return (B2-B4)</button>
     </div>
+    <button type="button" id="pastStaysToggle" class="filter-btn past-toggle-on" style="padding:8px 12px;border-radius:6px;cursor:pointer;white-space:nowrap;" onclick="togglePastStays()">
+      <span lang="zh" id="pastStaysLabelZh">🙈 自动隐藏已退房 (<span id="pastStaysCountZh">0</span>)</span><span lang="en" id="pastStaysLabelEn">🙈 Auto-hiding checked-out (<span id="pastStaysCountEn">0</span>)</span>
+    </button>
   </div>
 
   <div class="grid" id="cardGrid">
@@ -2737,7 +2743,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 08.11.26 · 1930</p>
+  <p class="version-tag">🕒 Updated: 08.11.26 · 2015</p>
 </footer>
 
 </div>
@@ -2772,29 +2778,93 @@ tabs.forEach(t=>{
   };
 });
 
-// ===== 住宿卡片搜索与地区筛选 =====
+// ===== 住宿卡片搜索、地区筛选与退房后自动隐藏 =====
+// Checkout deadline (local Norway time, UTC+1 in November — no DST) per booking confirmation.
+// Window end-time used where the confirmation gives a range (e.g. 07:00-12:00 -> 12:00).
+// A1's Booking.com confirmation shows a generic "00:00-00:00" (no fixed time set by the
+// property), so it falls back to the standard 11:00 checkout used across the other stays,
+// flagged `assumed` rather than treated as a real confirmed time.
+var STAY_CHECKOUT = {
+  A1:{iso:'2026-11-09T11:00:00+01:00',assumed:true},
+  A2:{iso:'2026-11-10T12:00:00+01:00'},
+  A3:{iso:'2026-11-12T11:30:00+01:00'},
+  A4:{iso:'2026-11-14T12:00:00+01:00'},
+  A5:{iso:'2026-11-15T11:00:00+01:00'},
+  A6:{iso:'2026-11-16T11:00:00+01:00'},
+  A7:{iso:'2026-11-18T11:00:00+01:00'},
+  B1:{iso:'2026-11-19T11:00:00+01:00'},
+  B2:{iso:'2026-11-20T12:00:00+01:00'},
+  B3:{iso:'2026-11-21T12:00:00+01:00'},
+  B4:{iso:'2026-11-22T11:00:00+01:00'}
+};
+var curQuery = '', curRegion = 'all', hidePastStays = true;
+
+function stayCode(card){ var t = card.getAttribute('data-search')||''; return t.split(' ')[0].toUpperCase(); }
+
+function updateStayStatus(){
+  var now = Date.now();
+  document.querySelectorAll('#cardGrid .card').forEach(function(card){
+    var co = STAY_CHECKOUT[stayCode(card)];
+    var isPast = !!co && now >= Date.parse(co.iso);
+    card.classList.toggle('stay-past', isPast);
+    var header = card.firstElementChild;
+    var badge = card.querySelector('.stay-past-badge');
+    if (isPast && header && !badge) {
+      badge = document.createElement('span');
+      badge.className = 'stay-past-badge';
+      badge.innerHTML = (co.assumed
+        ? '<span lang="zh">✅ 已退房（预估时间）</span><span lang="en">✅ Checked out (est. time)</span>'
+        : '<span lang="zh">✅ 已退房</span><span lang="en">✅ Checked out</span>');
+      header.appendChild(badge);
+    } else if (!isPast && badge) {
+      badge.remove();
+    }
+  });
+  var pastCount = document.querySelectorAll('#cardGrid .card.stay-past').length;
+  var zh = document.getElementById('pastStaysCountZh'), en = document.getElementById('pastStaysCountEn');
+  if (zh) zh.textContent = pastCount; if (en) en.textContent = pastCount;
+}
+
+function applyCardVisibility(){
+  document.querySelectorAll('#cardGrid .card').forEach(function(card){
+    var matchesSearch = (card.getAttribute('data-search')||'').includes(curQuery);
+    var matchesRegion = curRegion === 'all' || card.getAttribute('data-region') === curRegion;
+    var passesPast = !hidePastStays || !card.classList.contains('stay-past');
+    card.style.display = (matchesSearch && matchesRegion && passesPast) ? 'flex' : 'none';
+  });
+}
+
 function filterCards() {
-    let query = document.getElementById('searchInput').value.toLowerCase();
-    let cards = document.querySelectorAll('#cardGrid .card');
-    cards.forEach(card => {
-        let text = card.getAttribute('data-search');
-        card.style.display = text.includes(query) ? "flex" : "none";
-    });
+  curQuery = document.getElementById('searchInput').value.toLowerCase();
+  applyCardVisibility();
 }
 
 function filterRegion(region) {
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    let cards = document.querySelectorAll('#cardGrid .card');
-    cards.forEach(card => {
-        if(region === 'all' || card.getAttribute('data-region') === region) {
-            card.style.display = "flex";
-        } else {
-            card.style.display = "none";
-        }
-    });
+  document.querySelectorAll('.filter-buttons .filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  curRegion = region;
+  applyCardVisibility();
 }
+
+function togglePastStays() {
+  hidePastStays = !hidePastStays;
+  var btn = document.getElementById('pastStaysToggle');
+  btn.classList.toggle('past-toggle-on', hidePastStays);
+  var labZh = document.getElementById('pastStaysLabelZh'), labEn = document.getElementById('pastStaysLabelEn');
+  if (hidePastStays) {
+    labZh.innerHTML = '🙈 自动隐藏已退房 (<span id="pastStaysCountZh"></span>)';
+    labEn.innerHTML = '🙈 Auto-hiding checked-out (<span id="pastStaysCountEn"></span>)';
+  } else {
+    labZh.innerHTML = '👁️ 显示已退房 (<span id="pastStaysCountZh"></span>)';
+    labEn.innerHTML = '👁️ Showing checked-out (<span id="pastStaysCountEn"></span>)';
+  }
+  updateStayStatus();
+  applyCardVisibility();
+}
+
+updateStayStatus();
+applyCardVisibility();
+setInterval(function(){ updateStayStatus(); applyCardVisibility(); }, 5 * 60 * 1000);
 
 // ===== 油量滑动条 =====
 const slider=document.getElementById('fuelSlider');
