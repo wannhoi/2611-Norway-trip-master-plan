@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "261021 1054",
+ "updated": "261108 0830",
  "fx": {
   "NOK_per_SGD": 7.34,
   "note": "Indicative NOK per SGD; actual Trust card rate can be reconciled later"
@@ -127,5 +127,28 @@
    "status": "booked"
   }
  ],
- "entries": []
+ "entries": [
+  {
+   "date": "261107",
+   "time": "0840",
+   "type": "groceries",
+   "shop": "Tromsø Taxfree (Tromsø Airport)",
+   "amount": 921.6,
+   "currency": "NOK",
+   "payment": "Other",
+   "file": "261107_tromso-taxfree_921.60NOK.jpg",
+   "note": "Duty-free: 2× Mack Isbjørn 6×33cl beer (85.90 each), 2× 3L box wine (349.90 + 399.90). Visa contactless ••4442 — confirm which card"
+  },
+  {
+   "date": "261107",
+   "time": "1129",
+   "type": "groceries",
+   "shop": "EUROSPAR Kvaløysletta",
+   "amount": 1937.07,
+   "currency": "NOK",
+   "payment": "Other",
+   "file": "261107_eurospar-kvaloysletta_1937.07NOK.jpg",
+   "note": "40 items incl. NOK 21 pant (deposit), 3-for-2 discount −19.90; 15% MVA 249.92. Visa contactless ••4442 — confirm which card"
+  }
+ ]
 }
