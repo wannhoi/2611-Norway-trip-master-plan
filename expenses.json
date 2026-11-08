@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "261108 0835",
+ "updated": "261108 1915",
  "fx": {
   "NOK_per_SGD": 7.34,
   "note": "Indicative NOK per SGD; actual Trust card rate can be reconciled later"
@@ -24,11 +24,11 @@
   },
   {
    "type": "car",
-   "item": "SIXT 7–22 Nov, 16 rental days",
+   "item": "SIXT 7–22 Nov — final charge at pickup 7 Nov (booked 18,668.55; +3,396.98 vs booking, extras/fees to verify vs contract). A separate NOK 5,000.01 charge the same day looks like a deposit/hold and is NOT counted here",
    "date": "",
-   "amount": 18668.55,
+   "amount": 22065.53,
    "currency": "NOK",
-   "status": "booked"
+   "status": "paid"
   },
   {
    "type": "stay",
@@ -48,11 +48,11 @@
   },
   {
    "type": "stay",
-   "item": "Sjøtun",
+   "item": "Sjøtun — charged by Booking.com 7 Nov (Trust alert, NOK 3,600.00)",
    "date": "",
    "amount": 3600.0,
    "currency": "NOK",
-   "status": "booked"
+   "status": "paid"
   },
   {
    "type": "stay",
@@ -149,6 +149,28 @@
    "payment": "Trust",
    "file": "261107_eurospar-kvaloysletta_1937.07NOK.jpg",
    "note": "40 items incl. NOK 21 pant (deposit), 3-for-2 discount −19.90; 15% MVA 249.92. Trust Link card (Visa ••4442), confirmed by Trust alert"
+  },
+  {
+   "date": "261107",
+   "time": "0958",
+   "type": "other",
+   "shop": "Narvesen (Tromsø Airport)",
+   "amount": 59.9,
+   "currency": "NOK",
+   "payment": "Trust",
+   "verify": true,
+   "note": "From Trust card alert only, no receipt; item unknown"
+  },
+  {
+   "date": "261106",
+   "time": "1234",
+   "type": "other",
+   "shop": "Grab (Singapore, to airport)",
+   "amount": 31.9,
+   "currency": "SGD",
+   "payment": "Trust",
+   "verify": true,
+   "note": "Trust alerts: SGD 48.40 charged, SGD 16.50 later released → net 31.90; a separate SGD 16.50 charge was cancelled"
   }
  ]
 }
