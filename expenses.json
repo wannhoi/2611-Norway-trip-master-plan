@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "261108 1915",
+ "updated": "261108 1925",
  "fx": {
   "NOK_per_SGD": 7.34,
   "note": "Indicative NOK per SGD; actual Trust card rate can be reconciled later"
@@ -24,9 +24,17 @@
   },
   {
    "type": "car",
-   "item": "SIXT 7–22 Nov — final charge at pickup 7 Nov (booked 18,668.55; +3,396.98 vs booking, extras/fees to verify vs contract). A separate NOK 5,000.01 charge the same day looks like a deposit/hold and is NOT counted here",
+   "item": "SIXT 7–22 Nov — final charge at pickup 7 Nov (booked 18,668.55; +3,396.98 vs booking, extras/fees to verify vs contract)",
    "date": "",
    "amount": 22065.53,
+   "currency": "NOK",
+   "status": "paid"
+  },
+  {
+   "type": "ferry",
+   "item": "SIXT deposit for tolls, parking, ferry & misc — charged 7 Nov; actual costs deducted, balance refunded after trip (so total is overstated until refund)",
+   "date": "261107",
+   "amount": 5000.01,
    "currency": "NOK",
    "status": "paid"
   },
