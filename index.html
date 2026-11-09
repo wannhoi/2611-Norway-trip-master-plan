@@ -112,6 +112,10 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .checkin-btn{flex:1 1 100%;order:3;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;text-align:center;box-sizing:border-box;border:1px solid var(--warn);background:var(--warn-soft);color:var(--warn);cursor:pointer;font-family:inherit}
 .checkin-btn:hover{background:var(--warn);color:#241a05}
 .past-toggle-on{border-color:var(--accent)!important;background:var(--accent-soft)!important;color:var(--accent)!important;font-weight:600}
+.amenity-chip-active{border-color:var(--accent)!important;background:var(--accent-soft)!important;color:var(--accent)!important;font-weight:600}
+.amenities-row{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px 0}
+.amenity-tag{font-size:.72rem;opacity:.9}
+.amenity-unconfirmed{opacity:.7;font-style:italic}
 .card.stay-past{opacity:.5}
 .stay-past-badge{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;color:var(--dim);background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:2px 7px;margin-left:8px}
 .ci-box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
@@ -1143,7 +1147,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 09.11.26 · 1459</span>
+      <span class="version-tag">🕒 Updated: 09.11.26 · 1901</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1278,6 +1282,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </button>
   </div>
 
+  <div class="amenity-filters" style="background:var(--surface);padding:12px 15px;border-radius:10px;margin-bottom:20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border:1px solid var(--border);">
+    <span style="font-size:.78rem;font-weight:600;color:var(--dim);white-space:nowrap" lang="zh">🔎 设施快查：</span>
+    <span style="font-size:.78rem;font-weight:600;color:var(--dim);white-space:nowrap" lang="en">🔎 Quick amenity check:</span>
+    <button type="button" class="amenity-chip" data-amenity-filter="washer" onclick="toggleAmenityFilter('washer')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.85rem;white-space:nowrap;">🧺 <span lang="zh">洗衣机</span><span lang="en">Washer</span> (<span id="amenCount-washer">0</span>)</button>
+    <button type="button" class="amenity-chip" data-amenity-filter="dishwasher" onclick="toggleAmenityFilter('dishwasher')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.85rem;white-space:nowrap;">🍽️ <span lang="zh">洗碗机</span><span lang="en">Dishwasher</span> (<span id="amenCount-dishwasher">0</span>)</button>
+    <button type="button" class="amenity-chip" data-amenity-filter="smarttv" onclick="toggleAmenityFilter('smarttv')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.85rem;white-space:nowrap;">📺 <span lang="zh">智能电视</span><span lang="en">Smart TV</span> (<span id="amenCount-smarttv">0</span>)</button>
+    <span style="font-size:.72rem;color:var(--dim);white-space:nowrap" lang="zh">（吹风机信息尚未核实，暂未加入）</span>
+    <span style="font-size:.72rem;color:var(--dim);white-space:nowrap" lang="en">(Hair dryer not yet confirmed per stay — not included)</span>
+  </div>
+
   <div class="grid" id="cardGrid">
 
     <!-- 1. A1 Wilderness Villa -->
@@ -1301,7 +1315,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Outdoor Fire Pit / Tripod Spot</span>
           <span class="tag">Dark Skies (Aurora)</span>
         </div>
-        <div class="notes-area">Route Leg: TOS Airport → Brensholmen Ferry → A1 Silsand (~2h 23m)</div>
+                <div class="amenities-row" data-amenity-badges="A1"></div>
+<div class="notes-area">Route Leg: TOS Airport → Brensholmen Ferry → A1 Silsand (~2h 23m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.2471,17.6377&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1330,7 +1345,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Fjord Waterfront</span>
           <span class="tag">Pier Access</span>
         </div>
-        <div class="notes-area">Route Leg: A1 Silsand → A2 Sjøvegan (85 km, 1h 25m)</div>
+                <div class="amenities-row" data-amenity-badges="A2"></div>
+<div class="notes-area">Route Leg: A1 Silsand → A2 Sjøvegan (85 km, 1h 25m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=68.86945,17.769283&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.86945,17.769283&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1359,7 +1375,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Waterside Cottage</span>
           <span class="tag">Fjord Exploration Base</span>
         </div>
-        <div class="notes-area">Route Leg: A2 Sjøvegan → A3 Vebbestad (125 km, 2h 10m)</div>
+                <div class="amenities-row" data-amenity-badges="A3"></div>
+<div class="notes-area">Route Leg: A2 Sjøvegan → A3 Vebbestad (125 km, 2h 10m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=68.7331,16.189183&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.7331,16.189183&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1388,7 +1405,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Open Sea Facing</span>
           <span class="tag">Prime Aurora Deck</span>
         </div>
-        <div class="notes-area">Route Leg: A3 Vebbestad → A4 Laukvik (195 km, 3h 15m)</div>
+                <div class="amenities-row" data-amenity-badges="A4"></div>
+<div class="notes-area">Route Leg: A3 Vebbestad → A4 Laukvik (195 km, 3h 15m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=68.392317,14.588317&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.392317,14.588317&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1417,7 +1435,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Waterfront Cabin</span>
           <span class="tag">Hot Tub Area</span>
         </div>
-        <div class="notes-area">Route Leg: A4 Laukvik → A5 Kabelvåg (40 km, 45m) — ⚠️ SVJ Airport zone</div>
+                <div class="amenities-row" data-amenity-badges="A5"></div>
+<div class="notes-area">Route Leg: A4 Laukvik → A5 Kabelvåg (40 km, 45m) — ⚠️ SVJ Airport zone</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=68.206367,14.42585&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.206367,14.42585&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1446,7 +1465,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Fishing Village Core</span>
           <span class="tag">Scenic Bridges</span>
         </div>
-        <div class="notes-area">Route Leg: A5 Kabelvåg → A6 Henningsvær (25 km, 30m)</div>
+                <div class="amenities-row" data-amenity-badges="A6"></div>
+<div class="notes-area">Route Leg: A5 Kabelvåg → A6 Henningsvær (25 km, 30m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=68.15375,14.20345&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.15375,14.20345&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1476,7 +1496,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Iconic Peaks</span>
           <span class="tag">Top Aurora Spot</span>
         </div>
-        <div class="notes-area">Route Leg: A6 Henningsvær → A7 Hamnøy (110 km, 2h 10m) — Centerpiece stay</div>
+                <div class="amenities-row" data-amenity-badges="A7"></div>
+<div class="notes-area">Route Leg: A6 Henningsvær → A7 Hamnøy (110 km, 2h 10m) — Centerpiece stay</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=67.94615,13.133567&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=67.94615,13.133567&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1505,7 +1526,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Harbour Rorbu</span>
           <span class="tag">Start Northbound Return</span>
         </div>
-        <div class="notes-area">Route Leg: A7 Hamnøy → B1 Svolvær (120 km, 2h 15m)</div>
+                <div class="amenities-row" data-amenity-badges="B1"></div>
+<div class="notes-area">Route Leg: A7 Hamnøy → B1 Svolvær (120 km, 2h 15m)</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=68.234367,14.57965&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.234367,14.57965&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1534,7 +1556,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Ofotfjorden View</span>
           <span class="tag">Breakpoint Stay</span>
         </div>
-        <div class="notes-area">Route Leg: B1 Svolvær → B2 Liland (165 km, 2h 30m) — ⚠️ EVE Airport zone</div>
+                <div class="amenities-row" data-amenity-badges="B2"></div>
+<div class="notes-area">Route Leg: B1 Svolvær → B2 Liland (165 km, 2h 30m) — ⚠️ EVE Airport zone</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=68.47635,16.883867&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=68.47635,16.883867&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1563,7 +1586,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Inland Lake</span>
           <span class="tag">Zero Light Pollution</span>
         </div>
-        <div class="notes-area">Route Leg: B2 Liland → B3 Skjold (145 km, 2h 15m) — Premium clear skies</div>
+                <div class="amenities-row" data-amenity-badges="B3"></div>
+<div class="notes-area">Route Leg: B2 Liland → B3 Skjold (145 km, 2h 15m) — Premium clear skies</div>
         <div class="link-bar">
           <a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="zh">📁 确认函</a><a href="https://drive.google.com/drive/folders/14_jmJelCkRjBvqcxeQWWfaHT6PB_uq1V" target="_blank" class="source-link" lang="en">📁 Folder</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=69.066067,19.312617&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.066067,19.312617&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -1593,7 +1617,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="tag">Low Light Pollution</span>
           <span class="tag">Departure Day</span>
         </div>
-        <div class="notes-area">21 Nov: B3 → B4 Ersfjordbotn (≈116 km, 2h 11m). 22 Nov: B4 → TOS (≈16.5 km, 24 min); check out by 11:00, SIXT return 15:30. Check-in is via building staff — message host Bjørn in the Airbnb app before arrival for entry instructions. Host tips: free parking right in front of the house; darker aurora spots a short walk away. Replaces the Booking.com "Best view of Aurora Borealis" stay (cancelled free, 14 Oct 2026).</div>
+                <div class="amenities-row" data-amenity-badges="B4"></div>
+<div class="notes-area">21 Nov: B3 → B4 Ersfjordbotn (≈116 km, 2h 11m). 22 Nov: B4 → TOS (≈16.5 km, 24 min); check out by 11:00, SIXT return 15:30. Check-in is via building staff — message host Bjørn in the Airbnb app before arrival for entry instructions. Host tips: free parking right in front of the house; darker aurora spots a short walk away. Replaces the Booking.com "Best view of Aurora Borealis" stay (cancelled free, 14 Oct 2026).</div>
         <div class="link-bar">
           <a href="documents/27-261121-airbnb-ersfjordbotn-confirmation.pdf" class="source-link" data-source-link="source-14" lang="zh">📁 确认函</a><a href="documents/27-261121-airbnb-ersfjordbotn-confirmation.pdf" class="source-link" data-source-link="source-14" lang="en">📁 Confirmation</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=69.689822,18.595040&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="zh">🧭 导航</a><a href="https://www.google.com/maps/dir/?api=1&destination=69.689822,18.595040&travelmode=driving&dir_action=navigate" target="_blank" class="maps-btn" lang="en">🧭 Navigate</a>
@@ -2743,7 +2768,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 09.11.26 · 1459</p>
+  <p class="version-tag">🕒 Updated: 09.11.26 · 1901</p>
 </footer>
 
 </div>
@@ -2823,7 +2848,63 @@ var STAY_CHECKOUT = {
 };
 var curQuery = '', curRegion = 'all', hidePastStays = true;
 
+// Per-stay amenity data, verified against the accommodation plan (Booking.com/Airbnb
+// confirmations + host messages), not the older generic "Facilities:" line in each
+// card below (that line predates per-property verification and is stale in places —
+// e.g. A3 Sjøtun has none of these, despite its Facilities line saying otherwise).
+// B4 (Ersfjordbotn, Airbnb) replaced the old Booking.com stay on 21 Oct and amenities
+// here haven't been confirmed yet, so it's flagged unconfirmed rather than guessed.
+var AMENITIES = {
+  A1:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true},
+  A2:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true},
+  A3:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true},
+  A4:{dishwasher:false, washer:true,  dryer:false, smarttv:false, confirmed:true},
+  A5:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true},
+  A6:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true},
+  A7:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true},
+  B1:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true},
+  B2:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true},
+  B3:{dishwasher:true,  washer:true,  dryer:true,  smarttv:false, confirmed:true},
+  B4:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:false}
+};
+var AMENITY_ICON = {washer:'🧺', dishwasher:'🍽️', dryer:'🔥', smarttv:'📺'};
+var AMENITY_LABEL = {washer:['洗衣机','Washer'], dishwasher:['洗碗机','Dishwasher'], dryer:['烘干机','Dryer'], smarttv:['智能电视','Smart TV']};
+var curAmenityFilters = new Set();
+
 function stayCode(card){ var t = card.getAttribute('data-search')||''; return t.split(' ')[0].toUpperCase(); }
+
+function renderAmenityBadges(){
+  document.querySelectorAll('[data-amenity-badges]').forEach(function(el){
+    var code = el.getAttribute('data-amenity-badges');
+    var a = AMENITIES[code];
+    if (!a) return;
+    var html = '';
+    ['washer','dishwasher','dryer','smarttv'].forEach(function(key){
+      if (a[key]) {
+        var lab = AMENITY_LABEL[key];
+        html += '<span class="tag amenity-tag">' + AMENITY_ICON[key] +
+          ' <span lang="zh">' + lab[0] + '</span><span lang="en">' + lab[1] + '</span></span>';
+      }
+    });
+    if (!a.confirmed) {
+      html += '<span class="tag amenity-tag amenity-unconfirmed">' +
+        '<span lang="zh">ℹ️ 设施待确认</span><span lang="en">ℹ️ Amenities not yet confirmed</span></span>';
+    }
+    el.innerHTML = html;
+  });
+  ['washer','dishwasher','smarttv'].forEach(function(key){
+    var n = Object.keys(AMENITIES).filter(function(c){ return AMENITIES[c][key]; }).length;
+    var countEl = document.getElementById('amenCount-' + key);
+    if (countEl) countEl.textContent = n;
+  });
+}
+
+function toggleAmenityFilter(key){
+  if (curAmenityFilters.has(key)) curAmenityFilters.delete(key); else curAmenityFilters.add(key);
+  var btn = document.querySelector('[data-amenity-filter="' + key + '"]');
+  if (btn) btn.classList.toggle('amenity-chip-active', curAmenityFilters.has(key));
+  applyCardVisibility();
+}
 
 function updateStayStatus(){
   var now = Date.now();
@@ -2854,7 +2935,11 @@ function applyCardVisibility(){
     var matchesSearch = (card.getAttribute('data-search')||'').includes(curQuery);
     var matchesRegion = curRegion === 'all' || card.getAttribute('data-region') === curRegion;
     var passesPast = !hidePastStays || !card.classList.contains('stay-past');
-    card.style.display = (matchesSearch && matchesRegion && passesPast) ? 'flex' : 'none';
+    var code = stayCode(card);
+    var a = AMENITIES[code] || {};
+    var matchesAmenity = true;
+    curAmenityFilters.forEach(function(key){ if (!a[key]) matchesAmenity = false; });
+    card.style.display = (matchesSearch && matchesRegion && passesPast && matchesAmenity) ? 'flex' : 'none';
   });
 }
 
@@ -2886,6 +2971,7 @@ function togglePastStays() {
   applyCardVisibility();
 }
 
+renderAmenityBadges();
 updateStayStatus();
 applyCardVisibility();
 setInterval(function(){ updateStayStatus(); applyCardVisibility(); updateCountdown(); }, 5 * 60 * 1000);
