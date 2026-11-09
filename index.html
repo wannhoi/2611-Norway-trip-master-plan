@@ -1143,7 +1143,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 08.11.26 · 2015</span>
+      <span class="version-tag">🕒 Updated: 09.11.26 · 1459</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -2743,18 +2743,42 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 08.11.26 · 2015</p>
+  <p class="version-tag">🕒 Updated: 09.11.26 · 1459</p>
 </footer>
 
 </div>
 
 <script>
-// ===== 倒计时 =====
+// ===== 倒计时 / 行程进度 =====
 function daysTo(target){
-  const t=new Date(target+'T00:00:00'),n=new Date();
+  const t=new Date(target+'T00:00:00').getTime(),n=Date.now();
   return Math.ceil((t-n)/86400000);
 }
-document.getElementById('cdNum').textContent=daysTo('2026-11-07');
+var TRIP_START='2026-11-07', TRIP_END='2026-11-22', TRIP_DAYS=16;
+function updateCountdown(){
+  var cdNum=document.getElementById('cdNum');
+  var zhSpan=document.querySelector('#cdText[lang="zh"]');
+  var enSpan=document.querySelector('#cdText[lang="en"]');
+  var toStart=daysTo(TRIP_START);
+  if(toStart>0){
+    cdNum.textContent=toStart;
+    zhSpan.textContent='天 · 出发倒计时 (Nov 7, 2026)';
+    enSpan.textContent='Days to Departure (Nov 7, 2026)';
+  }else{
+    var dayNum=Math.floor((Date.now()-new Date(TRIP_START+'T00:00:00').getTime())/86400000)+1;
+    var toEnd=daysTo(TRIP_END);
+    if(toEnd>=0){
+      cdNum.textContent=dayNum;
+      zhSpan.textContent='· 挪威自驾第 '+dayNum+' 天（共'+TRIP_DAYS+'天）';
+      enSpan.textContent='Day '+dayNum+' of '+TRIP_DAYS+' in Norway';
+    }else{
+      cdNum.textContent='✓';
+      zhSpan.textContent='· 行程已结束';
+      enSpan.textContent='Trip completed';
+    }
+  }
+}
+updateCountdown();
 
 // ===== 双语切换 =====
 const langBtns=document.querySelectorAll('.lang-btn');
@@ -2864,7 +2888,7 @@ function togglePastStays() {
 
 updateStayStatus();
 applyCardVisibility();
-setInterval(function(){ updateStayStatus(); applyCardVisibility(); }, 5 * 60 * 1000);
+setInterval(function(){ updateStayStatus(); applyCardVisibility(); updateCountdown(); }, 5 * 60 * 1000);
 
 // ===== 油量滑动条 =====
 const slider=document.getElementById('fuelSlider');
