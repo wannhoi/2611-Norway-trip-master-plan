@@ -1156,7 +1156,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 09.11.26 · 1921</span>
+      <span class="version-tag">🕒 Updated: 09.11.26 · 1937</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -2837,7 +2837,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 09.11.26 · 1921</p>
+  <p class="version-tag">🕒 Updated: 09.11.26 · 1937</p>
 </footer>
 
 </div>
@@ -2899,11 +2899,11 @@ tabs.forEach(t=>{
 // ===== 住宿卡片搜索、地区筛选与退房后自动隐藏 =====
 // Checkout deadline (local Norway time, UTC+1 in November — no DST) per booking confirmation.
 // Window end-time used where the confirmation gives a range (e.g. 07:00-12:00 -> 12:00).
-// A1's Booking.com confirmation shows a generic "00:00-00:00" (no fixed time set by the
-// property), so it falls back to the standard 11:00 checkout used across the other stays,
-// flagged `assumed` rather than treated as a real confirmed time.
+// A1 originally fell back to an assumed 11:00 (its Booking.com confirmation showed a generic
+// "00:00-00:00"), then the host sent an actual updated schedule (9 Sep 2026 message): check-in
+// 16:00-22:00, check-out by 10:00 — now a real confirmed time, `assumed` flag removed.
 var STAY_CHECKOUT = {
-  A1:{iso:'2026-11-09T11:00:00+01:00',assumed:true},
+  A1:{iso:'2026-11-09T10:00:00+01:00'},
   A2:{iso:'2026-11-10T12:00:00+01:00'},
   A3:{iso:'2026-11-12T11:30:00+01:00'},
   A4:{iso:'2026-11-14T12:00:00+01:00'},
@@ -3570,13 +3570,15 @@ function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){retur
 function bi(zh,en){return '<span lang="zh">'+zh+'</span><span lang="en">'+en+'</span>'}
 var CHECKIN={
  A1:{name:'Wilderness Villa Panorama Lakeview',phone:'+47 97 34 04 42',conf:'5288.039.952',pin:'3294',
-   ci:'7 Nov (Sat) 17:00–22:00',co:'9 Nov (Mon)',
-   note:bi('请提前告知房东预计到达时间；详细入住说明会在抵达前约 3 天（约 11 月 4 日）发来。','Let the host know your expected arrival time in advance — full check-in details are sent roughly 3 days before arrival (around 4 Nov).'),
-   src:'Booking.com confirmation · host message (Gmail, 12 Aug 2026)'},
+   ci:'7 Nov (Sat) 16:00–22:00 (updated — no self check-in)',co:'9 Nov (Mon) by 10:00 (updated)',
+   note:bi('无自助入住 — 房东 Jenni & Andrea 会在门口大门与你会合并交付大门钥匙，会合地点：<a href="https://maps.app.goo.gl/gbDZbJVYPXf5hLPv5" target="_blank" rel="noopener">查看地图</a>。抵达前约1小时请发讯息告知，并提前告知预计到达时间与所需卧室数。WiFi：ZTE_F260DD / 密码 KESPG2XSQY。已提供瓶装饮用水（不建议饮用自来水，附近加油站可补充）。可携带狗狗入住，但请勿让狗狗上沙发/床。','No self check-in — hosts Jenni &amp; Andrea meet you at the villa gate and hand over your own gate key. Meeting point: <a href="https://maps.app.goo.gl/gbDZbJVYPXf5hLPv5" target="_blank" rel="noopener">view on map</a>. Message them about 1 hour before you arrive, and let them know your expected arrival time and how many bedrooms you need in advance. WiFi: ZTE_F260DD / password KESPG2XSQY. Complimentary bottled drinking water provided (tap water not recommended — nearby gas stations for refills). Dogs welcome, but please keep them off the sofas/beds.'),
+   checkout:bi('退房前（10:00 前）：洗好餐具、拆除床单、把垃圾袋拿到屋外、所有钥匙留在别墅内。并提前告知预计离开时间，方便房东前来开大门。','Before you leave (by 10:00): wash the dishes, strip the bedsheets, take the garbage bags outside, and leave all keys inside the villa. Let the hosts know your planned departure time so they can come open the gate for you.'),
+   src:'Host messages (Booking.com app, 7 Nov & 9 Nov 2026) · Booking.com confirmation'},
  A2:{name:'Garsnes Brygge',phone:'+47 93 42 06 87',conf:'5634.509.853',pin:'0251',
-   ci:'9 Nov (Mon) 15:00–21:00',co:'10 Nov (Tue) 07:00–12:00',
-   note:bi('提前告知到达时间；钓鱼船需提前预订，也可请房东安排船长向导。','Let the host know your arrival time in advance; fishing boats must be booked ahead — an optional boat guide can also be arranged.'),
-   src:'Booking.com confirmation · host message (Gmail, 17 Aug 2026)'},
+   ci:'9 Nov (Mon) from 15:00',co:'10 Nov (Tue) before 12:00',
+   note:bi('入住 15:00 起；22:00 后到达须提前通知，否则可能被视为未入住（no-show）。可申请提前入住/延后退房，各加收 NOK 200。餐厅：周三/四 17:00–20:00，周五/六 17:00–21:00，周日 14:00 起供应 Sunday dinner；咖啡馆周六 11:00 开门，菜单见 garsnes.no/restaurant。设施含浮动桑拿、独木舟、钓鱼船/装备租赁（可请船长向导），经 garsnes.no 预订。公寓/小屋已配备厨房、冰箱、床单与毛巾。','Check-in from 15:00; arrivals after 22:00 must be notified in advance or the booking may be treated as a no-show. Early check-in/late check-out can be requested, NOK 200 fee each. Restaurant: Wed/Thu 17:00–20:00, Fri/Sat 17:00–21:00, Sunday dinner from 14:00; cafe opens 11:00 Saturdays, menu at garsnes.no/restaurant. Facilities include a floating sauna, kayaks, and fishing-boat/equipment rental (optional boat guide) — book via garsnes.no. Apartment/cabin comes equipped with kitchen, fridge, bed linen and towels.'),
+   checkout:bi('退房前：把垃圾全部丢到垃圾桶、脏餐具放入洗碗机并启动、离开时把钥匙留在小屋/公寓的门内。（小屋内也附有说明卡）','Before you leave: put all trash in the trash bins, load dirty dishes into the dishwasher and start it, and leave the keys inside the door of your cabin/apartment. (Also on the info-sheet provided in each unit.)'),
+   src:'Host messages (Booking.com app, 17 Aug & 9 Nov 2026) · Booking.com confirmation'},
  A3:{name:'Sjøtun',phone:'+47 46 34 58 51',conf:'6166.742.714',pin:'6181',
    ci:'10 Nov (Tue) 15:00–23:30',co:'12 Nov (Thu) 10:30–11:30',
    note:bi('提前告知到达时间；该房源没有网络连接。','Let the host know your arrival time in advance; this property has no internet access.'),
@@ -3626,6 +3628,7 @@ document.addEventListener('click',function(e){
     (d.lockbox?'<div class="ci-row"><span class="ci-label">'+bi('钥匙箱密码','Lockbox code')+'</span><span class="ci-value">'+esc(d.lockbox)+'</span></div>':'')+
     '</div>'+
     '<div class="ci-note"><b>'+bi('如何入住','Getting in')+'</b><br>'+d.note+'</div>'+
+    (d.checkout?'<div class="ci-note" style="border-left-color:var(--grocery, #e8a33d)"><b>'+bi('退房须知','On departure')+'</b><br>'+d.checkout+'</div>':'')+
     (d.phone?'<a class="ci-call" href="tel:'+esc(d.phone.replace(/\s+/g,''))+'">📞 '+bi('致电房源','Call property')+'</a>':'')+
     '<div class="ci-src">'+bi('来源','Source')+': '+esc(d.src)+'</div>';
   TripViewer.open('🔑 ['+k+'] '+esc(d.name)+' — '+bi('入住须知','Check-in Info'),rows);
