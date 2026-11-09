@@ -55,6 +55,15 @@ header h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;margin-bottom:4px}
 .nav-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
 .nav-tab{background:transparent;border:none;padding:8px 12px;border-radius:8px;color:var(--dim);font:inherit;cursor:pointer;font-size:.92rem}
 .nav-tab.active{background:var(--surface);color:var(--accent);border-bottom:2px solid var(--accent);border-radius:8px 8px 0 0}
+.stays-subtab{background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:9px 16px;border-radius:999px;cursor:pointer;font:inherit;font-size:.9rem}
+.stays-subtab.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+#facilitiesTable td,#facilitiesTable th,#othersTable td,#othersTable th{border-bottom:1px solid var(--border)}
+#facilitiesTable td,#othersTable td{padding:10px 12px;font-size:.88rem}
+#facilitiesTable tbody tr:last-child td,#othersTable tbody tr:last-child td{border-bottom:none}
+.fac-yes{color:var(--accent);font-weight:700}
+.fac-no{color:var(--dim)}
+.fac-unconf{color:var(--dim);font-style:italic}
+.others-details-btn{background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:.82rem;white-space:nowrap}
 section[hidden]{display:none!important}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
 .stat{background:var(--surface);padding:14px 16px}
@@ -1147,7 +1156,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 09.11.26 · 1901</span>
+      <span class="version-tag">🕒 Updated: 09.11.26 · 1921</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1268,6 +1277,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 <!-- ========== 住宿详情卡片 (Accommodations A1-B4) ========== -->
 <section id="stays" hidden>
+  <div class="stays-subnav" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+    <button type="button" class="stays-subtab active" data-subtab="byday" onclick="showStaysSubtab('byday')">
+      <span lang="zh">📅 按日期</span><span lang="en">📅 By Day</span>
+    </button>
+    <button type="button" class="stays-subtab" data-subtab="facilities" onclick="showStaysSubtab('facilities')">
+      <span lang="zh">🧰 设施对比</span><span lang="en">🧰 Facilities</span>
+    </button>
+    <button type="button" class="stays-subtab" data-subtab="others" onclick="showStaysSubtab('others')">
+      <span lang="zh">🔑 入住/退房须知</span><span lang="en">🔑 Check-in/out & Rules</span>
+    </button>
+  </div>
+
+  <div id="stays-byday" class="stays-subview">
   <div class="controls" style="background:var(--surface);padding:15px;border-radius:10px;margin-bottom:20px;display:flex;gap:15px;flex-wrap:wrap;align-items:center;border:1px solid var(--border);">
     <input type="text" id="searchInput" placeholder="Search by A1-B4, hotel name, location, code, or GPS..." onkeyup="filterCards()" style="flex:1;min-width:260px;">
     <div class="filter-buttons" style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -1628,6 +1650,53 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </div>
 
   </div>
+  </div><!-- /#stays-byday -->
+
+  <div id="stays-facilities" class="stays-subview" hidden>
+    <div class="card" style="margin-bottom:16px;">
+      <p lang="zh" style="margin:0;font-size:.85rem;color:var(--dim)">数据来源：住宿计划表（Booking.com/Airbnb 确认函 + 房东消息核实），非卡片内旧版「设施」栏（部分已过时）。</p>
+      <p lang="en" style="margin:0;font-size:.85rem;color:var(--dim)">Source: the verified accommodation plan (Booking.com/Airbnb confirmations + host messages) — not the older "Facilities:" line on each card, which is stale for a few stays.</p>
+    </div>
+    <div style="overflow-x:auto;">
+      <table id="facilitiesTable" style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:10px;overflow:hidden;">
+        <thead>
+          <tr style="background:var(--surface-2);text-align:left;">
+            <th style="padding:10px 12px;"><span lang="zh">住宿</span><span lang="en">Stay</span></th>
+            <th style="padding:10px 12px;"><span lang="zh">日期</span><span lang="en">Dates</span></th>
+            <th style="padding:10px 12px;"><span lang="zh">厨房</span><span lang="en">Kitchen</span></th>
+            <th style="padding:10px 12px;">🍽️ <span lang="zh">洗碗机</span><span lang="en">Dishwasher</span></th>
+            <th style="padding:10px 12px;">🧺 <span lang="zh">洗衣机</span><span lang="en">Washer</span></th>
+            <th style="padding:10px 12px;">🔥 <span lang="zh">烘干机</span><span lang="en">Dryer</span></th>
+            <th style="padding:10px 12px;">📺 <span lang="zh">智能电视</span><span lang="en">Smart TV</span></th>
+          </tr>
+        </thead>
+        <tbody id="facilitiesTableBody"></tbody>
+      </table>
+    </div>
+  </div><!-- /#stays-facilities -->
+
+  <div id="stays-others" class="stays-subview" hidden>
+    <div class="card" style="margin-bottom:16px;">
+      <p lang="zh" style="margin:0 0 6px 0;font-size:.85rem;color:var(--dim)">入住/退房时间与进门方式见下表；点击「详情」查看 PIN 码、钥匙箱密码与房东联系方式。</p>
+      <p lang="en" style="margin:0 0 6px 0;font-size:.85rem;color:var(--dim)">Check-in/out times and entry method per stay below; tap "Details" for PIN codes, lockbox codes and host contact.</p>
+      <p lang="zh" style="margin:0;font-size:.82rem;color:var(--accent);font-style:italic">⚠️ 具体的退房事项（如需倒垃圾、拆床单、交还钥匙等房屋规定）目前尚未逐一核实 — 建议在每处住宿的 Booking.com/Airbnb App 讯息或房屋守则中确认，离开前再检查一次。</p>
+      <p lang="en" style="margin:0;font-size:.82rem;color:var(--accent);font-style:italic">⚠️ Specific departure chores (taking out rubbish, stripping bedsheets, returning keys, etc.) haven't been confirmed per property yet — check each stay's Booking.com/Airbnb app messages or house rules, and double-check before you leave.</p>
+    </div>
+    <div style="overflow-x:auto;">
+      <table id="othersTable" style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:10px;overflow:hidden;">
+        <thead>
+          <tr style="background:var(--surface-2);text-align:left;">
+            <th style="padding:10px 12px;"><span lang="zh">住宿</span><span lang="en">Stay</span></th>
+            <th style="padding:10px 12px;"><span lang="zh">入住</span><span lang="en">Check-in</span></th>
+            <th style="padding:10px 12px;"><span lang="zh">退房</span><span lang="en">Check-out</span></th>
+            <th style="padding:10px 12px;"><span lang="zh">进门方式</span><span lang="en">Access</span></th>
+            <th style="padding:10px 12px;"><span lang="zh">详情</span><span lang="en">Details</span></th>
+          </tr>
+        </thead>
+        <tbody id="othersTableBody"></tbody>
+      </table>
+    </div>
+  </div><!-- /#stays-others -->
 </section>
 
 <!-- ========== 每日行程 ========== -->
@@ -2768,7 +2837,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 09.11.26 · 1901</p>
+  <p class="version-tag">🕒 Updated: 09.11.26 · 1921</p>
 </footer>
 
 </div>
@@ -2855,18 +2924,82 @@ var curQuery = '', curRegion = 'all', hidePastStays = true;
 // B4 (Ersfjordbotn, Airbnb) replaced the old Booking.com stay on 21 Oct and amenities
 // here haven't been confirmed yet, so it's flagged unconfirmed rather than guessed.
 var AMENITIES = {
-  A1:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true},
-  A2:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true},
-  A3:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true},
-  A4:{dishwasher:false, washer:true,  dryer:false, smarttv:false, confirmed:true},
-  A5:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true},
-  A6:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true},
-  A7:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true},
-  B1:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true},
-  B2:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true},
-  B3:{dishwasher:true,  washer:true,  dryer:true,  smarttv:false, confirmed:true},
-  B4:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:false}
+  A1:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true, kitchen:'full'},
+  A2:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
+  A3:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
+  A4:{dishwasher:false, washer:true,  dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
+  A5:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'kitchenette'},
+  A6:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
+  A7:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
+  B1:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'kitchenette'},
+  B2:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true, kitchen:'full'},
+  B3:{dishwasher:true,  washer:true,  dryer:true,  smarttv:false, confirmed:true, kitchen:'full'},
+  B4:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:false, kitchen:'unconfirmed'}
 };
+var STAY_ORDER = ['A1','A2','A3','A4','A5','A6','A7','B1','B2','B3','B4'];
+var STAY_DATES = {
+  A1:'7–9 Nov', A2:'9–10 Nov', A3:'10–12 Nov', A4:'12–14 Nov', A5:'14–15 Nov',
+  A6:'15–16 Nov', A7:'16–18 Nov', B1:'18–19 Nov', B2:'19–20 Nov', B3:'20–21 Nov', B4:'21–22 Nov'
+};
+var KITCHEN_LABEL = {full:['齐全厨房','Full kitchen'], kitchenette:['小厨房角','Kitchenette'], unconfirmed:['未确认','Unconfirmed']};
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function bi(zh,en){return '<span lang="zh">'+zh+'</span><span lang="en">'+en+'</span>'}
+
+function showStaysSubtab(tab){
+  ['byday','facilities','others'].forEach(function(t){
+    var panel = document.getElementById('stays-' + t);
+    if (panel) panel.hidden = (t !== tab);
+    var btn = document.querySelector('.stays-subtab[data-subtab="' + t + '"]');
+    if (btn) btn.classList.toggle('active', t === tab);
+  });
+}
+
+function yesNo(v){ return v ? '<span class="fac-yes">✓</span>' : '<span class="fac-no">—</span>'; }
+
+function renderFacilitiesTable(){
+  var body = document.getElementById('facilitiesTableBody');
+  if (!body) return;
+  var rows = '';
+  STAY_ORDER.forEach(function(code){
+    var a = AMENITIES[code]; if (!a) return;
+    var kl = KITCHEN_LABEL[a.kitchen] || KITCHEN_LABEL.unconfirmed;
+    var kitchenCell = a.kitchen === 'unconfirmed'
+      ? '<span class="fac-unconf" lang="zh">' + kl[0] + '</span>' + '<span class="fac-unconf" lang="en">' + kl[1] + '</span>'
+      : '<span lang="zh">' + kl[0] + '</span><span lang="en">' + kl[1] + '</span>';
+    rows += '<tr>' +
+      '<td><b>[' + code + ']</b></td>' +
+      '<td>' + (STAY_DATES[code]||'') + '</td>' +
+      '<td>' + kitchenCell + '</td>' +
+      '<td>' + yesNo(a.dishwasher) + '</td>' +
+      '<td>' + yesNo(a.washer) + '</td>' +
+      '<td>' + yesNo(a.dryer) + '</td>' +
+      '<td>' + yesNo(a.smarttv) + '</td>' +
+      (a.confirmed ? '' : '</tr><tr><td colspan="7" class="fac-unconf" style="padding-top:0"><span lang="zh">ℹ️ [' + code + '] 设施尚未逐项核实（Airbnb 房源，取代原 Booking.com 订房）</span><span lang="en">ℹ️ [' + code + '] amenities not yet itemized (Airbnb stay, replaced the original Booking.com booking)</span></td>') +
+      '</tr>';
+  });
+  body.innerHTML = rows;
+}
+
+function renderOthersTable(){
+  var body = document.getElementById('othersTableBody');
+  if (!body || typeof CHECKIN === 'undefined') return;
+  var rows = '';
+  STAY_ORDER.forEach(function(code){
+    var d = CHECKIN[code]; if (!d) return;
+    var access = d.lockbox ? bi('自助入住 · 钥匙箱','Self check-in · lockbox')
+      : (/self-check-in|自助/i.test(d.note||'') || /key-?box|lock-?box/i.test(d.note||'')) ? bi('自助入住 · 钥匙箱','Self check-in · key box')
+      : bi('前台/房东迎接','Reception / host meet');
+    rows += '<tr>' +
+      '<td><b>[' + code + ']</b> ' + esc(d.name) + '</td>' +
+      '<td>' + esc(d.ci) + '</td>' +
+      '<td>' + esc(d.co) + '</td>' +
+      '<td>' + access + '</td>' +
+      '<td><button type="button" class="others-details-btn checkin-btn" data-checkin="' + code + '">' + bi('详情','Details') + '</button></td>' +
+      '</tr>';
+  });
+  body.innerHTML = rows;
+}
 var AMENITY_ICON = {washer:'🧺', dishwasher:'🍽️', dryer:'🔥', smarttv:'📺'};
 var AMENITY_LABEL = {washer:['洗衣机','Washer'], dishwasher:['洗碗机','Dishwasher'], dryer:['烘干机','Dryer'], smarttv:['智能电视','Smart TV']};
 var curAmenityFilters = new Set();
@@ -2972,6 +3105,7 @@ function togglePastStays() {
 }
 
 renderAmenityBadges();
+renderFacilitiesTable();
 updateStayStatus();
 applyCardVisibility();
 setInterval(function(){ updateStayStatus(); applyCardVisibility(); updateCountdown(); }, 5 * 60 * 1000);
@@ -3496,6 +3630,8 @@ document.addEventListener('click',function(e){
     '<div class="ci-src">'+bi('来源','Source')+': '+esc(d.src)+'</div>';
   TripViewer.open('🔑 ['+k+'] '+esc(d.name)+' — '+bi('入住须知','Check-in Info'),rows);
 });
+window.CHECKIN = CHECKIN;
+if (typeof renderOthersTable === 'function') renderOthersTable();
 })();
 </script>
 <!-- CHECKIN-INFO-SCRIPT END -->
