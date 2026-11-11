@@ -129,8 +129,8 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .others-row-past{opacity:.75}
 .others-show-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;border:1px solid var(--border);background:var(--surface-2);color:var(--dim);cursor:pointer;font-family:inherit}
 .others-show-btn:hover{border-color:var(--accent);color:var(--accent)}
-.others-hide-btn{border:0;background:none;cursor:pointer;font-size:0.85rem;padding:0 0 0 4px;opacity:.7}
-.others-hide-btn:hover{opacity:1}
+.others-hide-btn{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:5px 10px;border-radius:6px;font-size:0.75rem;font-weight:700;border:1px solid var(--border);background:var(--surface-2);color:var(--dim);cursor:pointer;font-family:inherit}
+.others-hide-btn:hover{border-color:var(--accent);color:var(--accent)}
 .stay-past-badge{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;color:var(--dim);background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:2px 7px;margin-left:8px}
 .ci-box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
 .ci-row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.9rem}
@@ -1161,7 +1161,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 11.11.26 · 1854</span>
+      <span class="version-tag">🕒 Updated: 11.11.26 · 1901</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -2842,7 +2842,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 11.11.26 · 1854</p>
+  <p class="version-tag">🕒 Updated: 11.11.26 · 1901</p>
 </footer>
 
 </div>
@@ -3009,7 +3009,7 @@ function renderOthersTable(){
     var access = d.lockbox ? bi('自助入住 · 钥匙箱','Self check-in · lockbox')
       : (/self-check-in|自助/i.test(d.note||'') || /key-?box|lock-?box/i.test(d.note||'')) ? bi('自助入住 · 钥匙箱','Self check-in · key box')
       : bi('前台/房东迎接','Reception / host meet');
-    var hideBtn = isPast ? ' <button type="button" class="others-hide-btn" onclick="toggleOthersPastRow(\'' + code + '\')" title="Hide">🙈</button>' : '';
+    var hideBtn = isPast ? ' <button type="button" class="others-hide-btn" onclick="toggleOthersPastRow(\'' + code + '\')">🙈 <span lang="zh">隐藏</span><span lang="en">Hide</span></button>' : '';
     rows += '<tr>' +
       '<td><b>[' + code + ']</b> ' + esc(d.name) + '</td>' +
       '<td>' + esc(d.ci) + '</td>' +
