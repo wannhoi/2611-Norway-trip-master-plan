@@ -125,6 +125,7 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .amenities-row{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px 0}
 .amenity-tag{font-size:.72rem;opacity:.9}
 .amenity-unconfirmed{opacity:.7;font-style:italic}
+.amenity-warn{color:var(--danger, #d9534f);font-weight:700;border-color:var(--danger, #d9534f)!important}
 .card.stay-past{opacity:.5}
 .others-row-past{opacity:.75}
 .others-show-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;border:1px solid var(--border);background:var(--surface-2);color:var(--dim);cursor:pointer;font-family:inherit}
@@ -1161,7 +1162,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 11.11.26 · 1901</span>
+      <span class="version-tag">🕒 Updated: 11.11.26 · 1912</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1315,6 +1316,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <button type="button" class="amenity-chip" data-amenity-filter="washer" onclick="toggleAmenityFilter('washer')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.85rem;white-space:nowrap;">🧺 <span lang="zh">洗衣机</span><span lang="en">Washer</span> (<span id="amenCount-washer">0</span>)</button>
     <button type="button" class="amenity-chip" data-amenity-filter="dishwasher" onclick="toggleAmenityFilter('dishwasher')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.85rem;white-space:nowrap;">🍽️ <span lang="zh">洗碗机</span><span lang="en">Dishwasher</span> (<span id="amenCount-dishwasher">0</span>)</button>
     <button type="button" class="amenity-chip" data-amenity-filter="smarttv" onclick="toggleAmenityFilter('smarttv')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.85rem;white-space:nowrap;">📺 <span lang="zh">智能电视</span><span lang="en">Smart TV</span> (<span id="amenCount-smarttv">0</span>)</button>
+    <button type="button" class="amenity-chip" data-amenity-filter="wifi" onclick="toggleAmenityFilter('wifi')" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.85rem;white-space:nowrap;">📶 <span lang="zh">WiFi</span><span lang="en">WiFi</span> (<span id="amenCount-wifi">0</span>)</button>
     <span style="font-size:.72rem;color:var(--dim);white-space:nowrap" lang="zh">（吹风机信息尚未核实，暂未加入）</span>
     <span style="font-size:.72rem;color:var(--dim);white-space:nowrap" lang="en">(Hair dryer not yet confirmed per stay — not included)</span>
   </div>
@@ -1334,7 +1336,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">69.24710° N, 17.63770° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 3,450 (MYR 1,457 / S$ 453)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">30 Oct 2026, 23:59 Norway time</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher, Smart TV</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher, Smart TV, WiFi</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1365,7 +1367,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.86945° N, 17.76928° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 1,820 (MYR 771 / S$ 239)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">1 Nov 2026, 23:59 (7 days before arrival)</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Dishwasher (no washer), Floating Sauna &amp; Kayak/Boat Rental</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, WiFi, Dishwasher (no washer), Floating Sauna &amp; Kayak/Boat Rental</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1395,7 +1397,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.73310° N, 16.18918° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 3,720 (MYR 1,574 / S$ 489)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">8 Nov 2026, 23:59 Norway time</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen only — no dishwasher, washer or TV confirmed</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen only — no dishwasher, washer, TV or WiFi (host-confirmed: no internet access)</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1425,7 +1427,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.39232° N, 14.58832° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 3,820 (MYR 1,617 / S$ 502)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">10 Nov 2026, 23:59 Norway time</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine (no dishwasher)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine (no dishwasher), WiFi</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1455,7 +1457,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.20637° N, 14.42585° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 2,960 (MYR 1,254 / S$ 194)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">6 Nov 2026, 23:59 (7 days before arrival)</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Kitchenette (Hot Tub &amp; Restaurant reported — not yet confirmed)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Kitchenette, WiFi (Hot Tub &amp; Restaurant reported — not yet confirmed)</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1485,7 +1487,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.15375° N, 14.20345° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 2,120 (MYR 896 / S$ 278)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">12 Nov 2026, 23:59 (2 days before arrival; then 50% fee)</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen only — no dishwasher, washer or TV confirmed; on-site restaurant</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, WiFi — no dishwasher, washer or TV confirmed; on-site restaurant</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1515,7 +1517,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">67.94615° N, 13.13357° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 7,000 (MYR 2,966 / S$ 1,259)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">13 Nov 2026, 23:59 (2 days before arrival)</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Dishwasher (no washer)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Dishwasher (no washer), WiFi</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1546,7 +1548,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.23437° N, 14.57965° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 2,180 (MYR 925 / S$ 200)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">12 Nov 2026, 23:59 (5 days before arrival)</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Kitchenette, Dishwasher (no washer)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Kitchenette, Dishwasher (no washer), WiFi</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1576,7 +1578,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">68.47635° N, 16.88387° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 1,500 (MYR 634)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">17 Nov 2026, 23:59 Norway time</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher, Smart TV</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine, Dishwasher, Smart TV, WiFi</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1606,7 +1608,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">69.06607° N, 19.31262° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">~NOK 1,980 (MYR 836)</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">14 Nov 2026, 23:59 Norway time</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine &amp; Dryer, Dishwasher</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Full Kitchen, Washing Machine &amp; Dryer, Dishwasher, WiFi</span></div>
         </div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1636,7 +1638,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="info-row"><span class="info-label" lang="zh">GPS 坐标:</span><span class="info-label" lang="en">GPS Coords:</span><span class="info-value mono">69.6898° N, 18.5950° E</span></div>
           <div class="info-row"><span class="info-label" lang="zh">价格:</span><span class="info-label" lang="en">Price:</span><span class="info-value">SGD 535.26 total (Airbnb) · 2 guests / 1 night</span></div>
           <div class="info-row"><span class="info-label" lang="zh">免费取消截止:</span><span class="info-label" lang="en">Free Cancellation:</span><span class="info-value highlight-alert">7 Nov 2026, 15:00 · partial refund until 14 Nov 2026, 15:00</span></div>
-          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Entire flat · up to 4 guests · free parking in front of the house · no pets (kitchen/other amenities not yet itemized)</span></div>
+          <div class="info-row"><span class="info-label" lang="zh">设施:</span><span class="info-label" lang="en">Facilities:</span><span class="info-value">Entire flat · up to 4 guests · free parking in front of the house · no pets (kitchen/WiFi/other amenities not yet itemized)</span></div>
         <div class="info-row"><span class="info-label">Check-in / 入住:</span><span class="info-value">21 Nov from 15:00</span></div><div class="info-row"><span class="info-label">Check-out / 退房:</span><span class="info-value">22 Nov by 11:00</span></div><div class="info-row"><span class="info-label">Host / 房东:</span><span class="info-value">Bjørn · message via the Airbnb app</span></div></div>
         <div style="font-size:0.78rem;font-weight:600;color:var(--dim)">Highlights:</div>
         <div class="facilities">
@@ -1673,6 +1675,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <th style="padding:10px 12px;">🧺 <span lang="zh">洗衣机</span><span lang="en">Washer</span></th>
             <th style="padding:10px 12px;">🔥 <span lang="zh">烘干机</span><span lang="en">Dryer</span></th>
             <th style="padding:10px 12px;">📺 <span lang="zh">智能电视</span><span lang="en">Smart TV</span></th>
+            <th style="padding:10px 12px;">📶 <span lang="zh">WiFi</span><span lang="en">WiFi</span></th>
           </tr>
         </thead>
         <tbody id="facilitiesTableBody"></tbody>
@@ -2842,7 +2845,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 11.11.26 · 1901</p>
+  <p class="version-tag">🕒 Updated: 11.11.26 · 1912</p>
 </footer>
 
 </div>
@@ -2927,18 +2930,22 @@ var curQuery = '', curRegion = 'all', hidePastStays = true;
 // corrected (9 Nov 2026) to match this data, so the two no longer disagree.
 // B4 (Ersfjordbotn, Airbnb) replaced the old Booking.com stay on 21 Oct and amenities
 // here haven't been confirmed yet, so it's flagged unconfirmed rather than guessed.
+// wifi added 11 Nov 2026, read directly off each stay's Booking.com confirmation PDF
+// amenity list ("WiFi is available..." / "No internet access available" for A3);
+// B4's Airbnb trip-overview PDF doesn't include a full amenity list, so left
+// unconfirmed like its other fields.
 var AMENITIES = {
-  A1:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true, kitchen:'full'},
-  A2:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
-  A3:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
-  A4:{dishwasher:false, washer:true,  dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
-  A5:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'kitchenette'},
-  A6:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
-  A7:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'full'},
-  B1:{dishwasher:true,  washer:false, dryer:false, smarttv:false, confirmed:true, kitchen:'kitchenette'},
-  B2:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  confirmed:true, kitchen:'full'},
-  B3:{dishwasher:true,  washer:true,  dryer:true,  smarttv:false, confirmed:true, kitchen:'full'},
-  B4:{dishwasher:false, washer:false, dryer:false, smarttv:false, confirmed:false, kitchen:'unconfirmed'}
+  A1:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  wifi:true,  confirmed:true, kitchen:'full'},
+  A2:{dishwasher:true,  washer:false, dryer:false, smarttv:false, wifi:true,  confirmed:true, kitchen:'full'},
+  A3:{dishwasher:false, washer:false, dryer:false, smarttv:false, wifi:false, confirmed:true, kitchen:'full'},
+  A4:{dishwasher:false, washer:true,  dryer:false, smarttv:false, wifi:true,  confirmed:true, kitchen:'full'},
+  A5:{dishwasher:false, washer:false, dryer:false, smarttv:false, wifi:true,  confirmed:true, kitchen:'kitchenette'},
+  A6:{dishwasher:false, washer:false, dryer:false, smarttv:false, wifi:true,  confirmed:true, kitchen:'full'},
+  A7:{dishwasher:true,  washer:false, dryer:false, smarttv:false, wifi:true,  confirmed:true, kitchen:'full'},
+  B1:{dishwasher:true,  washer:false, dryer:false, smarttv:false, wifi:true,  confirmed:true, kitchen:'kitchenette'},
+  B2:{dishwasher:true,  washer:true,  dryer:false, smarttv:true,  wifi:true,  confirmed:true, kitchen:'full'},
+  B3:{dishwasher:true,  washer:true,  dryer:true,  smarttv:false, wifi:true,  confirmed:true, kitchen:'full'},
+  B4:{dishwasher:false, washer:false, dryer:false, smarttv:false, wifi:false, confirmed:false, kitchen:'unconfirmed'}
 };
 var STAY_ORDER = ['A1','A2','A3','A4','A5','A6','A7','B1','B2','B3','B4'];
 var STAY_DATES = {
@@ -2979,7 +2986,8 @@ function renderFacilitiesTable(){
       '<td>' + yesNo(a.washer) + '</td>' +
       '<td>' + yesNo(a.dryer) + '</td>' +
       '<td>' + yesNo(a.smarttv) + '</td>' +
-      (a.confirmed ? '' : '</tr><tr><td colspan="7" class="fac-unconf" style="padding-top:0"><span lang="zh">ℹ️ [' + code + '] 设施尚未逐项核实（Airbnb 房源，取代原 Booking.com 订房）</span><span lang="en">ℹ️ [' + code + '] amenities not yet itemized (Airbnb stay, replaced the original Booking.com booking)</span></td>') +
+      '<td>' + yesNo(a.wifi) + '</td>' +
+      (a.confirmed ? '' : '</tr><tr><td colspan="8" class="fac-unconf" style="padding-top:0"><span lang="zh">ℹ️ [' + code + '] 设施尚未逐项核实（Airbnb 房源，取代原 Booking.com 订房）</span><span lang="en">ℹ️ [' + code + '] amenities not yet itemized (Airbnb stay, replaced the original Booking.com booking)</span></td>') +
       '</tr>';
   });
   body.innerHTML = rows;
@@ -3020,8 +3028,8 @@ function renderOthersTable(){
   });
   body.innerHTML = rows;
 }
-var AMENITY_ICON = {washer:'🧺', dishwasher:'🍽️', dryer:'🔥', smarttv:'📺'};
-var AMENITY_LABEL = {washer:['洗衣机','Washer'], dishwasher:['洗碗机','Dishwasher'], dryer:['烘干机','Dryer'], smarttv:['智能电视','Smart TV']};
+var AMENITY_ICON = {washer:'🧺', dishwasher:'🍽️', dryer:'🔥', smarttv:'📺', wifi:'📶'};
+var AMENITY_LABEL = {washer:['洗衣机','Washer'], dishwasher:['洗碗机','Dishwasher'], dryer:['烘干机','Dryer'], smarttv:['智能电视','Smart TV'], wifi:['WiFi','WiFi']};
 var curAmenityFilters = new Set();
 
 function stayCode(card){ var t = card.getAttribute('data-search')||''; return t.split(' ')[0].toUpperCase(); }
@@ -3032,20 +3040,24 @@ function renderAmenityBadges(){
     var a = AMENITIES[code];
     if (!a) return;
     var html = '';
-    ['washer','dishwasher','dryer','smarttv'].forEach(function(key){
+    ['washer','dishwasher','dryer','smarttv','wifi'].forEach(function(key){
       if (a[key]) {
         var lab = AMENITY_LABEL[key];
         html += '<span class="tag amenity-tag">' + AMENITY_ICON[key] +
           ' <span lang="zh">' + lab[0] + '</span><span lang="en">' + lab[1] + '</span></span>';
       }
     });
+    if (a.confirmed && !a.wifi) {
+      html += '<span class="tag amenity-tag amenity-warn">' +
+        '<span lang="zh">📶❌ 无 WiFi</span><span lang="en">📶❌ No WiFi</span></span>';
+    }
     if (!a.confirmed) {
       html += '<span class="tag amenity-tag amenity-unconfirmed">' +
         '<span lang="zh">ℹ️ 设施待确认</span><span lang="en">ℹ️ Amenities not yet confirmed</span></span>';
     }
     el.innerHTML = html;
   });
-  ['washer','dishwasher','smarttv'].forEach(function(key){
+  ['washer','dishwasher','smarttv','wifi'].forEach(function(key){
     var n = Object.keys(AMENITIES).filter(function(c){ return AMENITIES[c][key]; }).length;
     var countEl = document.getElementById('amenCount-' + key);
     if (countEl) countEl.textContent = n;
