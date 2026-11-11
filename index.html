@@ -126,6 +126,11 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .amenity-tag{font-size:.72rem;opacity:.9}
 .amenity-unconfirmed{opacity:.7;font-style:italic}
 .card.stay-past{opacity:.5}
+.others-row-past{opacity:.75}
+.others-show-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;border:1px solid var(--border);background:var(--surface-2);color:var(--dim);cursor:pointer;font-family:inherit}
+.others-show-btn:hover{border-color:var(--accent);color:var(--accent)}
+.others-hide-btn{border:0;background:none;cursor:pointer;font-size:0.85rem;padding:0 0 0 4px;opacity:.7}
+.others-hide-btn:hover{opacity:1}
 .stay-past-badge{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;color:var(--dim);background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:2px 7px;margin-left:8px}
 .ci-box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
 .ci-row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.9rem}
@@ -1156,7 +1161,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 09.11.26 · 2108</span>
+      <span class="version-tag">🕒 Updated: 11.11.26 · 1854</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -2837,7 +2842,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 09.11.26 · 2108</p>
+  <p class="version-tag">🕒 Updated: 11.11.26 · 1854</p>
 </footer>
 
 </div>
@@ -2980,21 +2985,37 @@ function renderFacilitiesTable(){
   body.innerHTML = rows;
 }
 
+var othersExpandedPast = new Set();
+function toggleOthersPastRow(code){
+  if (othersExpandedPast.has(code)) othersExpandedPast.delete(code); else othersExpandedPast.add(code);
+  renderOthersTable();
+}
 function renderOthersTable(){
   var body = document.getElementById('othersTableBody');
   if (!body || typeof CHECKIN === 'undefined') return;
+  var now = Date.now();
   var rows = '';
   STAY_ORDER.forEach(function(code){
     var d = CHECKIN[code]; if (!d) return;
+    var co = STAY_CHECKOUT[code];
+    var isPast = !!co && now >= Date.parse(co.iso);
+    if (isPast && !othersExpandedPast.has(code)) {
+      rows += '<tr class="others-row-past">' +
+        '<td><b>[' + code + ']</b> ' + esc(d.name) + ' <span style="color:var(--dim);font-size:.82rem">(' + (STAY_DATES[code]||'') + ')</span></td>' +
+        '<td colspan="4"><button type="button" class="others-show-btn" onclick="toggleOthersPastRow(\'' + code + '\')">👁️ <span lang="zh">显示</span><span lang="en">Show</span></button></td>' +
+        '</tr>';
+      return;
+    }
     var access = d.lockbox ? bi('自助入住 · 钥匙箱','Self check-in · lockbox')
       : (/self-check-in|自助/i.test(d.note||'') || /key-?box|lock-?box/i.test(d.note||'')) ? bi('自助入住 · 钥匙箱','Self check-in · key box')
       : bi('前台/房东迎接','Reception / host meet');
+    var hideBtn = isPast ? ' <button type="button" class="others-hide-btn" onclick="toggleOthersPastRow(\'' + code + '\')" title="Hide">🙈</button>' : '';
     rows += '<tr>' +
       '<td><b>[' + code + ']</b> ' + esc(d.name) + '</td>' +
       '<td>' + esc(d.ci) + '</td>' +
       '<td>' + esc(d.co) + '</td>' +
       '<td>' + access + '</td>' +
-      '<td><button type="button" class="others-details-btn checkin-btn" data-checkin="' + code + '">' + bi('详情','Details') + '</button></td>' +
+      '<td><button type="button" class="others-details-btn checkin-btn" data-checkin="' + code + '">' + bi('详情','Details') + '</button>' + hideBtn + '</td>' +
       '</tr>';
   });
   body.innerHTML = rows;
@@ -3107,7 +3128,7 @@ renderAmenityBadges();
 renderFacilitiesTable();
 updateStayStatus();
 applyCardVisibility();
-setInterval(function(){ updateStayStatus(); applyCardVisibility(); updateCountdown(); }, 5 * 60 * 1000);
+setInterval(function(){ updateStayStatus(); applyCardVisibility(); updateCountdown(); if (typeof renderOthersTable === 'function') renderOthersTable(); }, 5 * 60 * 1000);
 
 // ===== 油量滑动条 =====
 const slider=document.getElementById('fuelSlider');
