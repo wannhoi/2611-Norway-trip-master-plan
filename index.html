@@ -132,6 +132,13 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .others-show-btn:hover{border-color:var(--accent);color:var(--accent)}
 .others-hide-btn{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:5px 10px;border-radius:6px;font-size:0.75rem;font-weight:700;border:1px solid var(--border);background:var(--surface-2);color:var(--dim);cursor:pointer;font-family:inherit}
 .others-hide-btn:hover{border-color:var(--accent);color:var(--accent)}
+.fac-row-past{opacity:.75}
+.fac-current-row{background:var(--accent-soft)}
+.fac-current-badge{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--surface);border:1px solid var(--accent);border-radius:5px;padding:1px 6px;margin-left:6px;white-space:nowrap}
+#facilitiesTable th,#facilitiesTable td{padding:10px 12px;white-space:nowrap}
+#facilitiesTable th:first-child,#facilitiesTable td:first-child{position:sticky;left:0;background:var(--surface);white-space:nowrap;z-index:1}
+#facilitiesTable thead th:first-child{background:var(--surface-2);z-index:2}
+.fac-current-row td:first-child{background:var(--accent-soft)}
 .stay-past-badge{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;color:var(--dim);background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:2px 7px;margin-left:8px}
 .ci-box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
 .ci-row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.9rem}
@@ -1162,7 +1169,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 13.11.26 · 0730</span>
+      <span class="version-tag">🕒 Updated: 13.11.26 · 0815</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1663,6 +1670,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="card" style="margin-bottom:16px;">
       <p lang="zh" style="margin:0;font-size:.85rem;color:var(--dim)">数据来源：住宿计划表（Booking.com/Airbnb 确认函 + 房东消息核实），非卡片内旧版「设施」栏（部分已过时）。</p>
       <p lang="en" style="margin:0;font-size:.85rem;color:var(--dim)">Source: the verified accommodation plan (Booking.com/Airbnb confirmations + host messages). Each card's own "Facilities:" line has been corrected to match this data.</p>
+    </div>
+    <div id="facControlBar" style="display:none;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+      <button type="button" id="facShowAllBtn" class="others-show-btn" onclick="facShowAll()">👁️ <span lang="zh">显示全部</span><span lang="en">Show all</span></button>
+      <button type="button" id="facHideAllBtn" class="others-hide-btn" onclick="facHideAll()" style="margin-left:0;">🙈 <span lang="zh">隐藏已退房</span><span lang="en">Hide checked-out</span></button>
+      <span style="font-size:.82rem;color:var(--dim)"><span lang="zh">已退房：</span><span lang="en">Checked out: </span><b id="facPastCount">0</b></span>
     </div>
     <div style="overflow-x:auto;">
       <table id="facilitiesTable" style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:10px;overflow:hidden;">
@@ -2861,7 +2873,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 13.11.26 · 0730</p>
+  <p class="version-tag">🕒 Updated: 13.11.26 · 0815</p>
 </footer>
 
 </div>
@@ -2984,18 +2996,60 @@ function showStaysSubtab(tab){
 
 function yesNo(v){ return v ? '<span class="fac-yes">✓</span>' : '<span class="fac-no">—</span>'; }
 
+var facilitiesExpandedPast = new Set();
+var FAC_TRIP_START_ISO = '2026-11-07T00:00:00+01:00';
+var FAC_TRIP_END_ISO = '2026-11-23T00:00:00+01:00';
+
+function toggleFacilitiesPastRow(code){
+  if (facilitiesExpandedPast.has(code)) facilitiesExpandedPast.delete(code); else facilitiesExpandedPast.add(code);
+  renderFacilitiesTable();
+}
+function facShowAll(){
+  STAY_ORDER.forEach(function(code){ facilitiesExpandedPast.add(code); });
+  renderFacilitiesTable();
+}
+function facHideAll(){
+  facilitiesExpandedPast.clear();
+  renderFacilitiesTable();
+}
+
 function renderFacilitiesTable(){
   var body = document.getElementById('facilitiesTableBody');
   if (!body) return;
+  var now = Date.now();
+  var tripLive = now >= Date.parse(FAC_TRIP_START_ISO) && now <= Date.parse(FAC_TRIP_END_ISO);
+  var currentCode = null;
+  if (tripLive) {
+    for (var i = 0; i < STAY_ORDER.length; i++) {
+      var co0 = STAY_CHECKOUT[STAY_ORDER[i]];
+      var isP0 = !!co0 && now >= Date.parse(co0.iso);
+      if (!isP0) { currentCode = STAY_ORDER[i]; break; }
+    }
+  }
   var rows = '';
+  var pastCount = 0;
   STAY_ORDER.forEach(function(code){
     var a = AMENITIES[code]; if (!a) return;
+    var co = STAY_CHECKOUT[code];
+    var isPast = !!co && now >= Date.parse(co.iso);
+    var isCurrent = code === currentCode;
+    if (isPast) pastCount++;
+    if (isPast && !facilitiesExpandedPast.has(code)) {
+      rows += '<tr class="fac-row-past">' +
+        '<td><b>[' + code + ']</b> <span style="color:var(--dim);font-size:.78rem">(' + (STAY_DATES[code]||'') + ')</span></td>' +
+        '<td colspan="7"><button type="button" class="others-show-btn" onclick="toggleFacilitiesPastRow(\'' + code + '\')">👁️ <span lang="zh">显示</span><span lang="en">Show</span></button></td>' +
+        '</tr>';
+      return;
+    }
     var kl = KITCHEN_LABEL[a.kitchen] || KITCHEN_LABEL.unconfirmed;
     var kitchenCell = a.kitchen === 'unconfirmed'
       ? '<span class="fac-unconf" lang="zh">' + kl[0] + '</span>' + '<span class="fac-unconf" lang="en">' + kl[1] + '</span>'
       : '<span lang="zh">' + kl[0] + '</span><span lang="en">' + kl[1] + '</span>';
-    rows += '<tr>' +
-      '<td><b>[' + code + ']</b></td>' +
+    var hideBtn = isPast ? ' <button type="button" class="others-hide-btn" onclick="toggleFacilitiesPastRow(\'' + code + '\')">🙈 <span lang="zh">隐藏</span><span lang="en">Hide</span></button>' : '';
+    var currentBadge = isCurrent ? ' <span class="fac-current-badge"><span lang="zh">📍 当前</span><span lang="en">📍 Now</span></span>' : '';
+    var rowClass = isCurrent ? ' class="fac-current-row"' : '';
+    rows += '<tr' + rowClass + '>' +
+      '<td><b>[' + code + ']</b>' + currentBadge + hideBtn + '</td>' +
       '<td>' + (STAY_DATES[code]||'') + '</td>' +
       '<td>' + kitchenCell + '</td>' +
       '<td>' + yesNo(a.dishwasher) + '</td>' +
@@ -3003,10 +3057,14 @@ function renderFacilitiesTable(){
       '<td>' + yesNo(a.dryer) + '</td>' +
       '<td>' + yesNo(a.smarttv) + '</td>' +
       '<td>' + yesNo(a.wifi) + '</td>' +
-      (a.confirmed ? '' : '</tr><tr><td colspan="8" class="fac-unconf" style="padding-top:0"><span lang="zh">ℹ️ [' + code + '] 设施尚未逐项核实（Airbnb 房源，取代原 Booking.com 订房）</span><span lang="en">ℹ️ [' + code + '] amenities not yet itemized (Airbnb stay, replaced the original Booking.com booking)</span></td>') +
+      (a.confirmed ? '' : '</tr><tr' + rowClass + '><td colspan="8" class="fac-unconf" style="padding-top:0"><span lang="zh">ℹ️ [' + code + '] 设施尚未逐项核实（Airbnb 房源，取代原 Booking.com 订房）</span><span lang="en">ℹ️ [' + code + '] amenities not yet itemized (Airbnb stay, replaced the original Booking.com booking)</span></td>') +
       '</tr>';
   });
   body.innerHTML = rows;
+  var countEl = document.getElementById('facPastCount');
+  if (countEl) countEl.textContent = pastCount;
+  var bar = document.getElementById('facControlBar');
+  if (bar) bar.style.display = pastCount > 0 ? 'flex' : 'none';
 }
 
 var othersExpandedPast = new Set();
@@ -3156,7 +3214,7 @@ renderAmenityBadges();
 renderFacilitiesTable();
 updateStayStatus();
 applyCardVisibility();
-setInterval(function(){ updateStayStatus(); applyCardVisibility(); updateCountdown(); if (typeof renderOthersTable === 'function') renderOthersTable(); }, 5 * 60 * 1000);
+setInterval(function(){ updateStayStatus(); applyCardVisibility(); updateCountdown(); if (typeof renderOthersTable === 'function') renderOthersTable(); if (typeof renderFacilitiesTable === 'function') renderFacilitiesTable(); }, 5 * 60 * 1000);
 
 // ===== 油量滑动条 =====
 const slider=document.getElementById('fuelSlider');
