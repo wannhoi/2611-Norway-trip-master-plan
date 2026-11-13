@@ -1169,7 +1169,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 13.11.26 · 1955</span>
+      <span class="version-tag">🕒 Updated: 13.11.26 · 2003</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -2873,7 +2873,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 13.11.26 · 1955</p>
+  <p class="version-tag">🕒 Updated: 13.11.26 · 2003</p>
 </footer>
 
 </div>
@@ -3097,7 +3097,7 @@ function renderOthersTable(){
       '<td>' + esc(d.ci) + '</td>' +
       '<td>' + esc(d.co) + '</td>' +
       '<td>' + access + '</td>' +
-      '<td><button type="button" class="others-details-btn checkin-btn" data-checkin="' + code + '">' + bi('详情','Details') + '</button>' + hideBtn + '</td>' +
+      '<td><button type="button" class="others-details-btn checkin-btn" data-checkin="' + code + '">' + bi('详情','Details') + '</button> <a href="https://claude.ai/artifact/Quf8SgH4prHsQkYxcAEa7u" target="_blank" rel="noopener" class="others-details-btn" style="text-decoration:none;display:inline-block">' + bi('📝 点评','📝 Review') + '</a>' + hideBtn + '</td>' +
       '</tr>';
   });
   body.innerHTML = rows;
@@ -3736,6 +3736,7 @@ document.addEventListener('click',function(e){
     '<div class="ci-note"><b>'+bi('如何入住','Getting in')+'</b><br>'+d.note+'</div>'+
     (d.checkout?'<div class="ci-note" style="border-left-color:var(--grocery, #e8a33d)"><b>'+bi('退房须知','On departure')+'</b><br>'+d.checkout+'</div>':'')+
     (d.phone?'<a class="ci-call" href="tel:'+esc(d.phone.replace(/\s+/g,''))+'">📞 '+bi('致电房源','Call property')+'</a>':'')+
+    '<a class="ci-call" target="_blank" rel="noopener" href="https://claude.ai/artifact/Quf8SgH4prHsQkYxcAEa7u" style="margin-left:8px">📝 '+bi('点评此住宿','Review this stay')+'</a>'+
     '<div class="ci-src">'+bi('来源','Source')+': '+esc(d.src)+'</div>';
   TripViewer.open('🔑 ['+k+'] '+esc(d.name)+' — '+bi('入住须知','Check-in Info'),rows);
 });
