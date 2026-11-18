@@ -1169,7 +1169,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 13.11.26 · 2003</span>
+      <span class="version-tag">🕒 Updated: 18.11.26 · 0930</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1207,6 +1207,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <button class="nav-tab" data-section="expense" lang="en">💰 Expenses</button>
 <button class="nav-tab" data-section="insurance" lang="zh">🛡️ 旅行保险</button><button class="nav-tab" data-section="insurance" lang="en">🛡️ Insurance</button>
 <button class="nav-tab" data-section="info" lang="zh">ℹ️ 资料</button><button class="nav-tab" data-section="info" lang="en">ℹ️ Info</button>
+<button class="nav-tab" data-section="notes" lang="zh">📝 下次改进</button><button class="nav-tab" data-section="notes" lang="en">📝 Next Trip Notes</button>
 </nav>
 
 <!-- ========== 路线与总览 (Overview & Map) ========== -->
@@ -2869,11 +2870,52 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </details>
 </section>
 
+<!-- ========== 下次改进 (Next Trip Notes) ========== -->
+<section id="notes" hidden>
+  <div class="card">
+    <h2><span lang="zh">📝 下次行程改进笔记</span><span lang="en">📝 Notes for Next Trip</span></h2>
+    <p class="tc-small"><span lang="zh">随时告诉 Claude 要记下的事（装备、路况、建议），都会加进这里并同步到看板。以下先列出一些建议，供确认/删改。</span><span lang="en">Tell me anytime something's worth noting (gear, road conditions, ideas) and I'll add it here and push it to the dashboard. The items below are starting suggestions — confirm, edit or delete any of them.</span></p>
+
+    <h3><span lang="zh">📷 相机装备</span><span lang="en">📷 Camera Gear</span></h3>
+    <ul class="notes-list">
+      <li><span lang="zh">为每台 360 相机多带 2–3 颗电池，持续拍极光timelapse（每颗约1小时，低温下更快耗尽）；备用电池放外套内袋保暖，不放相机包。</span><span lang="en">Pack 2–3 extra batteries per 360 camera for continuous aurora timelapses (each lasts ~1hr, less in the cold); keep spares in an inner jacket pocket, not the camera bag, to stay warm.</span></li>
+      <li><span lang="zh">一个保暖电池袋/暖手宝小袋，专门给备用电池保温。</span><span lang="en">A small insulated pouch or hand-warmer sachet just for spare batteries.</span></li>
+      <li><span lang="zh">擦镜布/防雾布，从寒冷户外进入温暖车内/小屋时镜头容易起雾。</span><span lang="en">Lens cloth for condensation — moving from cold outdoors into a warm car or cabin fogs the lens fast.</span></li>
+      <li><span lang="zh">确认 A6700 + Metabones 转接佳能24-70 在低光下的对焦表现，是否真的够用，或下次直接用原生镜头。</span><span lang="en">Re-check how well the A6700 + Metabones-adapted Canon 24-70 actually autofocuses in low light this trip — decide if it's worth it next time or just use native glass.</span></li>
+      <li><span lang="zh">带一个 SD 卡收纳盒/备份硬盘，晚上收工后随手备份。</span><span lang="en">Bring an SD-card wallet/backup drive for a quick nightly backup routine.</span></li>
+    </ul>
+
+    <h3><span lang="zh">🛍️ 在挪威当地购买（冬季）</span><span lang="en">🛍️ Things to Buy in Norway (winter)</span></h3>
+    <ul class="notes-list">
+      <li><span lang="zh">鞋底冰爪/防滑钉，结冰人行道和观景点很滑。</span><span lang="en">Ice cleats/spikes for boots — icy pavements and viewpoints get slippery.</span></li>
+      <li><span lang="zh">暖手宝（一次性或充电式）。</span><span lang="en">Hand warmers (disposable or rechargeable).</span></li>
+      <li><span lang="zh">保温壶，长途驾车或等极光时装热饮用。</span><span lang="en">A thermos for hot drinks on long drives or while waiting for aurora.</span></li>
+      <li><span lang="zh">反光安全背心，路边停车/应急时穿，车上建议常备。</span><span lang="en">A reflective safety vest for roadside stops/emergencies — good to keep in the car.</span></li>
+    </ul>
+
+    <h3><span lang="zh">🚗 路况与行车贴士</span><span lang="en">🚗 Road &amp; Driving Tips</span></h3>
+    <ul class="notes-list">
+      <li><span lang="zh">取车时确认真的是冬季/防滑钉胎，不是全季胎。</span><span lang="en">Confirm at pickup the rental has true winter or studded tires, not all-season — ask directly.</span></li>
+      <li><span lang="zh">检查雨刷液是耐寒型，车上备冰铲/雪刷（租车通常附带，取车时点一下）。</span><span lang="en">Make sure washer fluid is winter-rated, and the ice scraper/snow brush that usually comes with the rental is actually in the car — check at pickup.</span></li>
+      <li><span lang="zh">每天出发前查 pent.no 和 vegvesen.no（路况/封路），不只是渡轮时间表。</span><span lang="en">Check pent.no and vegvesen.no (road conditions/closures) each morning before driving, not just the ferry schedule.</span></li>
+      <li><span lang="zh">低温+开暖气会让续航下降更快，比平时更早加油（见「续航加油」页）。</span><span lang="en">Cold weather plus heater use drains range faster than usual — refuel earlier than you would at home (see the Fuel Range tab).</span></li>
+      <li><span lang="zh">特罗姆瑟/罗弗敦山区注意驯鹿、驼鹿突然穿越马路。</span><span lang="en">Watch for reindeer/moose suddenly crossing in the Tromsø/Lofoten mountain stretches.</span></li>
+      <li><span lang="zh">如遇暴风雪，当局可能安排"护送车队"（kolonnekjøring）通行，跟车队走，不要单独闯。</span><span lang="en">In a bad storm, authorities may organize a winter convoy (kolonnekjøring) — follow it rather than driving alone.</span></li>
+    </ul>
+
+    <h3><span lang="zh">💡 其他</span><span lang="en">💡 Other</span></h3>
+    <ul class="notes-list" id="notes-other-list">
+      <li><span lang="zh">这个清单会持续增加——随时跟 Claude 说要记什么，就会加进来。</span><span lang="en">This list keeps growing — just tell me what to note at any point and I'll add it.</span></li>
+    </ul>
+  </div>
+</section>
+<!-- NOTES-BLOCK END -->
+
 <footer>
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 13.11.26 · 2003</p>
+  <p class="version-tag">🕒 Updated: 18.11.26 · 0930</p>
 </footer>
 
 </div>
