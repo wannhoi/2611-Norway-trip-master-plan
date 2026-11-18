@@ -116,6 +116,8 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);color
 .nav-big small{font-weight:500;opacity:.9;font-size:.74rem}
 .nav-big:hover{background:#15803d;text-decoration:none}
 .nav-big.air{background:#2563eb}
+.nav-big.leg{background:#7c3aed}
+.nav-big.leg:hover{background:#6d28d9}
 .nav-copy{display:inline-block;margin:4px 0 8px;padding:9px 14px;border-radius:8px;border:0;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.85rem;cursor:pointer}
 
 .checkin-btn{flex:1 1 100%;order:3;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;text-align:center;box-sizing:border-box;border:1px solid var(--warn);background:var(--warn-soft);color:var(--warn);cursor:pointer;font-family:inherit}
@@ -1169,7 +1171,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </details>
       <p style="color:var(--accent);font-weight:500">云海 & 贵英同行 💑</p>
-      <span class="version-tag">🕒 Updated: 18.11.26 · 0933</span>
+      <span class="version-tag">🕒 Updated: 18.11.26 · 2142</span>
     </div>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="zh">中文</button>
@@ -1220,6 +1222,29 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <button type="button" class="nav-copy" id="navCopyBtn"><span lang="zh">📋 复制全部链接（粘贴到 WhatsApp）</span><span lang="en">📋 Copy all links (paste into WhatsApp)</span></button>
     <p lang="zh" style="font-size:.78rem;opacity:.85">若在 WhatsApp 内置浏览器里打不开：长按链接 → 在浏览器/Google 地图中打开。</p>
     <p lang="en" style="font-size:.78rem;opacity:.85">If it won't open inside WhatsApp's in-app browser: long-press the link → open in browser / Google Maps.</p>
+  </div>
+  <div class="card" id="navLegDetail" style="border:1px solid #7c3aed;">
+    <h2 lang="zh">🔎 单段路线详情（规划/探索用，不依赖当前位置）</h2>
+    <h2 lang="en">🔎 Leg-by-Leg Route Details (for planning/exploring — not based on current location)</h2>
+    <p lang="zh">上面的一键导航从「当前位置」算路线，不在车上时打不开完整路段。这里每个按钮都是<strong>固定起点 → 终点</strong>的完整路线，随时可打开查看全程、途经道路、沿途地点，也可分享到 WhatsApp 让对方直接查看，不需要先到达起点。</p>
+    <p lang="en">The one-tap buttons above route from "where you are now," so they can't show a full leg unless you're already there. Each button below is a <strong>fixed start → end</strong> route you can open any time to see the whole leg, the roads it takes and places along the way — and share the link in WhatsApp for someone else to explore, without needing to be at the starting point first.</p>
+    <div class="nav-quick" id="navLegQuick">
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/Troms%C3%B8+Airport/69.607847,18.031857/69.2471,17.6377" target="_blank" rel="noopener" data-nav-code="LEG-TOS-A1" data-nav-name="TOS → A1 Wilderness Villa"><span>🔎 TOS → A1</span><small>Tromsø Airport → Wilderness Villa (via ferry)</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/69.2471,17.6377/68.86945,17.769283" target="_blank" rel="noopener" data-nav-code="LEG-A1-A2" data-nav-name="A1 → A2 Garsnes Brygge"><span>🔎 A1 → A2</span><small>Wilderness Villa → Garsnes Brygge</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/68.86945,17.769283/68.7331,16.189183" target="_blank" rel="noopener" data-nav-code="LEG-A2-A3" data-nav-name="A2 → A3 Sjøtun"><span>🔎 A2 → A3</span><small>Garsnes Brygge → Sjøtun</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/68.7331,16.189183/68.392317,14.588317" target="_blank" rel="noopener" data-nav-code="LEG-A3-A4" data-nav-name="A3 → A4 Lofoten Sea View Cabin"><span>🔎 A3 → A4</span><small>Sjøtun → Lofoten Sea View Cabin</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/68.392317,14.588317/68.206367,14.42585" target="_blank" rel="noopener" data-nav-code="LEG-A4-A5" data-nav-name="A4 → A5 Skårungen"><span>🔎 A4 → A5</span><small>Lofoten Sea View Cabin → Skårungen</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/68.206367,14.42585/68.15375,14.20345" target="_blank" rel="noopener" data-nav-code="LEG-A5-A6" data-nav-name="A5 → A6 Fiskekrogen Rorbuer"><span>🔎 A5 → A6</span><small>Skårungen → Fiskekrogen Rorbuer</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/68.15375,14.20345/67.94615,13.133567" target="_blank" rel="noopener" data-nav-code="LEG-A6-A7" data-nav-name="A6 → A7 Eliassen Rorbuer"><span>🔎 A6 → A7</span><small>Fiskekrogen Rorbuer → Eliassen Rorbuer</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/67.94615,13.133567/68.234367,14.57965" target="_blank" rel="noopener" data-nav-code="LEG-A7-B1" data-nav-name="A7 → B1 Svinøya Rorbuer"><span>🔎 A7 → B1</span><small>Eliassen Rorbuer → Svinøya Rorbuer</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/68.234367,14.57965/68.47635,16.883867" target="_blank" rel="noopener" data-nav-code="LEG-B1-B2" data-nav-name="B1 → B2 Gammelbanken Liland"><span>🔎 B1 → B2</span><small>Svinøya Rorbuer → Gammelbanken Liland</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/68.47635,16.883867/69.066067,19.312617" target="_blank" rel="noopener" data-nav-code="LEG-B2-B3" data-nav-name="B2 → B3 Fjellfroskvatnet House"><span>🔎 B2 → B3</span><small>Gammelbanken Liland → Fjellfroskvatnet House</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/69.066067,19.312617/69.689822,18.59504" target="_blank" rel="noopener" data-nav-code="LEG-B3-B4" data-nav-name="B3 → B4 Ersfjordbotn"><span>🔎 B3 → B4</span><small>Fjellfroskvatnet House → Ersfjordbotn</small></a>
+      <a class="nav-big leg" href="https://www.google.com/maps/dir/69.689822,18.59504/Troms%C3%B8+Airport" target="_blank" rel="noopener" data-nav-code="LEG-B4-TOS" data-nav-name="B4 → TOS Tromsø Airport"><span>🔎 B4 → TOS</span><small>Ersfjordbotn → Tromsø Airport</small></a>
+    </div>
+    <button type="button" class="nav-copy" id="navLegCopyBtn"><span lang="zh">📋 复制全部单段链接（粘贴到 WhatsApp）</span><span lang="en">📋 Copy all leg links (paste into WhatsApp)</span></button>
+    <p lang="zh" style="font-size:.78rem;opacity:.85">💡 若想完全离线查看（没有信号时也能用）：出发前在手机 Google 地图 App 里（不是网页版）→ 菜单 →「离线地图」→ 选取整个 Tromsø–Lofoten 区域下载一次。下载后，以上链接在该区域内即使没有网络也能算路线、显示道路与地点。这一步需要在 App 里手动做一次，无法透过链接自动完成。</p>
+    <p lang="en" style="font-size:.78rem;opacity:.85">💡 For full offline use (no signal needed): before you go, open the Google Maps phone app (not the web version) → menu → "Offline maps" → download the whole Tromsø–Lofoten area once. After that, the links above will still calculate routes and show roads/places within that area even with no connection. This download has to be done once, manually, inside the app — a link can't trigger it automatically.</p>
   </div>
     <div class="card" style="background:linear-gradient(135deg, #112834, #1a3b36);border:1px solid var(--accent);">
     <h2 lang="zh">🗺️ 分组路线导航总览 (Group 1: A1–A7 去程 & Group 2: B1–B4 返程)</h2>
@@ -2917,7 +2942,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <p>✨ Master Merged Planner (Ferry Route Option)｜云海 & 贵英同行 💑</p>
   <p lang="zh">数据本机保存 · 祝您挪威极光自驾愉快！</p>
   <p lang="en">Data stored locally · Have a wonderful Norway trip!</p>
-  <p class="version-tag">🕒 Updated: 18.11.26 · 0933</p>
+  <p class="version-tag">🕒 Updated: 18.11.26 · 2142</p>
 </footer>
 
 </div>
@@ -4066,6 +4091,13 @@ label();setInterval(label,60000);
 <script>
 (function(){document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#navCopyBtn');if(!b)return;
 var t=Array.prototype.map.call(document.querySelectorAll('#navQuick a.nav-big'),function(a){return a.getAttribute('data-nav-code')+' '+a.getAttribute('data-nav-name')+'\n'+a.href}).join('\n\n');
+function done(){var o=b.innerHTML;b.textContent='✅ Copied';setTimeout(function(){b.innerHTML=o},1800)}
+try{navigator.clipboard.writeText(t).then(done,fb)}catch(x){fb()}
+function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(ta);done()}})})();
+</script>
+<script>
+(function(){document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#navLegCopyBtn');if(!b)return;
+var t=Array.prototype.map.call(document.querySelectorAll('#navLegQuick a.nav-big'),function(a){return a.getAttribute('data-nav-code')+' '+a.getAttribute('data-nav-name')+'\n'+a.href}).join('\n\n');
 function done(){var o=b.innerHTML;b.textContent='✅ Copied';setTimeout(function(){b.innerHTML=o},1800)}
 try{navigator.clipboard.writeText(t).then(done,fb)}catch(x){fb()}
 function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(x){}document.body.removeChild(ta);done()}})})();
